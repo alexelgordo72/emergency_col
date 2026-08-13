@@ -14,6 +14,7 @@ class _GestionBarriosDialogState extends State<GestionBarriosDialog> {
   bool cargando = true;
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _nombreController = TextEditingController();
+  final TextEditingController _comunaController = TextEditingController();
 
   @override
   void initState() {
@@ -31,9 +32,11 @@ class _GestionBarriosDialogState extends State<GestionBarriosDialog> {
     if (barrioExistente != null) {
       _idController.text = barrioExistente.id.toString();
       _nombreController.text = barrioExistente.nombre;
+      _comunaController.text = barrioExistente.comuna?.toString() ?? '0';
     } else {
       _idController.clear();
       _nombreController.clear();
+      _comunaController.clear();
     }
 
     await showDialog(
@@ -47,32 +50,69 @@ class _GestionBarriosDialogState extends State<GestionBarriosDialog> {
               controller: _idController,
               decoration: const InputDecoration(labelText: 'ID del Barrio (Ej: 1, 2, 3)'),
               keyboardType: TextInputType.number,
-              // Si estamos editando, no permitimos cambiar el ID para no dañar la BD
-              enabled: barrioExistente == null, 
+              enabled: barrioExistente == null,
             ),
             const SizedBox(height: 10),
             TextField(
               controller: _nombreController,
               decoration: const InputDecoration(labelText: 'Nombre del Barrio'),
-              autofocus: barrioExistente == null ? false : true,
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              controller: _comunaController,
+              decoration: const InputDecoration(
+                labelText: 'Comuna (número)',
+                helperText: 'Ejemplo: 1, 2, 3, 4',
+              ),
+              keyboardType: TextInputType.number,
             ),
           ],
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancelar', style: TextStyle(color: Colors.grey))),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar', style: TextStyle(color: Colors.grey)),
+          ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.blue[800]),
             onPressed: () async {
-              int? idParseado = int.tryParse(_idController.text);
-              if (idParseado == null || _nombreController.text.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ID inválido o nombre vacío'), backgroundColor: Colors.red));
-                return;
-              }
-              
-              bool exito = await BarrioService.createBarrio(idParseado, _nombreController.text);
-              if (exito) {
-                Navigator.pop(context);
-                _cargarBarrios();
+              if (barrioExistente != null) {
+                // ✅ EDITAR: HACER PUT
+                int comuna = int.tryParse(_comunaController.text) ?? 0;
+                bool exito = await BarrioService.updateBarrio(
+                  barrioExistente.id,
+                  _nombreController.text,
+                  comuna,
+                );
+                if (exito) {
+                  Navigator.pop(context);
+                  _cargarBarrios();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Barrio actualizado correctamente'), backgroundColor: Colors.green),
+                  );
+                }
+              } else {
+                // ✅ CREAR: HACER POST
+                int? idParseado = int.tryParse(_idController.text);
+                if (idParseado == null || _nombreController.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('ID inválido o nombre vacío'), backgroundColor: Colors.red),
+                  );
+                  return;
+                }
+                int comuna = int.tryParse(_comunaController.text) ?? 0;
+                bool exito = await BarrioService.createBarrio(
+                  idParseado,
+                  _nombreController.text,
+                  comuna,
+                );
+                if (exito) {
+                  Navigator.pop(context);
+                  _cargarBarrios();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Barrio creado correctamente'), backgroundColor: Colors.green),
+                  );
+                }
               }
             },
             child: const Text('Guardar', style: TextStyle(color: Colors.white)),
@@ -89,10 +129,13 @@ class _GestionBarriosDialogState extends State<GestionBarriosDialog> {
         title: const Text('Confirmar'),
         content: const Text('¿Eliminar este barrio definitivamente?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancelar', style: TextStyle(color: Colors.grey))),
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancelar', style: TextStyle(color: Colors.grey)),
+          ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            onPressed: () => Navigator.pop(context, true), 
+            onPressed: () => Navigator.pop(context, true),
             child: const Text('Eliminar', style: TextStyle(color: Colors.white)),
           )
         ],
@@ -100,8 +143,13 @@ class _GestionBarriosDialogState extends State<GestionBarriosDialog> {
     );
 
     if (confirmar) {
-      await BarrioService.deleteBarrio(id);
-      _cargarBarrios();
+      bool exito = await BarrioService.deleteBarrio(id);
+      if (exito) {
+        _cargarBarrios();
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Barrio eliminado correctamente'), backgroundColor: Colors.green),
+        );
+      }
     }
   }
 
@@ -152,6 +200,7 @@ class _GestionBarriosDialogState extends State<GestionBarriosDialog> {
                                   child: Text(b.id.toString(), style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue[900])),
                                 ),
                                 title: Text(b.nombre, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                subtitle: Text('Comuna: ${b.comuna ?? 0}'),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
