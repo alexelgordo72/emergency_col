@@ -1,0 +1,7 @@
+// Lista global de barrios para toda la aplicación
+const List<String> barriosGlobales = [
+  "LAS VEGAS", "MADRIGAL", "BELLAVISTA", "FRAY PEÑA", "LLERAS", "PIZARRO", 
+  "GUADALUPE", "BOLIVAR", "URIBE", "BUENOS AIRES", "BELALCAZAR", "NUEVO HORIZONTE", 
+  "PEDREGAL", "TRINIDAD", "CAMPESTRE REAL", "DIONISIO", "FINALANDIA", "ESTANCIA", 
+  "AMERICAS", "GUABINAS", "PANORAMA", "MULALO", "BUITRERA", "SAN MARCOS", "DAPA"
+];

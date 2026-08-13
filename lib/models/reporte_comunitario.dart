@@ -9,6 +9,7 @@ class ReporteComunitario {
   final double? latitud;
   final double? longitud;
   final Map<String, dynamic>? datosExtra;
+  final int? comuna;
 
   ReporteComunitario({
     required this.id,
@@ -21,6 +22,7 @@ class ReporteComunitario {
     this.latitud,
     this.longitud,
     this.datosExtra,
+    this.comuna,
   });
 
   factory ReporteComunitario.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class ReporteComunitario {
       estado: json['estado'] ?? 'recibido',
       latitud: json['latitud'] != null ? double.tryParse(json['latitud'].toString()) : null,
       longitud: json['longitud'] != null ? double.tryParse(json['longitud'].toString()) : null,
+      comuna: json['comuna'] is int ? json['comuna'] : int.tryParse(json['comuna']?.toString() ?? '0'),
       datosExtra: json['datos_extra'], 
     );
   }

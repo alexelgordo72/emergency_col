@@ -39,14 +39,14 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
           List<pw.Widget> elementos = [
             pw.Header(
               level: 0,
-              child: pw.Text('SGRD YUMBO - PLANILLA DE RUTA DE VISITAS', style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold, color: PdfColors.red900)),
+              child: pw.Text('SGRD YUMBO - PLANILLA DE RUTA DE VISITAS\nTotal general de registros en este reporte: ${agrupados.values.fold<int>(0, (p, c) => p + c.length)}', style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold, color: PdfColors.red900)),
             ),
           ];
 
           for (String barrio in barriosPresentes) {
             List<ReporteComunitario> lista = agrupados[barrio]!;
             int idBarrio = ordenBarriosOficial.indexOf(barrio) + 1;
-            String prefijoId = idBarrio > 0 ? 'ID $idBarrio - ' : 'OTRO - ';
+            String prefijoId = 'COMUNA ${agrupados[barrio]?.first.comuna ?? 0} - ';
 
             elementos.add(
               pw.Container(
@@ -126,8 +126,7 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'SGRD YUMBO - PLANILLA DE RUTA DE VISITAS',
+                    Text('SGRD YUMBO - PLANILLA DE RUTA DE VISITAS\nTotal general de registros en este reporte: ${snapshot.data?.length ?? 0}',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.red[900]),
                     ),
                     Row(
@@ -160,7 +159,7 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
                           String barrio = barriosPresentes[index];
                           List<ReporteComunitario> lista = agrupados[barrio]!;
                           int idBarrio = ordenBarriosOficial.indexOf(barrio) + 1;
-                          String prefijoId = idBarrio > 0 ? 'ID $idBarrio - ' : 'OTRO - ';
+                          String prefijoId = 'COMUNA ${agrupados[barrio]?.first.comuna ?? 0} - ';
 
                           return Card(
                             margin: const EdgeInsets.symmetric(vertical: 10),
