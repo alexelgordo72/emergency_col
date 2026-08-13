@@ -1,0 +1,293 @@
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+import psycopg2
+import os
+import json
+
+app = FastAPI(title="API SGRD", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+def get_db_connection():
+    db_host = os.getenv("DB_HOST", "172.17.0.1")
+    return psycopg2.connect(
+        host=db_host,
+        database="comunidad_db",
+        user="admin_comunidad",
+        password="TuPasswordSegura2026!"
+    )
+
+class ReporteCreate(BaseModel):
+    categoria_id: int
+    titulo: str
+    descripcion_detallada: str
+    sector_barrio: str
+    direccion_referencia: str
+    latitud: float
+    longitud: float
+    datos_extra: dict = None
+
+class BarrioUpdate(BaseModel):
+    id: int = None
+    nombre: str
+    comuna: int = 0
+
+class BarrioUpdate(BaseModel):
+    id: int = None
+    nombre: str
+    comuna: int = 0
+
+class BarrioCreate(BaseModel):
+    id: int
+    nombre: str
+    comuna: int = 0
+
+@app.get("/")
+def read_root():
+    return {"status": "ok", "message": "API SGRD funcionando correctamente"}
+
+@app.get("/api/barrios")
+@app.get("/api/barrios/")
+def get_barrios_universal():
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        
+        # Primero intentar desde la tabla barrios con comuna
+        try:
+            cur.execute("SELECT id, nombre, comuna FROM barrios ORDER BY id;")
+            rows = cur.fetchall()
+            if rows:
+                cur.close()
+                conn.close()
+                return [{"id": r[0], "nombre": str(r[1]).strip().upper(), "comuna": r[2] or 0} for r in rows]
+        except Exception:
+            conn.rollback()
+        
+        # Fallback a otras tablas
+        for tabla in ["barrios por visitar", "sector", "sectores"]:
+            try:
+                cur.execute(f"SELECT id, nombre FROM {tabla} ORDER BY id ASC;")
+                rows = cur.fetchall()
+                if rows:
+                    cur.close()
+                    conn.close()
+                    return [{"id": r[0], "nombre": str(r[1]).strip().upper(), "comuna": 0} for r in rows]
+            except Exception:
+                conn.rollback()
+        
+        # Fallback final
+        cur.execute("SELECT DISTINCT barrio FROM reportes_comunitarios WHERE barrio IS NOT NULL;")
+        rows = cur.fetchall()
+        cur.close()
+        conn.close()
+        return [{"id": i+1, "nombre": str(r[0]).strip().upper(), "comuna": 0} for i, r in enumerate(rows)]
+    except Exception as e:
+        return []
+
+@app.post("/api/barrios")
+@app.post("/api/barrios/")
+def crear_barrio(barrio: BarrioCreate):
+    try:
+        print(f"📥 Recibido: id={barrio.id}, nombre={barrio.nombre}, comuna={barrio.comuna}")
+        conn = get_db_connection()
+        cur = conn.cursor()
+        
+        # Verificar si el ID ya existe
+        cur.execute("SELECT id FROM barrios WHERE id = %s;", (barrio.id,))
+        if cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=400, detail="El ID del barrio ya existe")
+        
+        # Verificar si el nombre ya existe
+        cur.execute("SELECT id FROM barrios WHERE nombre = %s;", (barrio.nombre.upper(),))
+        if cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=400, detail="El nombre del barrio ya existe")
+        
+        # Insertar nuevo barrio con ID
+        cur.execute(
+            "INSERT INTO barrios (id, nombre, comuna) VALUES (%s, %s, %s) RETURNING id;",
+            (barrio.id, barrio.nombre.upper(), barrio.comuna)
+        )
+        nuevo_id = cur.fetchone()[0]
+        conn.commit()
+        cur.close()
+        conn.close()
+        
+        return {
+            "status": "success",
+            "id": nuevo_id,
+            "message": f"Barrio {barrio.nombre} creado exitosamente"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        import traceback
+        error_detalle = traceback.format_exc()
+
+@app.delete("/api/barrios/{barrio_id}")
+@app.delete("/api/barrios/{barrio_id}/")
+def eliminar_barrio(barrio_id: int):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM barrios WHERE id = %s;", (barrio_id,))
+        if not cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=404, detail="Barrio no encontrado")
+        cur.execute("DELETE FROM barrios WHERE id = %s;", (barrio_id,))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return {"status": "success", "message": f"Barrio {barrio_id} eliminado exitosamente"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.put("/api/barrios/{barrio_id}")
+@app.put("/api/barrios/{barrio_id}/")
+def actualizar_barrio(barrio_id: int, barrio: BarrioUpdate):
+    try:
+        # Si el frontend envía id en el cuerpo, lo ignoramos y usamos el de la URL
+        nombre_actualizar = barrio.nombre
+        comuna_actualizar = barrio.comuna
+        print(f"📝 Editando: id={barrio_id}, nombre={nombre_actualizar}, comuna={comuna_actualizar}")
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM barrios WHERE id = %s;", (barrio_id,))
+        if not cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=404, detail="Barrio no encontrado")
+        cur.execute("SELECT id FROM barrios WHERE nombre = %s AND id != %s;", (nombre_actualizar.upper(), barrio_id))
+        if cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=400, detail="El nombre del barrio ya existe en otro registro")
+        cur.execute(
+            "UPDATE barrios SET nombre = %s, comuna = %s WHERE id = %s;",
+            (nombre_actualizar.upper(), comuna_actualizar, barrio_id)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+        return {
+            "status": "success",
+            "message": f"Barrio {barrio_id} actualizado exitosamente"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        import traceback
+        print(f"❌ ERROR PUT: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=str(e))
+def actualizar_barrio(barrio_id: int, barrio: BarrioCreate):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM barrios WHERE id = %s;", (barrio_id,))
+        if not cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=404, detail="Barrio no encontrado")
+        cur.execute("SELECT id FROM barrios WHERE nombre = %s AND id != %s;", (barrio.nombre.upper(), barrio_id))
+        if cur.fetchone():
+            cur.close()
+            conn.close()
+            raise HTTPException(status_code=400, detail="El nombre del barrio ya existe en otro registro")
+        cur.execute(
+            "UPDATE barrios SET nombre = %s, comuna = %s WHERE id = %s;",
+            (barrio.nombre.upper(), barrio.comuna, barrio_id)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+        return {
+            "status": "success",
+            "message": f"Barrio {barrio_id} actualizado exitosamente"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+        print(f"❌ ERROR: {error_detalle}")
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
+@app.get("/api/reportes")
+@app.get("/api/reportes/")
+def obtener_reportes():
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT id, categoria_id, titulo, descripcion_detallada, 
+                   sector_barrio, direccion_referencia, latitud, longitud, datos_extra 
+            FROM reportes_comunitarios;
+        """)
+        rows = cur.fetchall()
+        cur.close()
+        conn.close()
+        
+        reportes = []
+        for r in rows:
+            reportes.append({
+                "id": str(r[0]),
+                "categoria_id": r[1],
+                "titulo": r[2],
+                "descripcion_detallada": r[3],
+                "sector_barrio": r[4],
+                "direccion_referencia": r[5],
+                "latitud": r[6],
+                "longitud": r[7],
+                "datos_extra": r[8]
+            })
+        return reportes
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/reportes")
+@app.post("/api/reportes/")
+def crear_reporte(reporte: ReporteCreate):
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        
+        query = """
+            INSERT INTO reportes_comunitarios 
+            (categoria_id, titulo, descripcion_detallada, sector_barrio, direccion_referencia, latitud, longitud, datos_extra)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            RETURNING id;
+        """
+        datos_extra_json = json.dumps(reporte.datos_extra) if reporte.datos_extra else None
+        
+        cur.execute(query, (
+            reporte.categoria_id,
+            reporte.titulo,
+            reporte.descripcion_detallada,
+            reporte.sector_barrio,
+            reporte.direccion_referencia,
+            reporte.latitud,
+            reporte.longitud,
+            datos_extra_json
+        ))
+        
+        nuevo_id = cur.fetchone()[0]
+        conn.commit()
+        cur.close()
+        conn.close()
+        
+        return {"status": "success", "id": nuevo_id, "message": "Reporte creado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
