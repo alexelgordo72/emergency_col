@@ -53,3 +53,7 @@ Thumbs.db
 google-services.json
 GoogleService-Info.plist
 firebase_options.dart
+*.tar.gz
+*.zip
+backup/*.sql
+*.backup
