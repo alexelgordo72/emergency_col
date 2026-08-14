@@ -5,7 +5,7 @@ class ReporteComunitario {
   final String barrio;
   final String direccion;
   final int gravedad;
-  final String estado;
+  String estado;  // ← CAMBIADO de 'final' a 'String' (mutable)
   final double? latitud;
   final double? longitud;
   final Map<String, dynamic>? datosExtra;
@@ -33,11 +33,27 @@ class ReporteComunitario {
       barrio: json['sector_barrio'] ?? 'No especificado',
       direccion: json['direccion_referencia'] ?? '',
       gravedad: json['gravedad'] ?? 3,
-      estado: json['estado'] ?? 'recibido',
+      estado: json['estado_actual'] ?? json['estado'] ?? 'recibido',
       latitud: json['latitud'] != null ? double.tryParse(json['latitud'].toString()) : null,
       longitud: json['longitud'] != null ? double.tryParse(json['longitud'].toString()) : null,
       comuna: json['comuna'] is int ? json['comuna'] : int.tryParse(json['comuna']?.toString() ?? '0'),
-      datosExtra: json['datos_extra'], 
+      datosExtra: json['datos_extra'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'titulo': titulo,
+      'descripcion_detallada': descripcion,
+      'sector_barrio': barrio,
+      'direccion_referencia': direccion,
+      'gravedad': gravedad,
+      'estado_actual': estado,
+      'latitud': latitud,
+      'longitud': longitud,
+      'comuna': comuna,
+      'datos_extra': datosExtra,
+    };
   }
 }

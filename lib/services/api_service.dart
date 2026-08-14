@@ -7,7 +7,6 @@ class ApiService {
   static const String baseUrl = 'http://10.147.17.2:8000/api';
 
   static Future<List<ReporteComunitario>> obtenerReportes({String? barrio, String? nombre, String? telefono}) async {
-    // Construir los parámetros de consulta de forma dinámica
     final Map<String, String> queryParams = {};
     if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
       queryParams['barrio'] = barrio;
@@ -61,25 +60,56 @@ class ApiService {
   }
 
   static Future<List<TrazabilidadItem>> obtenerHistorial(String reporteId) async {
-    final response = await http.get(Uri.parse('$baseUrl/reportes/$reporteId/trazabilidad'));
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      List list = data['historial'] ?? [];
-      return list.map((item) => TrazabilidadItem.fromJson(item)).toList();
-    } else {
-      throw Exception('Error al cargar historial');
+    try {
+      final response = await http.get(Uri.parse('$baseUrl/trazabilidad/$reporteId'));
+      print('📡 GET trazabilidad - Status: ${response.statusCode}');
+      print('📡 GET trazabilidad - Body: ${response.body}');
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        // La respuesta es un array directamente, no tiene propiedad 'historial'
+        List list = data is List ? data : [];
+        return list.map((item) => TrazabilidadItem.fromJson(item)).toList();
+      } else {
+        print('❌ Error: ${response.statusCode} - ${response.body}');
+        return [];
+      }
+    } catch (e) {
+      print('❌ Error al cargar historial: $e');
+      return [];
     }
   }
 
   static Future<bool> actualizarEstadoTrazabilidad(String reporteId, String nuevoEstado, String observacion) async {
-    final response = await http.put(
-      Uri.parse('$baseUrl/reportes/$reporteId/trazabilidad'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'nuevo_estado': nuevoEstado,
-        'observacion': observacion,
-      }),
-    );
-    return response.statusCode == 200;
+    try {
+      print('📤 Actualizando estado: reporte=$reporteId, estado=$nuevoEstado');
+      final response = await http.put(
+        Uri.parse('$baseUrl/reportes/$reporteId/estado'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'estado': nuevoEstado,
+          'observacion': observacion,
+        }),
+      );
+      print('📡 PUT estado - Status: ${response.statusCode}');
+      print('📡 PUT estado - Body: ${response.body}');
+      return response.statusCode == 200;
+    } catch (e) {
+      print('❌ Error al actualizar estado: $e');
+      return false;
+    }
+  }
+
+  // NUEVO: Método para descargar el detalle RUFE
+  static Future<Map<String, dynamic>?> obtenerDetalleRufe(String reporteId) async {
+    try {
+      final response = await http.get(Uri.parse('$baseUrl/reportes/$reporteId/rufe'));
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+    } catch (e) {
+      print('Error obteniendo RUFE: $e');
+    }
+    return null;
   }
 }

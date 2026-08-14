@@ -9,8 +9,8 @@ flutter build web --release --dart-define=API_URL=http://10.147.17.2:8000
 # Copiar al servidor
 scp -r build/web/* almofa@10.147.17.2:/tmp/frontend_sgrd/
 
-# Mover a la carpeta final y dar permisos
-ssh almofa@10.147.17.2 "sudo rm -rf /var/www/emergency_col/* && \
+# Mover a la carpeta final y dar permisos (agregamos -t al ssh)
+ssh -t almofa@10.147.17.2 "sudo rm -rf /var/www/emergency_col/* && \
                          sudo cp -r /tmp/frontend_sgrd/* /var/www/emergency_col/ && \
                          sudo chown -R www-data:www-data /var/www/emergency_col && \
                          sudo chmod -R 755 /var/www/emergency_col && \

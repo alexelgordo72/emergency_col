@@ -60,6 +60,98 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // NUEVO: Dialogo para mostrar el detalle RUFE al tocar un pin
+  void _mostrarDetalleRufe(ReporteComunitario reporte) async {
+    bool esRufe = reporte.datosExtra?['es_rufe'] == true;
+    
+    if (!esRufe) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Este evento no tiene ficha RUFE.'), backgroundColor: Colors.orange)
+      );
+      return;
+    }
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        content: Row(
+          children: [
+            CircularProgressIndicator(color: Colors.red[700]),
+            SizedBox(width: 20),
+            Text("Cargando núcleo familiar..."),
+          ],
+        ),
+      ),
+    );
+
+    final rufeData = await ApiService.obtenerDetalleRufe(reporte.id);
+    Navigator.pop(context); // Cerrar el loader
+
+    if (rufeData == null || rufeData['status'] != 'success') {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('No se pudo cargar la ficha RUFE.'), backgroundColor: Colors.red)
+      );
+      return;
+    }
+
+    final form = rufeData['formulario'];
+    final nucleo = rufeData['nucleo_familiar'] as List<dynamic>;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Ficha RUFE #${form['numero_formulario']} - ${reporte.barrio}'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Text('Prioridad: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Chip(
+                      label: Text('${form['prioridad']}'),
+                      backgroundColor: form['prioridad'] == 'ALTA' ? Colors.red[100] : (form['prioridad'] == 'MEDIA' ? Colors.orange[100] : Colors.green[100]),
+                    )
+                  ],
+                ),
+                SizedBox(height: 8),
+                Text('Evaluación Técnica:', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey)),
+                Text('${form['observaciones_evaluador']}'),
+                SizedBox(height: 12),
+                Text('Mascotas en riesgo:', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey)),
+                Text('${form['observaciones_animales']}'),
+                Divider(height: 30, thickness: 2),
+                Text('Núcleo Familiar:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                SizedBox(height: 8),
+                ...nucleo.map((p) => Card(
+                  elevation: 1,
+                  margin: EdgeInsets.only(bottom: 6),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: p['es_jefe_hogar'] ? Colors.red[100] : Colors.grey[200],
+                      child: Icon(p['es_jefe_hogar'] ? Icons.star : Icons.person, color: p['es_jefe_hogar'] ? Colors.red[700] : Colors.grey[600]),
+                    ),
+                    title: Text(p['nombre_completo'], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                    subtitle: Text('Doc: ${p['documento_identidad']} | Tel: ${p['telefono']}'),
+                  ),
+                )).toList(),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context), 
+              child: Text('Cerrar', style: TextStyle(color: Colors.red[700]))
+            )
+          ],
+        );
+      }
+    );
+  }
+
   void _mostrarDialogoEdicion(ReporteComunitario reporte) async {
     final tituloCtrl = TextEditingController(text: reporte.titulo);
     final direccionCtrl = TextEditingController(text: reporte.direccion);
@@ -106,8 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () async {
                     final datosActualizados = {
                       'titulo': tituloCtrl.text,
-                      'barrio': barrioSeleccionado,
-                      'direccion': direccionCtrl.text,
+                      'sector_barrio': barrioSeleccionado,
+                      'direccion_referencia': direccionCtrl.text,
                       'datos_extra': {
                         ...?reporte.datosExtra,
                         'ciudadano': ciudadanoCtrl.text,
@@ -179,17 +271,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Complete los campos obligatorios', style: TextStyle(color: Colors.white)), backgroundColor: Colors.red));
                       return;
                     }
-                    
+
                     final nuevoDato = {
+                      'categoria_id': 2,
                       'titulo': tituloCtrl.text,
-                      'barrio': barrioSeleccionado,
-                      'direccion': direccionCtrl.text,
+                      'descripcion_detallada': 'Reporte desde la app',
+                      'sector_barrio': barrioSeleccionado!.toUpperCase(),
+                      'direccion_referencia': direccionCtrl.text,
+                      'latitud': 3.59,
+                      'longitud': -76.49,
                       'datos_extra': {
-                        'ciudadano': ciudadanoCtrl.text,
-                        'telefono': telefonoCtrl.text,
+                        'ciudadano': ciudadanoCtrl.text.isNotEmpty ? ciudadanoCtrl.text : 'Anónimo',
+                        'telefono': telefonoCtrl.text.isNotEmpty ? telefonoCtrl.text : 'No registrado',
                       }
                     };
-                    
+
                     bool exito = await ApiService.crearReporte(nuevoDato);
                     Navigator.pop(dialogContext);
                     if (exito) {
@@ -317,14 +413,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             final reporte = snapshot.data![index];
                             final ciudadano = reporte.datosExtra?['ciudadano'] ?? 'Anónimo';
                             final telefono = reporte.datosExtra?['telefono'] ?? 'N/A';
+                            final bool esRufe = reporte.datosExtra?['es_rufe'] == true;
 
                             return Card(
                               elevation: 2,
                               margin: EdgeInsets.symmetric(vertical: 6),
                               child: ListTile(
                                 leading: CircleAvatar(
-                                  backgroundColor: Colors.red[50],
-                                  child: Icon(Icons.warning_amber_rounded, color: Colors.red[700]),
+                                  backgroundColor: esRufe ? Colors.purple[50] : Colors.red[50],
+                                  child: Icon(esRufe ? Icons.assignment_ind : Icons.warning_amber_rounded, color: esRufe ? Colors.purple[700] : Colors.red[700]),
                                 ),
                                 title: Text(reporte.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
                                 subtitle: Column(
@@ -385,14 +482,23 @@ class _HomeScreenState extends State<HomeScreen> {
                           final punto = LatLng(reporte.latitud!, reporte.longitud!);
                           puntosRuta.add(punto);
                           
+                          bool esRufe = reporte.datosExtra?['es_rufe'] == true;
+
                           marcadoresApp.add(
                             Marker(
                               point: punto,
-                              width: 40,
-                              height: 40,
+                              width: 50,
+                              height: 50,
                               child: Tooltip(
-                                message: '${reporte.titulo}\n${reporte.barrio}',
-                                child: Icon(Icons.location_on, color: Colors.red[900], size: 40),
+                                message: '${reporte.titulo}\n${reporte.barrio}\n(Clic para ver detalle)',
+                                child: GestureDetector(
+                                  onTap: () => _mostrarDetalleRufe(reporte),
+                                  child: Icon(
+                                    Icons.location_on, 
+                                    color: esRufe ? Colors.purple[800] : Colors.red[900], 
+                                    size: 45
+                                  ),
+                                ),
                               ),
                             ),
                           );

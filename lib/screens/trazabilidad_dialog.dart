@@ -18,12 +18,23 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
   final observacionController = TextEditingController();
   bool guardando = false;
 
+  // ✅ ESTADOS DISPONIBLES PARA EL DROPDOWN
+  final List<String> estadosPosibles = [
+    'Pendiente',
+    'Recibido',
+    'En Proceso',
+    'Visitado-DE-Prioridad Baja',
+    'Visitado-DE-Prioridad Media',
+    'Visitado-DE-Prioridad Alta',
+    'Inspeccionado',
+    'Cerrado'
+  ];
+
   @override
   void initState() {
     super.initState();
-    // Ajustar al nombre correcto de la variable: estado
     String estadoActual = widget.reporte.estado;
-    estadoSeleccionado = ['Pendiente', 'En Proceso', 'Inspeccionado', 'Cerrado'].contains(estadoActual) 
+    estadoSeleccionado = estadosPosibles.contains(estadoActual) 
         ? estadoActual 
         : 'Pendiente';
     _cargarHistorial();
@@ -52,22 +63,44 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
       if (exito) {
         observacionController.clear();
         _cargarHistorial();
+        // ✅ Actualizar el estado en el objeto reporte
+        setState(() {
+          widget.reporte.estado = estadoSeleccionado;
+        });
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Registro guardado exitosamente'), backgroundColor: Colors.green),
+          const SnackBar(content: Text('✅ Registro guardado exitosamente'), backgroundColor: Colors.green),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('❌ Error al guardar el registro'), backgroundColor: Colors.red),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        SnackBar(content: Text('❌ Error: $e'), backgroundColor: Colors.red),
       );
     } finally {
       setState(() => guardando = false);
     }
   }
 
+  Color _getEstadoColor(String estado) {
+    switch (estado.toLowerCase()) {
+      case 'pendiente': return Colors.orange;
+      case 'recibido': return Colors.blue;
+      case 'en proceso': return Colors.cyan;
+      case 'visitado': return Colors.purple;
+      case 'inspeccionado': return Colors.indigo;
+      case 'visitado-de-prioridad baja': return Colors.green;
+      case 'visitado-de-prioridad media': return Colors.orange;
+      case 'visitado-de-prioridad alta': return Colors.red;
+      case 'cerrado': return Colors.green;
+      default: return Colors.grey;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Extraer el nombre del ciudadano si existe
     String nombreAfectado = widget.reporte.datosExtra?['ciudadano'] ?? 'No registrado';
 
     return Dialog(
@@ -94,7 +127,6 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
             ),
             const SizedBox(height: 10),
             
-            // --- NUEVO PANEL CON LOS DATOS CORRECTOS ---
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(12),
@@ -110,7 +142,23 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
                   Text('Afectado: $nombreAfectado', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                   Text('Barrio: ${widget.reporte.barrio}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                   Text('Direccion: ${widget.reporte.direccion}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                  Text('Estado Actual: ${widget.reporte.estado}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.blue)),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text('Estado Actual: ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        decoration: BoxDecoration(
+                          color: _getEstadoColor(widget.reporte.estado),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          widget.reporte.estado,
+                          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -168,13 +216,13 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
                                                 Container(
                                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                                   decoration: BoxDecoration(
-                                                    color: Colors.red[50],
+                                                    color: _getEstadoColor(h.estadoNuevo).withOpacity(0.2),
                                                     borderRadius: BorderRadius.circular(4),
-                                                    border: Border.all(color: Colors.red[200]!),
+                                                    border: Border.all(color: _getEstadoColor(h.estadoNuevo)),
                                                   ),
                                                   child: Text(
-                                                    '${h.estadoAnterior} -> ${h.estadoNuevo}',
-                                                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red[800], fontSize: 12),
+                                                    '${h.estadoAnterior} → ${h.estadoNuevo}',
+                                                    style: TextStyle(fontWeight: FontWeight.bold, color: _getEstadoColor(h.estadoNuevo), fontSize: 12),
                                                   ),
                                                 ),
                                                 Text(h.fechaCambio.length > 16 ? h.fechaCambio.substring(0, 16) : h.fechaCambio, style: const TextStyle(fontSize: 12, color: Colors.grey)),
@@ -209,7 +257,8 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
                         const SizedBox(height: 15),
                         DropdownButtonFormField<String>(
                           value: estadoSeleccionado,
-                          items: ['Pendiente', 'En Proceso', 'Inspeccionado', 'Cerrado']
+                          items: estadosPosibles
+                              .where((e) => e != widget.reporte.estado)
                               .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                               .toList(),
                           onChanged: (val) => setState(() => estadoSeleccionado = val!),
@@ -238,7 +287,7 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
                           height: 50,
                           child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red[800],
+                              backgroundColor: Colors.green[700],
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                             ),
