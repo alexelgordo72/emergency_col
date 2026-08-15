@@ -32,7 +32,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _cargarReportes() {
     setState(() {
-      if (_searchController.text.isEmpty) {
+      if (_tipoFiltro == 'rufe') {
+        // Cargar todos y filtrar localmente los que tienen RUFE
+        futureReportes = ApiService.obtenerReportes().then((reportes) {
+          List<ReporteComunitario> filtrados = reportes.where((r) => 
+            r.datosExtra?['es_rufe'] == true
+          ).toList();
+          print('🔖 Filtro RUFE: ${filtrados.length} reportes encontrados');
+          return filtrados;
+        });
+      } else if (_searchController.text.isEmpty) {
         futureReportes = ApiService.obtenerReportes();
       } else {
         if (_tipoFiltro == 'barrio') {
@@ -152,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _mostrarDialogoEdicion(ReporteComunitario reporte) async {
+    void _mostrarDialogoEdicion(ReporteComunitario reporte) async {
     final tituloCtrl = TextEditingController(text: reporte.titulo);
     final direccionCtrl = TextEditingController(text: reporte.direccion);
     final ciudadanoCtrl = TextEditingController(text: reporte.datosExtra?['ciudadano'] ?? '');
@@ -160,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
     
     var listaBarriosObj = await BarrioService.getBarrios();
     List<String> listaBarrios = listaBarriosObj.map((b) => b.nombre).toList();
+    listaBarrios.sort((a, b) => a.compareTo(b)); // Orden alfabético
     String barrioSeleccionado = listaBarrios.contains(reporte.barrio) ? reporte.barrio : (listaBarrios.isNotEmpty ? listaBarrios.first : reporte.barrio);
 
     showDialog(
@@ -197,20 +207,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red[700]),
                   onPressed: () async {
                     final datosActualizados = {
-                      'titulo': tituloCtrl.text,
-                      'sector_barrio': barrioSeleccionado,
-                      'direccion_referencia': direccionCtrl.text,
+                      'categoria_id': 2,
+                      'titulo': tituloCtrl.text.trim(),
+                      'descripcion_detallada': reporte.descripcion ?? 'Reporte actualizado desde la app',
+                      'sector_barrio': barrioSeleccionado.toUpperCase().trim(),
+                      'direccion_referencia': direccionCtrl.text.trim(),
+                      'latitud': reporte.latitud ?? 3.59,
+                      'longitud': reporte.longitud ?? -76.49,
                       'datos_extra': {
-                        ...?reporte.datosExtra,
-                        'ciudadano': ciudadanoCtrl.text,
-                        'telefono': telefonoCtrl.text,
+                        'ciudadano': ciudadanoCtrl.text.isNotEmpty ? ciudadanoCtrl.text.trim() : (reporte.datosExtra?['ciudadano'] ?? 'Anónimo'),
+                        'telefono': telefonoCtrl.text.isNotEmpty ? telefonoCtrl.text.trim() : (reporte.datosExtra?['telefono'] ?? 'No registrado'),
                       }
                     };
+                    
+                    print('📤 Enviando datos: $datosActualizados');
                     bool exito = await ApiService.actualizarReporte(reporte.id, datosActualizados);
+                    print('📡 PUT response: $exito');
                     Navigator.pop(dialogContext);
                     if (exito) {
                       _cargarReportes();
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registro actualizado', style: TextStyle(color: Colors.white)), backgroundColor: Colors.green));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error al actualizar', style: TextStyle(color: Colors.white)), backgroundColor: Colors.red));
                     }
                   },
                   child: Text('Guardar', style: TextStyle(color: Colors.white)),
@@ -231,6 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     var listaBarriosObj = await BarrioService.getBarrios();
     List<String> listaBarrios = listaBarriosObj.map((b) => b.nombre).toList();
+    listaBarrios.sort((a, b) => a.compareTo(b)); // Orden alfabético
     String? barrioSeleccionado = listaBarrios.isNotEmpty ? listaBarrios.first : null;
 
     showDialog(
@@ -303,6 +322,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+
+  Color _getEstadoColor(String estado) {
+    switch (estado.toLowerCase()) {
+      case 'pendiente': return Colors.orange;
+      case 'recibido': return Colors.blue;
+      case 'en proceso': return Colors.cyan;
+      case 'visitado-de-prioridad baja': return Colors.green;
+      case 'visitado-de-prioridad media': return Colors.orange;
+      case 'visitado-de-prioridad alta': return Colors.red;
+      case 'inspeccionado': return Colors.indigo;
+      case 'cerrado': return Colors.green;
+      default: return Colors.grey;
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -370,6 +405,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               DropdownMenuItem(value: 'barrio', child: Text('Barrio')),
                               DropdownMenuItem(value: 'nombre', child: Text('Nombre')),
                               DropdownMenuItem(value: 'telefono', child: Text('Teléfono')),
+                              DropdownMenuItem(value: 'rufe', child: Text('🔖 RUFE')),
                             ],
                             onChanged: (val) => setState(() => _tipoFiltro = val!),
                           ),
@@ -430,6 +466,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(height: 4),
                                     Text('📍 ${reporte.barrio} - ${reporte.direccion}'),
                                     Text('👤 $ciudadano | 📱 $telefono'),
+                                    Row(
+                                      children: [
+                                        const Text('📊 Estado: ', style: TextStyle(fontSize: 12)),
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                          decoration: BoxDecoration(
+                                            color: _getEstadoColor(reporte.estado),
+                                            borderRadius: BorderRadius.circular(8),
+                                          ),
+                                          child: Text(
+                                            reporte.estado,
+                                            style: const TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                                 isThreeLine: true,

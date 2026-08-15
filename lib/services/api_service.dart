@@ -42,12 +42,21 @@ class ApiService {
   }
 
   static Future<bool> actualizarReporte(String id, Map<String, dynamic> datos) async {
-    final response = await http.put(
-      Uri.parse('$baseUrl/reportes/$id'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode(datos),
-    );
-    return response.statusCode == 200;
+    try {
+      print('📤 PUT reporte ID: $id');
+      print('📤 PUT datos: $datos');
+      final response = await http.put(
+        Uri.parse('$baseUrl/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(datos),
+      );
+      print('📡 PUT response: ${response.statusCode}');
+      print('📡 PUT body: ${response.body}');
+      return response.statusCode == 200;
+    } catch (e) {
+      print('❌ Error al actualizar: $e');
+      return false;
+    }
   }
 
   static Future<bool> crearReporte(Map<String, dynamic> datos) async {
