@@ -22,7 +22,6 @@ echo -e "${BLUE}========================================${NC}"
 # ============================================================
 echo -e "\n${YELLOW}📌 Paso 1: Versión${NC}"
 
-# Si se pasa un argumento, usarlo como versión
 if [ -n "$1" ]; then
     VERSION="$1"
 else
@@ -31,7 +30,6 @@ else
     if [ -z "$LATEST" ]; then
         VERSION="v1.0.0"
     else
-        # Aumentar patch version (ej: v1.0.0 -> v1.0.1)
         BASE=${LATEST#v}
         MAJOR=$(echo $BASE | cut -d. -f1)
         MINOR=$(echo $BASE | cut -d. -f2)
@@ -88,28 +86,28 @@ echo -e "${GREEN}✅ Tag ${VERSION} subido${NC}"
 echo -e "\n${YELLOW}📌 Paso 5: Creando release en GitHub${NC}"
 
 # Obtener fecha actual
-FECHA=$(date +"%d/%m/%Y %H:%M")
+FECHA_RELEASE=$(date +"%d/%m/%Y %H:%M")
 
 gh release create "${VERSION}" \
   --title "Emergency Col SGRD ${VERSION}" \
   --notes "
-## 🚀 Versión ${VERSION} - ${FECHA}
+## 🚀 Versión ${VERSION} - ${FECHA_RELEASE}
 
 ### Características principales
 - **CRUD completo de barrios** con comuna
 - **Reportes comunitarios** con geolocalización
-- **Mapa interactivo** con marcadores
-- **Panel de gestión** de barrios
-- **Backend** FastAPI con PostgreSQL
-- **Frontend** Flutter para web
+- **Trazabilidad** de cambios de estado
+- **RUFE** con núcleo familiar
+- **Planilla de ruta** con comunas y totales
+- **Filtros** de búsqueda (barrio, nombre, teléfono, RUFE)
 
 ### 📍 Despliegue
 - **Frontend:** http://10.147.17.2:8080
 - **Backend API:** http://10.147.17.2:8000
 
 ### 🗄️ Base de Datos
-- PostgreSQL con tablas: barrios, reportes_comunitarios, categorias
-- Comunas asociadas a barrios
+- PostgreSQL con tablas: barrios, reportes_comunitarios, trazabilidad, rufe_formularios, rufe_personas
+- 77 barrios, 532 reportes, 109 trazabilidad, 83 RUFE, 194 personas
 
 ### 🔧 Tecnologías
 - **Backend:** FastAPI, Python, Docker
@@ -121,23 +119,92 @@ gh release create "${VERSION}" \
 echo -e "${GREEN}✅ Release ${VERSION} creado${NC}"
 
 # ============================================================
-# 6. CREAR BACKUP LOCAL
+# 6. CREAR BACKUP COMPLETO
 # ============================================================
-echo -e "\n${YELLOW}📌 Paso 6: Creando backup local${NC}"
+echo -e "\n${YELLOW}📌 Paso 6: Creando backup completo${NC}"
 
-FECHA_BACKUP=$(date +%Y%m%d_%H%M%S)
-BACKUP_DIR="backup_${VERSION}_${FECHA_BACKUP}"
+FECHA=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="backup_${VERSION}_${FECHA}"
 mkdir -p "$BACKUP_DIR"
 
-# Backup del backend
+# 6.1 Backup de la base de datos
+echo "   🗄️  Respaldando base de datos..."
+ssh almofa@10.147.17.2 "docker exec db_sgrd pg_dump -U admin_comunidad --inserts -F p comunidad_db" > "$BACKUP_DIR/database.sql" 2>/dev/null
+
+if [ -s "$BACKUP_DIR/database.sql" ]; then
+    BARRIOS=$(grep -c "INSERT INTO public.barrios" "$BACKUP_DIR/database.sql" 2>/dev/null || echo "0")
+    REPORTES=$(grep -c "INSERT INTO public.reportes_comunitarios" "$BACKUP_DIR/database.sql" 2>/dev/null || echo "0")
+    TRAZABILIDAD=$(grep -c "INSERT INTO public.trazabilidad" "$BACKUP_DIR/database.sql" 2>/dev/null || echo "0")
+    RUFE=$(grep -c "INSERT INTO public.rufe_formularios" "$BACKUP_DIR/database.sql" 2>/dev/null || echo "0")
+    PERSONAS=$(grep -c "INSERT INTO public.rufe_personas" "$BACKUP_DIR/database.sql" 2>/dev/null || echo "0")
+    echo "   ✅ Base de datos respaldada ($BARRIOS barrios, $REPORTES reportes, $TRAZABILIDAD trazabilidad, $RUFE RUFE, $PERSONAS personas)"
+else
+    echo "   ⚠️  No se pudo respaldar la base de datos"
+fi
+
+# 6.2 Backup del backend
 echo "   📁 Respaldando backend..."
 ssh almofa@10.147.17.2 "cat ~/backend_sgrd/app/main.py" > "$BACKUP_DIR/backend_main.py" 2>/dev/null || echo "⚠️  No se pudo respaldar backend"
+echo "   ✅ Backend respaldado"
 
-# Backup de variables de entorno
+# 6.3 Backup del frontend
+echo "   📁 Respaldando frontend..."
+cp -r ~/Documents/emergency_col "$BACKUP_DIR/frontend" 2>/dev/null
+echo "   ✅ Frontend respaldado"
+
+# 6.4 Backup de scripts
+echo "   📁 Respaldando scripts..."
+mkdir -p "$BACKUP_DIR/scripts"
+cp -r ~/Documents/emergency_col/scripts/* "$BACKUP_DIR/scripts/" 2>/dev/null || echo "   ⚠️  No se encontraron scripts"
+
+# 6.5 Backup de variables de entorno
 echo "   🔐 Respaldando variables de entorno..."
-cat > "$BACKUP_DIR/.env" << EOF
+cat > "$BACKUP_DIR/.env.example" << 'ENVEOF'
 API_URL=http://10.147.17.2:8000
 DB_HOST=172.17.0.1
 DB_NAME=comunidad_db
 DB_USER=admin_comunidad
 DB_PASSWORD=TuPasswordSegura2026!
+ENVEOF
+echo "   ✅ Variables de entorno respaldadas"
+
+# 6.6 Comprimir
+echo "   📦 Comprimiendo backup..."
+tar -czf "emergency_col_backup_${VERSION}_${FECHA}.tar.gz" "$BACKUP_DIR/" 2>/dev/null
+rm -rf "$BACKUP_DIR"
+
+echo -e "${GREEN}✅ Backup creado: emergency_col_backup_${VERSION}_${FECHA}.tar.gz${NC}"
+BACKUP_SIZE=$(du -h "emergency_col_backup_${VERSION}_${FECHA}.tar.gz" | cut -f1 2>/dev/null || echo "Desconocido")
+echo "   📏 Tamaño: ${BACKUP_SIZE}"
+
+# ============================================================
+# 7. SUBIR BACKUP AL RELEASE
+# ============================================================
+echo -e "\n${YELLOW}📌 Paso 7: Subiendo backup al release${NC}"
+
+gh release upload "${VERSION}" "emergency_col_backup_${VERSION}_${FECHA}.tar.gz" --clobber 2>/dev/null || echo "   ⚠️  No se pudo subir backup al release"
+
+echo -e "${GREEN}✅ Backup subido al release${NC}"
+
+# ============================================================
+# 8. LIMPIAR
+# ============================================================
+echo -e "\n${YELLOW}📌 Paso 8: Limpiando archivos temporales${NC}"
+
+rm -f "emergency_col_backup_${VERSION}_${FECHA}.tar.gz"
+
+echo -e "${GREEN}✅ Limpieza completada${NC}"
+
+# ============================================================
+# FINAL
+# ============================================================
+echo -e "\n${BLUE}========================================${NC}"
+echo -e "${GREEN}🎉 ¡PROCESO COMPLETADO EXITOSAMENTE!${NC}"
+echo -e "${BLUE}========================================${NC}"
+echo -e "${GREEN}📌 Versión: ${VERSION}${NC}"
+echo -e "${GREEN}🔗 Release: https://github.com/alexelgordo72/emergency_col/releases/tag/${VERSION}${NC}"
+echo -e "${GREEN}📦 Backup incluido en el release${NC}"
+echo -e "${BLUE}========================================${NC}"
+
+# Mostrar el release
+gh release view "${VERSION}"
