@@ -6,27 +6,48 @@ import '../models/trazabilidad_model.dart';
 class ApiService {
   static const String baseUrl = 'http://10.147.17.2:8000/api';
 
-  static Future<List<ReporteComunitario>> obtenerReportes({String? barrio, String? nombre, String? telefono}) async {
-    final Map<String, String> queryParams = {};
-    if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
-      queryParams['barrio'] = barrio;
-    }
-    if (nombre != null && nombre.isNotEmpty) {
-      queryParams['nombre'] = nombre;
-    }
-    if (telefono != null && telefono.isNotEmpty) {
-      queryParams['telefono'] = telefono;
-    }
+  static Future<Map<String, dynamic>> obtenerReportes({
+    String? barrio,
+    String? nombre,
+    String? telefono,
+    int limit = 50,
+    int offset = 0,
+  }) async {
+    try {
+      final Map<String, String> queryParams = {};
+      if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
+        queryParams['barrio'] = barrio;
+      }
+      if (nombre != null && nombre.isNotEmpty) {
+        queryParams['nombre'] = nombre;
+      }
+      if (telefono != null && telefono.isNotEmpty) {
+        queryParams['telefono'] = telefono;
+      }
+      queryParams['limit'] = limit.toString();
+      queryParams['offset'] = offset.toString();
 
-    final uri = Uri.parse('$baseUrl/reportes').replace(queryParameters: queryParams.isNotEmpty ? queryParams : null);
-    
-    final response = await http.get(uri);
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      List list = data is List ? data : data['reportes'] ?? [];
-      return list.map((item) => ReporteComunitario.fromJson(item)).toList();
-    } else {
-      throw Exception('Error al cargar reportes');
+      final uri = Uri.parse('$baseUrl/reportes').replace(queryParameters: queryParams);
+      print('📡 GET reportes - URL: $uri');
+
+      final response = await http.get(uri);
+      print('📡 GET reportes - Status: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return {
+          'total': data['total'] ?? 0,
+          'limit': data['limit'] ?? limit,
+          'offset': data['offset'] ?? offset,
+          'data': (data['data'] as List?)?.map((e) => ReporteComunitario.fromJson(e)).toList() ?? [],
+        };
+      } else {
+        print('❌ Error: ${response.statusCode} - ${response.body}');
+        return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+      }
+    } catch (e) {
+      print('❌ Error en obtenerReportes: $e');
+      return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
     }
   }
 
@@ -76,7 +97,6 @@ class ApiService {
       
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        // La respuesta es un array directamente, no tiene propiedad 'historial'
         List list = data is List ? data : [];
         return list.map((item) => TrazabilidadItem.fromJson(item)).toList();
       } else {
@@ -109,7 +129,6 @@ class ApiService {
     }
   }
 
-  // NUEVO: Método para descargar el detalle RUFE
   static Future<Map<String, dynamic>?> obtenerDetalleRufe(String reporteId) async {
     try {
       final response = await http.get(Uri.parse('$baseUrl/reportes/$reporteId/rufe'));

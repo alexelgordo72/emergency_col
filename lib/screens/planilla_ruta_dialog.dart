@@ -13,12 +13,12 @@ class PlanillaRutaDialog extends StatefulWidget {
 }
 
 class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
-  late Future<List<ReporteComunitario>> futureReportes;
+  late Future<Map<String, dynamic>> futureReportes;
 
   final List<String> ordenBarriosOficial = [
-    'LAS VEGAS', 'MADRIGAL', 'BELLAVISTA', 'FRAY PEÑA', 'LLERAS', 
-    'PIZARRO', 'GUADALUPE', 'BOLIVAR', 'URIBE', 'BUENOS AIRES', 
-    'BELALCAZAR', 'CAMPESTRE REAL', 'DIONISIO', 'FINLANDIA', 
+    'LAS VEGAS', 'MADRIGAL', 'BELLAVISTA', 'FRAY PEÑA', 'LLERAS',
+    'PIZARRO', 'GUADALUPE', 'BOLIVAR', 'URIBE', 'BUENOS AIRES',
+    'BELALCAZAR', 'CAMPESTRE REAL', 'DIONISIO', 'FINLANDIA',
     'ESTANCIA', 'AMERICAS', 'PANORAMA'
   ];
 
@@ -28,27 +28,10 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
     futureReportes = ApiService.obtenerReportes();
   }
 
-  // Calcular total por comuna
-  int calcularTotalComuna(Map<String, List<ReporteComunitario>> agrupados, int comuna) {
-    int total = 0;
-    for (var entry in agrupados.entries) {
-      if ((entry.value.first.comuna ?? 0) == comuna) {
-        total += entry.value.length;
-      }
-    }
-    return total;
-  }
-
-  // Obtener todas las comunas presentes en el reporte
-  List<int> obtenerComunasPresentes(Map<String, List<ReporteComunitario>> agrupados) {
-    Set<int> comunas = {};
-    for (var entry in agrupados.entries) {
-      comunas.add(entry.value.first.comuna ?? 0);
-    }
-    return comunas.toList()..sort();
-  }
-
-  Future<void> _generarYDescargarPDF(Map<String, List<ReporteComunitario>> agrupados, List<String> barriosPresentes) async {
+  Future<void> _generarYDescargarPDF(
+    Map<String, List<ReporteComunitario>> agrupados,
+    List<String> barriosPresentes
+  ) async {
     final pdf = pw.Document();
 
     pdf.addPage(
@@ -59,87 +42,56 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
           List<pw.Widget> elementos = [
             pw.Header(
               level: 0,
-              child: pw.Text('SGRD YUMBO - PLANILLA DE RUTA DE VISITAS\nTotal general de registros en este reporte: ${agrupados.values.fold<int>(0, (p, c) => p + c.length)}', style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold, color: PdfColors.red900)),
+              child: pw.Text(
+                'SGRD YUMBO - PLANILLA DE RUTA DE VISITAS\nTotal general de registros en este reporte: ${agrupados.values.fold<int>(0, (p, c) => p + c.length)}',
+                style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold, color: PdfColors.red900),
+              ),
             ),
           ];
 
-          // Agrupar por comuna para mostrar totales
-          Map<int, List<String>> barriosPorComuna = {};
           for (String barrio in barriosPresentes) {
+            List<ReporteComunitario> lista = agrupados[barrio]!;
             int comuna = agrupados[barrio]?.first.comuna ?? 0;
-            if (!barriosPorComuna.containsKey(comuna)) {
-              barriosPorComuna[comuna] = [];
-            }
-            barriosPorComuna[comuna]!.add(barrio);
-          }
+            String prefijoId = 'COMUNA $comuna - ';
 
-          // Recorrer comunas en orden
-          List<int> comunasOrdenadas = barriosPorComuna.keys.toList()..sort();
-          
-          for (int comuna in comunasOrdenadas) {
-            int totalComuna = 0;
-            for (String barrio in barriosPorComuna[comuna]!) {
-              totalComuna += agrupados[barrio]!.length;
-            }
-
-            // Título de comuna con total
             elementos.add(
               pw.Container(
-                margin: const pw.EdgeInsets.only(top: 16, bottom: 8),
-                padding: const pw.EdgeInsets.all(8),
-                color: PdfColors.green100,
-                child: pw.Text(
-                  '📊 TOTAL COMUNA $comuna: $totalComuna solicitudes',
-                  style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 14, color: PdfColors.green800),
+                margin: const pw.EdgeInsets.only(top: 20, bottom: 8),
+                padding: const pw.EdgeInsets.all(6),
+                color: comuna == 0 ? PdfColors.grey600 : PdfColors.blueGrey800,
+                child: pw.Row(
+                  mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                  children: [
+                    pw.Text('$prefijoId$barrio', style: pw.TextStyle(color: PdfColors.white, fontWeight: pw.FontWeight.bold, fontSize: 14)),
+                    pw.Container(
+                      padding: const pw.EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: pw.BoxDecoration(
+                        color: comuna == 0 ? PdfColors.orange : PdfColors.blue,
+                        borderRadius: pw.BorderRadius.circular(8),
+                      ),
+                      child: pw.Text('${lista.length}', style: pw.TextStyle(color: PdfColors.white, fontWeight: pw.FontWeight.bold, fontSize: 12)),
+                    ),
+                  ],
                 ),
               )
             );
 
-            // Barrios de esta comuna
-            for (String barrio in barriosPorComuna[comuna]!) {
-              List<ReporteComunitario> lista = agrupados[barrio]!;
-              String prefijoId = 'COMUNA $comuna - ';
-
-              elementos.add(
-                pw.Container(
-                  margin: const pw.EdgeInsets.only(top: 12, bottom: 8),
-                  padding: const pw.EdgeInsets.all(6),
-                  color: comuna == 0 ? PdfColors.grey600 : PdfColors.blueGrey800,
-                  child: pw.Row(
-                    mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                    children: [
-                      pw.Text('$prefijoId$barrio', style: pw.TextStyle(color: PdfColors.white, fontWeight: pw.FontWeight.bold, fontSize: 14)),
-                      pw.Container(
-                        padding: const pw.EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                        decoration: pw.BoxDecoration(
-                          color: comuna == 0 ? PdfColors.orange : PdfColors.blue,
-                          borderRadius: pw.BorderRadius.circular(8),
-                        ),
-                        child: pw.Text('${lista.length}', style: pw.TextStyle(color: PdfColors.white, fontWeight: pw.FontWeight.bold, fontSize: 12)),
-                      ),
-                    ],
-                  ),
-                )
-              );
-
-              elementos.add(
-                pw.TableHelper.fromTextArray(
-                  headers: ['Asunto/Novedad', 'Dirección / Referencia', 'Ciudadano Afectado', 'Teléfono', 'Estado'],
-                  headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 10),
-                  cellStyle: const pw.TextStyle(fontSize: 10),
-                  headerDecoration: const pw.BoxDecoration(color: PdfColors.grey300),
-                  cellAlignment: pw.Alignment.centerLeft,
-                  data: lista.map((r) {
-                    String telefono = r.datosExtra?['telefono'] ?? 'N/A';
-                    String afectado = r.datosExtra?['ciudadano'] ?? 'Anónimo';
-                    if (telefono.isEmpty) telefono = 'N/A';
-                    if (afectado.isEmpty) afectado = 'Anónimo';
-
-                    return [r.titulo, r.direccion, afectado, telefono, r.estado];
-                  }).toList(),
-                )
-              );
-            }
+            elementos.add(
+              pw.TableHelper.fromTextArray(
+                headers: ['Asunto/Novedad', 'Dirección / Referencia', 'Ciudadano Afectado', 'Teléfono', 'Estado'],
+                headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 10),
+                cellStyle: const pw.TextStyle(fontSize: 10),
+                headerDecoration: const pw.BoxDecoration(color: PdfColors.grey300),
+                cellAlignment: pw.Alignment.centerLeft,
+                data: lista.map((r) {
+                  String telefono = r.datosExtra?['telefono'] ?? 'N/A';
+                  String afectado = r.datosExtra?['ciudadano'] ?? 'Anónimo';
+                  if (telefono.isEmpty) telefono = 'N/A';
+                  if (afectado.isEmpty) afectado = 'Anónimo';
+                  return [r.titulo, r.direccion, afectado, telefono, r.estado];
+                }).toList(),
+              )
+            );
           }
           return elementos;
         }
@@ -157,7 +109,7 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
         width: 1200,
         height: 800,
         padding: const EdgeInsets.all(24),
-        child: FutureBuilder<List<ReporteComunitario>>(
+        child: FutureBuilder<Map<String, dynamic>>(
           future: futureReportes,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -165,7 +117,14 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
             }
             if (snapshot.hasError) return Center(child: Text('Error: ${snapshot.error}'));
 
-            var reportesPendientes = (snapshot.data ?? []).where((r) => 
+            List<ReporteComunitario> reportes = [];
+            if (snapshot.data != null && snapshot.data!['data'] != null) {
+              reportes = (snapshot.data!['data'] as List)
+                  .map((e) => ReporteComunitario.fromJson(e))
+                  .toList();
+            }
+
+            var reportesPendientes = reportes.where((r) =>
               r.estado.toLowerCase().trim() == 'pendiente' || r.estado.toLowerCase().trim() == 'recibido'
             ).toList();
 
@@ -178,21 +137,28 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
 
             List<String> barriosPresentes = agrupados.keys.toList();
             barriosPresentes.sort((a, b) {
-              int comunaA = agrupados[a]?.first.comuna ?? 0;
-              int comunaB = agrupados[b]?.first.comuna ?? 0;
-              if (comunaA != comunaB) return comunaA.compareTo(comunaB);
-              return a.compareTo(b);
+              int indexA = ordenBarriosOficial.indexOf(a);
+              int indexB = ordenBarriosOficial.indexOf(b);
+              if (indexA == -1 && indexB == -1) return a.compareTo(b);
+              if (indexA == -1) return 1;
+              if (indexB == -1) return -1;
+              return indexA.compareTo(indexB);
             });
 
-            // Obtener comunas presentes
-            List<int> comunasPresentes = obtenerComunasPresentes(agrupados);
+            // Calcular totales por comuna
+            Map<int, int> totalesComuna = {};
+            for (var entry in agrupados.entries) {
+              int comuna = entry.value.first.comuna ?? 0;
+              totalesComuna[comuna] = (totalesComuna[comuna] ?? 0) + entry.value.length;
+            }
 
             return Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('SGRD YUMBO - PLANILLA DE RUTA DE VISITAS\nTotal general de registros en este reporte: ${snapshot.data?.length ?? 0}',
+                    Text(
+                      'SGRD YUMBO - PLANILLA DE RUTA DE VISITAS\nTotal general de registros en este reporte: ${reportes.length}',
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.red[900]),
                     ),
                     Row(
@@ -204,7 +170,9 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
                           ),
                           icon: const Icon(Icons.picture_as_pdf),
                           label: const Text('Exportar PDF'),
-                          onPressed: reportesPendientes.isEmpty ? null : () => _generarYDescargarPDF(agrupados, barriosPresentes),
+                          onPressed: reportesPendientes.isEmpty
+                              ? null
+                              : () => _generarYDescargarPDF(agrupados, barriosPresentes),
                         ),
                         const SizedBox(width: 16),
                         IconButton(
@@ -217,141 +185,143 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
                 ),
                 const Divider(thickness: 2),
                 Expanded(
-                  child: reportesPendientes.isEmpty 
-                    ? const Center(child: Text('No hay visitas pendientes registradas.', style: TextStyle(fontSize: 18)))
-                    : ListView.builder(
-                        itemCount: barriosPresentes.length,
-                        itemBuilder: (context, index) {
-                          String barrio = barriosPresentes[index];
-                          List<ReporteComunitario> lista = agrupados[barrio]!;
-                          int comuna = agrupados[barrio]?.first.comuna ?? 0;
-                          String prefijoId = 'COMUNA $comuna - ';
+                  child: reportesPendientes.isEmpty
+                      ? const Center(child: Text('No hay visitas pendientes registradas.', style: TextStyle(fontSize: 18)))
+                      : ListView.builder(
+                          itemCount: barriosPresentes.length,
+                          itemBuilder: (context, index) {
+                            String barrio = barriosPresentes[index];
+                            List<ReporteComunitario> lista = agrupados[barrio]!;
+                            int comuna = agrupados[barrio]?.first.comuna ?? 0;
+                            String prefijoId = 'COMUNA $comuna - ';
 
-                          // Verificar si es el primer barrio de esta comuna
-                          bool esPrimeroDeComuna = index == 0 || (agrupados[barriosPresentes[index-1]]?.first.comuna ?? 0) != comuna;
-                          int totalComuna = calcularTotalComuna(agrupados, comuna);
+                            bool esPrimeroDeComuna = index == 0 ||
+                                (agrupados[barriosPresentes[index - 1]]?.first.comuna ?? 0) != comuna;
+                            int totalComuna = totalesComuna[comuna] ?? 0;
 
-                          return Column(
-                            children: [
-                              if (esPrimeroDeComuna)
-                                Container(
-                                  margin: const EdgeInsets.only(top: 16, bottom: 8),
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green[50],
-                                    borderRadius: BorderRadius.circular(8),
-                                    border: Border.all(color: Colors.green[300]!),
+                            return Column(
+                              children: [
+                                if (esPrimeroDeComuna)
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 16, bottom: 8),
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.green[50],
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(color: Colors.green[300]!),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.assessment, color: Colors.green[800]),
+                                        const SizedBox(width: 10),
+                                        Text(
+                                          '📊 TOTAL COMUNA $comuna: $totalComuna solicitudes',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                            color: Colors.green[800],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                Card(
+                                  margin: const EdgeInsets.symmetric(vertical: 8),
+                                  elevation: 2,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: [
-                                      Icon(Icons.assessment, color: Colors.green[800]),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        '📊 TOTAL COMUNA $comuna: $totalComuna solicitudes',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                          color: Colors.green[800],
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        color: comuna == 0 ? Colors.grey[700] : Colors.blueGrey[800],
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  comuna == 0 ? Icons.warning_amber : Icons.location_city,
+                                                  color: comuna == 0 ? Colors.orange : Colors.white,
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(width: 8),
+                                                Text(
+                                                  '$prefijoId$barrio',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                              decoration: BoxDecoration(
+                                                color: comuna == 0 ? Colors.orange : Colors.blue,
+                                                borderRadius: BorderRadius.circular(12),
+                                              ),
+                                              child: Text(
+                                                '${lista.length}',
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: DataTable(
+                                          headingRowColor: MaterialStateProperty.resolveWith((states) => Colors.grey[200]),
+                                          columnSpacing: 16,
+                                          columns: const [
+                                            DataColumn(label: Text('Asunto/Novedad', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                                            DataColumn(label: Text('Dirección', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                                            DataColumn(label: Text('Ciudadano', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                                            DataColumn(label: Text('Teléfono', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                                            DataColumn(label: Text('Estado', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10))),
+                                          ],
+                                          rows: lista.map((r) {
+                                            String telefono = r.datosExtra?['telefono'] ?? 'N/A';
+                                            String afectado = r.datosExtra?['ciudadano'] ?? 'Anónimo';
+                                            if (telefono.isEmpty) telefono = 'N/A';
+                                            if (afectado.isEmpty) afectado = 'Anónimo';
+
+                                            return DataRow(cells: [
+                                              DataCell(Text(r.titulo, style: const TextStyle(fontSize: 9))),
+                                              DataCell(Text(r.direccion, style: const TextStyle(fontSize: 9))),
+                                              DataCell(Text(afectado, style: const TextStyle(fontSize: 9))),
+                                              DataCell(Text(telefono, style: const TextStyle(fontSize: 9))),
+                                              DataCell(
+                                                Container(
+                                                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                                  decoration: BoxDecoration(
+                                                    color: _getEstadoColor(r.estado),
+                                                    borderRadius: BorderRadius.circular(8),
+                                                  ),
+                                                  child: Text(
+                                                    r.estado,
+                                                    style: const TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.bold),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]);
+                                          }).toList(),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              Card(
-                                margin: const EdgeInsets.symmetric(vertical: 8),
-                                elevation: 2,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      color: comuna == 0 ? Colors.grey[700] : Colors.blueGrey[800],
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                comuna == 0 ? Icons.warning_amber : Icons.location_city,
-                                                color: comuna == 0 ? Colors.orange : Colors.white,
-                                                size: 18,
-                                              ),
-                                              const SizedBox(width: 8),
-                                              Text(
-                                                '$prefijoId$barrio',
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                                            decoration: BoxDecoration(
-                                              color: comuna == 0 ? Colors.orange : Colors.blue,
-                                              borderRadius: BorderRadius.circular(12),
-                                            ),
-                                            child: Text(
-                                              '${lista.length}',
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: DataTable(
-                                        headingRowColor: MaterialStateProperty.resolveWith((states) => Colors.grey[200]),
-                                        columnSpacing: 20,
-                                        columns: const [
-                                          DataColumn(label: Text('Asunto/Novedad', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11))),
-                                          DataColumn(label: Text('Dirección / Referencia', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11))),
-                                          DataColumn(label: Text('Ciudadano Afectado', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11))),
-                                          DataColumn(label: Text('Teléfono', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11))),
-                                          DataColumn(label: Text('Estado', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11))),
-                                        ],
-                                        rows: lista.map((r) {
-                                          String telefono = r.datosExtra?['telefono'] ?? 'N/A';
-                                          String afectado = r.datosExtra?['ciudadano'] ?? 'Anónimo';
-                                          if (telefono.isEmpty) telefono = 'N/A';
-                                          if (afectado.isEmpty) afectado = 'Anónimo';
-
-                                          return DataRow(cells: [
-                                            DataCell(Text(r.titulo, style: const TextStyle(fontSize: 10))),
-                                            DataCell(Text(r.direccion, style: const TextStyle(fontSize: 10))),
-                                            DataCell(Text(afectado, style: const TextStyle(fontSize: 10))),
-                                            DataCell(Text(telefono, style: const TextStyle(fontSize: 10))),
-                                            DataCell(
-                                              Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  const Icon(Icons.square, color: Colors.black, size: 10),
-                                                  const SizedBox(width: 4),
-                                                  Text(r.estado, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-                                                ],
-                                              ),
-                                            ),
-                                          ]);
-                                        }).toList(),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
+                              ],
+                            );
+                          },
+                        ),
                 ),
-                // Resumen final
                 if (reportesPendientes.isNotEmpty)
                   Container(
                     margin: const EdgeInsets.only(top: 12),
@@ -364,8 +334,8 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        ...comunasPresentes.map((comuna) {
-                          int total = calcularTotalComuna(agrupados, comuna);
+                        ...totalesComuna.keys.map((comuna) {
+                          int total = totalesComuna[comuna] ?? 0;
                           return Column(
                             children: [
                               Text(
@@ -396,7 +366,7 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
                             children: [
                               const Text('TOTAL', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
                               Text(
-                                '${snapshot.data?.length ?? 0}',
+                                '${reportesPendientes.length}',
                                 style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                             ],
@@ -411,5 +381,19 @@ class _PlanillaRutaDialogState extends State<PlanillaRutaDialog> {
         ),
       ),
     );
+  }
+
+  Color _getEstadoColor(String estado) {
+    switch (estado.toLowerCase()) {
+      case 'pendiente': return Colors.orange;
+      case 'recibido': return Colors.blue;
+      case 'en proceso': return Colors.cyan;
+      case 'visitado-de-prioridad baja': return Colors.green;
+      case 'visitado-de-prioridad media': return Colors.orange;
+      case 'visitado-de-prioridad alta': return Colors.red;
+      case 'inspeccionado': return Colors.indigo;
+      case 'cerrado': return Colors.green;
+      default: return Colors.grey;
+    }
   }
 }

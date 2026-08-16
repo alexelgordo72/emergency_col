@@ -16,10 +16,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Future<List<ReporteComunitario>> futureReportes;
+  // Variables para paginación
+  List<ReporteComunitario> reportes = [];
+  int totalReportes = 0;
+  int currentOffset = 0;
+  final int limit = 50;
+  bool cargando = false;
+  bool cargandoMas = false;
+  bool tieneMas = true;
+  final ScrollController _scrollController = ScrollController();
+  
+  // Variables de búsqueda
   final TextEditingController _searchController = TextEditingController();
   String _tipoFiltro = 'barrio';
   
+  // Variables del mapa
   final MapController _mapController = MapController();
   final LatLng _centroYumbo = const LatLng(3.5833, -76.4953);
   double _currentZoom = 14.0;
@@ -28,31 +39,67 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _cargarReportes();
-  }
-
-  void _cargarReportes() {
-    setState(() {
-      if (_tipoFiltro == 'rufe') {
-        // Cargar todos y filtrar localmente los que tienen RUFE
-        futureReportes = ApiService.obtenerReportes().then((reportes) {
-          List<ReporteComunitario> filtrados = reportes.where((r) => 
-            r.datosExtra?['es_rufe'] == true
-          ).toList();
-          print('🔖 Filtro RUFE: ${filtrados.length} reportes encontrados');
-          return filtrados;
-        });
-      } else if (_searchController.text.isEmpty) {
-        futureReportes = ApiService.obtenerReportes();
-      } else {
-        if (_tipoFiltro == 'barrio') {
-          futureReportes = ApiService.obtenerReportes(barrio: _searchController.text);
-        } else if (_tipoFiltro == 'nombre') {
-          futureReportes = ApiService.obtenerReportes(nombre: _searchController.text);
-        } else if (_tipoFiltro == 'telefono') {
-          futureReportes = ApiService.obtenerReportes(telefono: _searchController.text);
-        }
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
+        _cargarMas();
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _cargarReportes({bool reiniciar = true}) async {
+    if (cargando) return;
+    
+    setState(() {
+      cargando = true;
+      if (reiniciar) {
+        reportes = [];
+        currentOffset = 0;
+        tieneMas = true;
+      }
+    });
+
+    try {
+      String? barrio = _tipoFiltro == 'barrio' ? _searchController.text : null;
+      String? nombre = _tipoFiltro == 'nombre' ? _searchController.text : null;
+      String? telefono = _tipoFiltro == 'telefono' ? _searchController.text : null;
+      
+      final result = await ApiService.obtenerReportes(
+        barrio: barrio,
+        nombre: nombre,
+        telefono: telefono,
+        limit: limit,
+        offset: currentOffset,
+      );
+      
+      setState(() {
+        if (reiniciar) {
+          reportes = result['data'] ?? [];
+        } else {
+          reportes.addAll(result['data'] ?? []);
+        }
+        totalReportes = result['total'] ?? 0;
+        currentOffset += (result['data'] as List?)?.length ?? 0;
+        tieneMas = currentOffset < totalReportes;
+        cargando = false;
+      });
+    } catch (e) {
+      print('❌ Error al cargar reportes: $e');
+      setState(() => cargando = false);
+    }
+  }
+
+  void _cargarMas() {
+    if (!cargandoMas && tieneMas && !cargando && reportes.isNotEmpty) {
+      setState(() => cargandoMas = true);
+      _cargarReportes(reiniciar: false);
+      setState(() => cargandoMas = false);
+    }
   }
 
   void _zoomIn() {
@@ -69,7 +116,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // NUEVO: Dialogo para mostrar el detalle RUFE al tocar un pin
   void _mostrarDetalleRufe(ReporteComunitario reporte) async {
     bool esRufe = reporte.datosExtra?['es_rufe'] == true;
     
@@ -95,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     final rufeData = await ApiService.obtenerDetalleRufe(reporte.id);
-    Navigator.pop(context); // Cerrar el loader
+    Navigator.pop(context);
 
     if (rufeData == null || rufeData['status'] != 'success') {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -161,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-    void _mostrarDialogoEdicion(ReporteComunitario reporte) async {
+  void _mostrarDialogoEdicion(ReporteComunitario reporte) async {
     final tituloCtrl = TextEditingController(text: reporte.titulo);
     final direccionCtrl = TextEditingController(text: reporte.direccion);
     final ciudadanoCtrl = TextEditingController(text: reporte.datosExtra?['ciudadano'] ?? '');
@@ -169,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
     
     var listaBarriosObj = await BarrioService.getBarrios();
     List<String> listaBarrios = listaBarriosObj.map((b) => b.nombre).toList();
-    listaBarrios.sort((a, b) => a.compareTo(b)); // Orden alfabético
+    listaBarrios.sort((a, b) => a.compareTo(b));
     String barrioSeleccionado = listaBarrios.contains(reporte.barrio) ? reporte.barrio : (listaBarrios.isNotEmpty ? listaBarrios.first : reporte.barrio);
 
     showDialog(
@@ -225,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     print('📡 PUT response: $exito');
                     Navigator.pop(dialogContext);
                     if (exito) {
-                      _cargarReportes();
+                      _cargarReportes(reiniciar: true);
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registro actualizado', style: TextStyle(color: Colors.white)), backgroundColor: Colors.green));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error al actualizar', style: TextStyle(color: Colors.white)), backgroundColor: Colors.red));
@@ -249,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     var listaBarriosObj = await BarrioService.getBarrios();
     List<String> listaBarrios = listaBarriosObj.map((b) => b.nombre).toList();
-    listaBarrios.sort((a, b) => a.compareTo(b)); // Orden alfabético
+    listaBarrios.sort((a, b) => a.compareTo(b));
     String? barrioSeleccionado = listaBarrios.isNotEmpty ? listaBarrios.first : null;
 
     showDialog(
@@ -308,7 +354,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     bool exito = await ApiService.crearReporte(nuevoDato);
                     Navigator.pop(dialogContext);
                     if (exito) {
-                      _cargarReportes();
+                      _cargarReportes(reiniciar: true);
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Evento registrado con éxito', style: TextStyle(color: Colors.white)), backgroundColor: Colors.green));
                     }
                   },
@@ -321,7 +367,6 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     );
   }
-
 
   Color _getEstadoColor(String estado) {
     switch (estado.toLowerCase()) {
@@ -336,7 +381,6 @@ class _HomeScreenState extends State<HomeScreen> {
       default: return Colors.grey;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -370,7 +414,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.refresh),
             onPressed: () {
               _searchController.clear();
-              _cargarReportes();
+              _cargarReportes(reiniciar: true);
             },
           )
         ],
@@ -419,194 +463,159 @@ class _HomeScreenState extends State<HomeScreen> {
                               hintText: 'Buscar...',
                               suffixIcon: IconButton(
                                 icon: Icon(Icons.search, color: Colors.red[700]),
-                                onPressed: _cargarReportes,
+                                onPressed: () => _cargarReportes(reiniciar: true),
                               ),
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                               contentPadding: EdgeInsets.symmetric(horizontal: 10),
                             ),
-                            onSubmitted: (_) => _cargarReportes(),
+                            onSubmitted: (_) => _cargarReportes(reiniciar: true),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Expanded(
-                    child: FutureBuilder<List<ReporteComunitario>>(
-                      future: futureReportes,
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return Center(child: CircularProgressIndicator());
-                        } else if (snapshot.hasError) {
-                          return Center(child: Text('Error de conexión'));
-                        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                          return Center(child: Text('No se encontraron resultados'));
-                        }
+                    child: reportes.isEmpty && cargando
+                        ? const Center(child: CircularProgressIndicator())
+                        : reportes.isEmpty && !cargando
+                            ? const Center(child: Text('No se encontraron resultados'))
+                            : ListView.builder(
+                                controller: _scrollController,
+                                padding: EdgeInsets.all(8),
+                                itemCount: reportes.length + (tieneMas ? 1 : 0),
+                                itemBuilder: (context, index) {
+                                  if (index == reportes.length) {
+                                    return Container(
+                                      padding: EdgeInsets.all(16),
+                                      child: Center(
+                                        child: cargandoMas
+                                            ? const CircularProgressIndicator()
+                                            : const Text('No hay más reportes'),
+                                      ),
+                                    );
+                                  }
+                                  final reporte = reportes[index];
+                                  final ciudadano = reporte.datosExtra?['ciudadano'] ?? 'Anónimo';
+                                  final telefono = reporte.datosExtra?['telefono'] ?? 'N/A';
+                                  final bool esRufe = reporte.datosExtra?['es_rufe'] == true;
 
-                        return ListView.builder(
-                          padding: EdgeInsets.all(8),
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            final reporte = snapshot.data![index];
-                            final ciudadano = reporte.datosExtra?['ciudadano'] ?? 'Anónimo';
-                            final telefono = reporte.datosExtra?['telefono'] ?? 'N/A';
-                            final bool esRufe = reporte.datosExtra?['es_rufe'] == true;
-
-                            return Card(
-                              elevation: 2,
-                              margin: EdgeInsets.symmetric(vertical: 6),
-                              child: ListTile(
-                                leading: CircleAvatar(
-                                  backgroundColor: esRufe ? Colors.purple[50] : Colors.red[50],
-                                  child: Icon(esRufe ? Icons.assignment_ind : Icons.warning_amber_rounded, color: esRufe ? Colors.purple[700] : Colors.red[700]),
-                                ),
-                                title: Text(reporte.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 4),
-                                    Text('📍 ${reporte.barrio} - ${reporte.direccion}'),
-                                    Text('👤 $ciudadano | 📱 $telefono'),
-                                    Row(
-                                      children: [
-                                        const Text('📊 Estado: ', style: TextStyle(fontSize: 12)),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                          decoration: BoxDecoration(
-                                            color: _getEstadoColor(reporte.estado),
-                                            borderRadius: BorderRadius.circular(8),
+                                  return Card(
+                                    elevation: 2,
+                                    margin: EdgeInsets.symmetric(vertical: 6),
+                                    child: ListTile(
+                                      leading: CircleAvatar(
+                                        backgroundColor: esRufe ? Colors.purple[50] : Colors.red[50],
+                                        child: Icon(esRufe ? Icons.assignment_ind : Icons.warning_amber_rounded, color: esRufe ? Colors.purple[700] : Colors.red[700]),
+                                      ),
+                                      title: Text(reporte.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
+                                      subtitle: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 4),
+                                          Text('📍 ${reporte.barrio} - ${reporte.direccion}'),
+                                          Text('👤 $ciudadano | 📱 $telefono'),
+                                          Row(
+                                            children: [
+                                              const Text('📊 Estado: ', style: TextStyle(fontSize: 12)),
+                                              Container(
+                                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                                decoration: BoxDecoration(
+                                                  color: _getEstadoColor(reporte.estado),
+                                                  borderRadius: BorderRadius.circular(8),
+                                                ),
+                                                child: Text(
+                                                  reporte.estado,
+                                                  style: const TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          child: Text(
-                                            reporte.estado,
-                                            style: const TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
+                                        ],
+                                      ),
+                                      isThreeLine: true,
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          IconButton(
+                                            icon: const Icon(Icons.history_edu, color: Colors.blue),
+                                            tooltip: 'Trazabilidad y Ciclo de Vida',
+                                            onPressed: () {
+                                              showDialog(
+                                                context: context,
+                                                barrierDismissible: false,
+                                                builder: (context) => TrazabilidadDialog(reporte: reporte),
+                                              );
+                                            },
                                           ),
-                                        ),
-                                      ],
+                                          IconButton(
+                                            icon: Icon(Icons.edit_outlined, color: Colors.blueGrey),
+                                            onPressed: () => _mostrarDialogoEdicion(reporte),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
-                                isThreeLine: true,
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                      icon: const Icon(Icons.history_edu, color: Colors.blue),
-                                      tooltip: 'Trazabilidad y Ciclo de Vida',
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          barrierDismissible: false,
-                                          builder: (context) => TrazabilidadDialog(reporte: reporte),
-                                        );
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(Icons.edit_outlined, color: Colors.blueGrey),
-                                      onPressed: () => _mostrarDialogoEdicion(reporte),
-                                    )
-                                  ],
-                                ),
+                                  );
+                                },
                               ),
-                            );
-                          },
-                        );
-                      },
-                    ),
                   ),
                 ],
               ),
             ),
           ),
-          
           Expanded(
             flex: 1,
             child: Stack(
               children: [
-                FutureBuilder<List<ReporteComunitario>>(
-                  future: futureReportes,
-                  builder: (context, snapshot) {
-                    List<Marker> marcadoresApp = [];
-                    List<LatLng> puntosRuta = [];
-                    List<LatLng> rutaOrdenada = [];
-
-                    if (snapshot.hasData) {
-                      for (var reporte in snapshot.data!) {
-                        if (reporte.latitud != null && reporte.longitud != null) {
-                          final punto = LatLng(reporte.latitud!, reporte.longitud!);
-                          puntosRuta.add(punto);
-                          
-                          bool esRufe = reporte.datosExtra?['es_rufe'] == true;
-
-                          marcadoresApp.add(
-                            Marker(
-                              point: punto,
-                              width: 50,
-                              height: 50,
-                              child: Tooltip(
-                                message: '${reporte.titulo}\n${reporte.barrio}\n(Clic para ver detalle)',
-                                child: GestureDetector(
-                                  onTap: () => _mostrarDetalleRufe(reporte),
-                                  child: Icon(
-                                    Icons.location_on, 
-                                    color: esRufe ? Colors.purple[800] : Colors.red[900], 
-                                    size: 45
-                                  ),
-                                ),
+                FlutterMap(
+                  mapController: _mapController,
+                  options: MapOptions(
+                    initialCenter: _centroYumbo,
+                    initialZoom: _currentZoom,
+                  ),
+                  children: [
+                    TileLayer(
+                      urlTemplate: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+                      subdomains: ['a', 'b', 'c'],
+                      userAgentPackageName: 'com.emergency_col.app',
+                    ),
+                    if (reportes.isNotEmpty)
+                      PolylineLayer(
+                        polylines: [
+                          Polyline(
+                            points: reportes
+                                .where((r) => r.latitud != null && r.longitud != null)
+                                .map((r) => LatLng(r.latitud!, r.longitud!))
+                                .toList(),
+                            strokeWidth: 4.0,
+                            color: Colors.blueAccent.withOpacity(0.7),
+                          ),
+                        ],
+                      ),
+                    MarkerLayer(
+                      markers: reportes
+                          .where((r) => r.latitud != null && r.longitud != null)
+                          .map((reporte) {
+                        bool esRufe = reporte.datosExtra?['es_rufe'] == true;
+                        final punto = LatLng(reporte.latitud!, reporte.longitud!);
+                        return Marker(
+                          point: punto,
+                          width: 50,
+                          height: 50,
+                          child: Tooltip(
+                            message: '${reporte.titulo}\n${reporte.barrio}',
+                            child: GestureDetector(
+                              onTap: () => _mostrarDetalleRufe(reporte),
+                              child: Icon(
+                                Icons.location_on,
+                                color: esRufe ? Colors.purple[800] : Colors.red[900],
+                                size: 45,
                               ),
                             ),
-                          );
-                        }
-                      }
-
-                      if (puntosRuta.isNotEmpty) {
-                        rutaOrdenada.add(puntosRuta.first);
-                        List<LatLng> pendientes = List.from(puntosRuta)..removeAt(0);
-                        final Distance calculadorDistancia = Distance();
-
-                        while (pendientes.isNotEmpty) {
-                          LatLng actual = rutaOrdenada.last;
-                          LatLng masCercano = pendientes.first;
-                          double minDist = calculadorDistancia(actual, masCercano);
-
-                          for (int i = 1; i < pendientes.length; i++) {
-                            double dist = calculadorDistancia(actual, pendientes[i]);
-                            if (dist < minDist) {
-                              minDist = dist;
-                              masCercano = pendientes[i];
-                            }
-                          }
-                          rutaOrdenada.add(masCercano);
-                          pendientes.remove(masCercano);
-                        }
-                      }
-                    }
-
-                    return FlutterMap(
-                      mapController: _mapController,
-                      options: MapOptions(
-                        initialCenter: _centroYumbo,
-                        initialZoom: _currentZoom,
-                      ),
-                      children: [
-                        TileLayer(
-                          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.emergency_col.app',
-                        ),
-                        if (rutaOrdenada.isNotEmpty)
-                          PolylineLayer(
-                            polylines: [
-                              Polyline(
-                                points: rutaOrdenada,
-                                strokeWidth: 4.0,
-                                color: Colors.blueAccent.withOpacity(0.7),
-                              ),
-                            ],
                           ),
-                        MarkerLayer(
-                          markers: marcadoresApp,
-                        ),
-                      ],
-                    );
-                  },
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
                 Positioned(
                   bottom: 20,
