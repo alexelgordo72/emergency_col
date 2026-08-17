@@ -5,86 +5,66 @@ import '../config.dart';
 class DashboardService {
   static const String baseUrl = AppConfig.apiUrl;
 
-  static Future<Map<String, dynamic>> getDashboardData({
-    String? prioridad,
-    String? comuna,
-  }) async {
+  static Future<Map<String, dynamic>> getResumenGeneral() async {
     try {
-      final queryParams = <String, String>{};
-      if (prioridad != null && prioridad != 'TODAS') {
-        queryParams['prioridad'] = prioridad;
-      }
-      if (comuna != null && comuna != 'TODAS') {
-        queryParams['comuna'] = comuna;
-      }
-
-      final uri = Uri.parse('$baseUrl/api/dashboard/detallado')
-          .replace(queryParameters: queryParams);
-
       final response = await http.get(
-        uri,
+        Uri.parse('$baseUrl/dashboard/resumen'),
         headers: {'Content-Type': 'application/json'},
       );
-
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        return _transformDashboardData(data);
+        return json.decode(response.body);
       }
       return {};
     } catch (e) {
-      print('❌ Error obteniendo dashboard: $e');
+      print('Error obteniendo resumen general: $e');
       return {};
     }
   }
 
-  static Map<String, dynamic> _transformDashboardData(Map<String, dynamic> data) {
-    final reportes = data['reportes'] as List<dynamic>? ?? [];
-    
-    final prioridadStats = <String, int>{};
-    for (var r in reportes) {
-      final p = r['prioridad']?.toString().toUpperCase() ?? 'BAJA';
-      prioridadStats[p] = (prioridadStats[p] ?? 0) + 1;
+  static Future<Map<String, dynamic>> getEstadisticasAHE() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/dashboard/ahe'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return {};
+    } catch (e) {
+      print('Error obteniendo estadísticas AHE: $e');
+      return {};
     }
-
-    final comunaStats = <String, int>{};
-    for (var r in reportes) {
-      final c = r['comuna_o_sector'] ?? 'Sin Asignar';
-      comunaStats[c] = (comunaStats[c] ?? 0) + 1;
-    }
-
-    final tipoStats = <String, int>{};
-    for (var r in reportes) {
-      final t = r['tipo_formulario'] ?? 'Sin Tipo';
-      tipoStats[t] = (tipoStats[t] ?? 0) + 1;
-    }
-
-    return {
-      'total_reportes': data['total_reportes_alta_prioridad'] ?? 0,
-      'total_comunas': data['total_comunas'] ?? 0,
-      'total_barrios': data['total_barrios'] ?? 0,
-      'total_tipos': data['total_tipos'] ?? 0,
-      'prioridad_stats': prioridadStats,
-      'comuna_stats': comunaStats,
-      'tipo_stats': tipoStats,
-      'comunas': data['comunas'] ?? [],
-      'barrios': data['barrios'] ?? [],
-      'tipos': data['tipos_formulario'] ?? [],
-      'reportes': reportes.take(20).toList(),
-    };
   }
 
-  static Future<Map<String, dynamic>> getResumenRapido() async {
+  static Future<Map<String, dynamic>> getEstadisticasEDHAS() async {
     try {
-      final data = await getDashboardData();
-      return {
-        'total': data['total_reportes'] ?? 0,
-        'alta': data['prioridad_stats']?['ALTA'] ?? 0,
-        'media': data['prioridad_stats']?['MEDIA'] ?? 0,
-        'baja': data['prioridad_stats']?['BAJA'] ?? 0,
-        'comunas': data['total_comunas'] ?? 0,
-        'barrios': data['total_barrios'] ?? 0,
-      };
+      final response = await http.get(
+        Uri.parse('$baseUrl/dashboard/edhas'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return {};
     } catch (e) {
+      print('Error obteniendo estadísticas EDHAS: $e');
+      return {};
+    }
+  }
+
+  static Future<Map<String, dynamic>> getEstadisticasGenero() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/dashboard/genero'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return {};
+    } catch (e) {
+      print('Error obteniendo estadísticas de género: $e');
       return {};
     }
   }
