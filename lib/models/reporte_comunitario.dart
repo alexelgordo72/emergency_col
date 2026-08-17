@@ -1,43 +1,49 @@
 class ReporteComunitario {
   final String id;
   final String titulo;
-  final String descripcion;
+  String estado;  // ← AHORA ES MUTABLE
+  final String fecha;
   final String barrio;
   final String direccion;
-  final int gravedad;
-  String estado;  // ← CAMBIADO de 'final' a 'String' (mutable)
+  final String? ciudadano;
+  final String? telefono;
+  final String? descripcion;
   final double? latitud;
   final double? longitud;
-  final Map<String, dynamic>? datosExtra;
   final int? comuna;
+  final Map<String, dynamic>? datosExtra;
 
   ReporteComunitario({
     required this.id,
     required this.titulo,
-    required this.descripcion,
+    required this.estado,
+    required this.fecha,
     required this.barrio,
     required this.direccion,
-    required this.gravedad,
-    required this.estado,
+    this.ciudadano,
+    this.telefono,
+    this.descripcion,
     this.latitud,
     this.longitud,
-    this.datosExtra,
     this.comuna,
+    this.datosExtra,
   });
 
   factory ReporteComunitario.fromJson(Map<String, dynamic> json) {
     return ReporteComunitario(
-      id: json['id'] ?? '',
+      id: json['id']?.toString() ?? '',
       titulo: json['titulo'] ?? 'Sin título',
-      descripcion: json['descripcion_detallada'] ?? '',
-      barrio: json['sector_barrio'] ?? 'No especificado',
-      direccion: json['direccion_referencia'] ?? '',
-      gravedad: json['gravedad'] ?? 3,
-      estado: json['estado_actual'] ?? json['estado'] ?? 'recibido',
-      latitud: json['latitud'] != null ? double.tryParse(json['latitud'].toString()) : null,
-      longitud: json['longitud'] != null ? double.tryParse(json['longitud'].toString()) : null,
-      comuna: json['comuna'] is int ? json['comuna'] : int.tryParse(json['comuna']?.toString() ?? '0'),
-      datosExtra: json['datos_extra'],
+      estado: json['estado'] ?? json['estado_actual'] ?? 'Pendiente',
+      fecha: json['fecha'] ?? json['fecha_creacion'] ?? '',
+      barrio: json['barrio'] ?? json['sector_barrio'] ?? 'Sin barrio',
+      direccion: json['direccion'] ?? json['direccion_referencia'] ?? '',
+      ciudadano: json['ciudadano'] ?? json['datos_extra']?['ciudadano'],
+      telefono: json['telefono'] ?? json['datos_extra']?['telefono'],
+      descripcion: json['descripcion'] ?? json['descripcion_detallada'],
+      latitud: json['latitud']?.toDouble(),
+      longitud: json['longitud']?.toDouble(),
+      comuna: json['comuna'] ?? json['datos_extra']?['comuna'],
+      datosExtra: json['datos_extra'] is Map ? json['datos_extra'] : null,
     );
   }
 
@@ -45,11 +51,13 @@ class ReporteComunitario {
     return {
       'id': id,
       'titulo': titulo,
-      'descripcion_detallada': descripcion,
-      'sector_barrio': barrio,
-      'direccion_referencia': direccion,
-      'gravedad': gravedad,
-      'estado_actual': estado,
+      'estado': estado,
+      'fecha': fecha,
+      'barrio': barrio,
+      'direccion': direccion,
+      'ciudadano': ciudadano,
+      'telefono': telefono,
+      'descripcion': descripcion,
       'latitud': latitud,
       'longitud': longitud,
       'comuna': comuna,

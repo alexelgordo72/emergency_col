@@ -18,22 +18,20 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
   final observacionController = TextEditingController();
   bool guardando = false;
 
-  // ✅ ESTADOS DISPONIBLES PARA EL DROPDOWN
+  // ✅ ESTADOS EXACTOS DE LA BASE DE DATOS
   final List<String> estadosPosibles = [
     'Pendiente',
-    'Recibido',
     'En Proceso',
+    'Visitado sin prioridad',
     'Visitado-DE-Prioridad Baja',
     'Visitado-DE-Prioridad Media',
     'Visitado-DE-Prioridad Alta',
-    'Inspeccionado',
-    'Cerrado'
   ];
 
   @override
   void initState() {
     super.initState();
-    String estadoActual = widget.reporte.estado;
+    String estadoActual = widget.reporte.estado.trim();
     estadoSeleccionado = estadosPosibles.contains(estadoActual) 
         ? estadoActual 
         : 'Pendiente';
@@ -63,13 +61,13 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
       if (exito) {
         observacionController.clear();
         _cargarHistorial();
-        // ✅ Actualizar el estado en el objeto reporte
         setState(() {
           widget.reporte.estado = estadoSeleccionado;
         });
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('✅ Registro guardado exitosamente'), backgroundColor: Colors.green),
         );
+        Navigator.pop(context, true);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('❌ Error al guardar el registro'), backgroundColor: Colors.red),
@@ -85,16 +83,13 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
   }
 
   Color _getEstadoColor(String estado) {
-    switch (estado.toLowerCase()) {
+    switch (estado.toLowerCase().trim()) {
       case 'pendiente': return Colors.orange;
-      case 'recibido': return Colors.blue;
       case 'en proceso': return Colors.cyan;
-      case 'visitado': return Colors.purple;
-      case 'inspeccionado': return Colors.indigo;
+      case 'visitado sin prioridad': return Colors.grey;
       case 'visitado-de-prioridad baja': return Colors.green;
       case 'visitado-de-prioridad media': return Colors.orange;
       case 'visitado-de-prioridad alta': return Colors.red;
-      case 'cerrado': return Colors.green;
       default: return Colors.grey;
     }
   }
@@ -258,7 +253,7 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
                         DropdownButtonFormField<String>(
                           value: estadoSeleccionado,
                           items: estadosPosibles
-                              .where((e) => e != widget.reporte.estado)
+                              .where((e) => e != widget.reporte.estado.trim())
                               .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                               .toList(),
                           onChanged: (val) => setState(() => estadoSeleccionado = val!),

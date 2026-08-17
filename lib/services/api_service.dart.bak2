@@ -15,8 +15,6 @@ class ApiService {
   }) async {
     try {
       final Map<String, String> queryParams = {};
-      
-      // Enviar los filtros al backend
       if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
         queryParams['barrio'] = barrio;
       }
@@ -111,6 +109,26 @@ class ApiService {
     }
   }
 
+  static Future<bool> actualizarEstadoTrazabilidad(String reporteId, String nuevoEstado, String observacion) async {
+    try {
+      print('📤 Actualizando estado: reporte=$reporteId, estado=$nuevoEstado');
+      final response = await http.put(
+        Uri.parse('$baseUrl/reportes/$reporteId/estado'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'estado': nuevoEstado,
+          'observacion': observacion,
+        }),
+      );
+      print('📡 PUT estado - Status: ${response.statusCode}');
+      print('📡 PUT estado - Body: ${response.body}');
+      return response.statusCode == 200;
+    } catch (e) {
+      print('❌ Error al actualizar estado: $e');
+      return false;
+    }
+  }
+
   static Future<Map<String, dynamic>?> obtenerDetalleRufe(String reporteId) async {
     try {
       final response = await http.get(Uri.parse('$baseUrl/reportes/$reporteId/rufe'));
@@ -122,6 +140,7 @@ class ApiService {
     }
     return null;
   }
+}
 
   static Future<bool> actualizarEstadoTrazabilidad(
     String reporteId,
@@ -129,9 +148,8 @@ class ApiService {
     String observacion
   ) async {
     try {
-      print('📤 POST trazabilidad: reporte=$reporteId, estado=$nuevoEstado');
       final response = await http.post(
-        Uri.parse('$baseUrl/trazabilidad'),
+        Uri.parse('$baseUrl/api/trazabilidad'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'reporte_id': reporteId,
@@ -142,11 +160,9 @@ class ApiService {
         }),
       );
       print('📡 POST trazabilidad - Status: ${response.statusCode}');
-      print('📡 POST trazabilidad - Body: ${response.body}');
       return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
       print('❌ Error en actualizarEstadoTrazabilidad: $e');
       return false;
     }
   }
-}

@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Variables para paginación
   List<ReporteComunitario> reportes = [];
   int totalReportes = 0;
   int currentOffset = 0;
@@ -27,11 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
   bool tieneMas = true;
   final ScrollController _scrollController = ScrollController();
   
-  // Variables de búsqueda
   final TextEditingController _searchController = TextEditingController();
   String _tipoFiltro = 'barrio';
   
-  // Variables del mapa
   final MapController _mapController = MapController();
   final LatLng _centroYumbo = const LatLng(3.5833, -76.4953);
   double _currentZoom = 14.0;
@@ -53,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  void _cargarReportes({bool reiniciar = true}) async {
+  Future<void> _cargarReportes({bool reiniciar = true}) async {
     if (cargando) return;
     
     setState(() {
@@ -66,40 +63,68 @@ class _HomeScreenState extends State<HomeScreen> {
     });
 
     try {
-      String? barrio = _tipoFiltro == 'barrio' ? _searchController.text : null;
-      String? nombre = _tipoFiltro == 'nombre' ? _searchController.text : null;
-      String? telefono = _tipoFiltro == 'telefono' ? _searchController.text : null;
+      final String filtro = _searchController.text;
+      String? barrioFiltro;
+      String? nombreFiltro;
+      String? telefonoFiltro;
+      
+      if (filtro.isNotEmpty) {
+        switch (_tipoFiltro) {
+          case 'barrio':
+            barrioFiltro = filtro;
+            break;
+          case 'nombre':
+            nombreFiltro = filtro;
+            break;
+          case 'telefono':
+            telefonoFiltro = filtro;
+            break;
+          case 'rufe':
+            // RUFE es un filtro especial que se maneja en el backend
+            barrioFiltro = filtro;
+            break;
+        }
+      }
       
       final result = await ApiService.obtenerReportes(
-        barrio: barrio,
-        nombre: nombre,
-        telefono: telefono,
+        barrio: barrioFiltro,
+        nombre: nombreFiltro,
+        telefono: telefonoFiltro,
         limit: limit,
         offset: currentOffset,
       );
       
       setState(() {
+        final nuevosReportes = result['data'] as List<ReporteComunitario>? ?? [];
+        
         if (reiniciar) {
-          reportes = result['data'] ?? [];
+          reportes = nuevosReportes;
         } else {
-          reportes.addAll(result['data'] ?? []);
+          reportes.addAll(nuevosReportes);
         }
+        
         totalReportes = result['total'] ?? 0;
-        currentOffset += (result['data'] as List?)?.length ?? 0;
+        currentOffset += nuevosReportes.length;
+        
+        // Verificar si hay más resultados
         tieneMas = currentOffset < totalReportes;
+        
         cargando = false;
+        cargandoMas = false;
       });
     } catch (e) {
       print('❌ Error al cargar reportes: $e');
-      setState(() => cargando = false);
+      setState(() {
+        cargando = false;
+        cargandoMas = false;
+      });
     }
   }
 
   void _cargarMas() {
-    if (!cargandoMas && tieneMas && !cargando && reportes.isNotEmpty) {
+    if (!cargandoMas && tieneMas && !cargando) {
       setState(() => cargandoMas = true);
       _cargarReportes(reiniciar: false);
-      setState(() => cargandoMas = false);
     }
   }
 
@@ -117,102 +142,11 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _mostrarDetalleRufe(ReporteComunitario reporte) async {
-    bool esRufe = reporte.datosExtra?['es_rufe'] == true;
-    
-    if (!esRufe) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Este evento no tiene ficha RUFE.'), backgroundColor: Colors.orange)
-      );
-      return;
-    }
-
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        content: Row(
-          children: [
-            CircularProgressIndicator(color: Colors.red[700]),
-            SizedBox(width: 20),
-            Text("Cargando núcleo familiar..."),
-          ],
-        ),
-      ),
-    );
-
-    final rufeData = await ApiService.obtenerDetalleRufe(reporte.id);
-    Navigator.pop(context);
-
-    if (rufeData == null || rufeData['status'] != 'success') {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('No se pudo cargar la ficha RUFE.'), backgroundColor: Colors.red)
-      );
-      return;
-    }
-
-    final form = rufeData['formulario'];
-    final nucleo = rufeData['nucleo_familiar'] as List<dynamic>;
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Ficha RUFE #${form['numero_formulario']} - ${reporte.barrio}'),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: [
-                    Text('Prioridad: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                    Chip(
-                      label: Text('${form['prioridad']}'),
-                      backgroundColor: form['prioridad'] == 'ALTA' ? Colors.red[100] : (form['prioridad'] == 'MEDIA' ? Colors.orange[100] : Colors.green[100]),
-                    )
-                  ],
-                ),
-                SizedBox(height: 8),
-                Text('Evaluación Técnica:', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey)),
-                Text('${form['observaciones_evaluador']}'),
-                SizedBox(height: 12),
-                Text('Mascotas en riesgo:', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey)),
-                Text('${form['observaciones_animales']}'),
-                Divider(height: 30, thickness: 2),
-                Text('Núcleo Familiar:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                SizedBox(height: 8),
-                ...nucleo.map((p) => Card(
-                  elevation: 1,
-                  margin: EdgeInsets.only(bottom: 6),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: p['es_jefe_hogar'] ? Colors.red[100] : Colors.grey[200],
-                      child: Icon(p['es_jefe_hogar'] ? Icons.star : Icons.person, color: p['es_jefe_hogar'] ? Colors.red[700] : Colors.grey[600]),
-                    ),
-                    title: Text(p['nombre_completo'], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                    subtitle: Text('Doc: ${p['documento_identidad']} | Tel: ${p['telefono']}'),
-                  ),
-                )).toList(),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context), 
-              child: Text('Cerrar', style: TextStyle(color: Colors.red[700]))
-            )
-          ],
-        );
-      }
-    );
-  }
-
   void _mostrarDialogoEdicion(ReporteComunitario reporte) async {
     final tituloCtrl = TextEditingController(text: reporte.titulo);
     final direccionCtrl = TextEditingController(text: reporte.direccion);
-    final ciudadanoCtrl = TextEditingController(text: reporte.datosExtra?['ciudadano'] ?? '');
-    final telefonoCtrl = TextEditingController(text: reporte.datosExtra?['telefono'] ?? '');
+    final ciudadanoCtrl = TextEditingController(text: reporte.ciudadano ?? '');
+    final telefonoCtrl = TextEditingController(text: reporte.telefono ?? '');
     
     var listaBarriosObj = await BarrioService.getBarrios();
     List<String> listaBarrios = listaBarriosObj.map((b) => b.nombre).toList();
@@ -262,8 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       'latitud': reporte.latitud ?? 3.59,
                       'longitud': reporte.longitud ?? -76.49,
                       'datos_extra': {
-                        'ciudadano': ciudadanoCtrl.text.isNotEmpty ? ciudadanoCtrl.text.trim() : (reporte.datosExtra?['ciudadano'] ?? 'Anónimo'),
-                        'telefono': telefonoCtrl.text.isNotEmpty ? telefonoCtrl.text.trim() : (reporte.datosExtra?['telefono'] ?? 'No registrado'),
+                        'ciudadano': ciudadanoCtrl.text.isNotEmpty ? ciudadanoCtrl.text.trim() : (reporte.ciudadano ?? 'Anónimo'),
+                        'telefono': telefonoCtrl.text.isNotEmpty ? telefonoCtrl.text.trim() : (reporte.telefono ?? 'No registrado'),
                       }
                     };
                     
@@ -288,103 +222,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _mostrarDialogoCreacion() async {
-    final tituloCtrl = TextEditingController();
-    final direccionCtrl = TextEditingController();
-    final ciudadanoCtrl = TextEditingController();
-    final telefonoCtrl = TextEditingController();
-
-    var listaBarriosObj = await BarrioService.getBarrios();
-    List<String> listaBarrios = listaBarriosObj.map((b) => b.nombre).toList();
-    listaBarrios.sort((a, b) => a.compareTo(b));
-    String? barrioSeleccionado = listaBarrios.isNotEmpty ? listaBarrios.first : null;
-
-    showDialog(
-      context: context,
-      builder: (dialogContext) {
-        return StatefulBuilder(
-          builder: (context, setStateModal) {
-            return AlertDialog(
-              title: Text('Nuevo Evento de Emergencia'),
-              content: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextField(controller: tituloCtrl, decoration: InputDecoration(labelText: 'Título (Ej. Daño Estructural)')),
-                    SizedBox(height: 12),
-                    DropdownButtonFormField<String>(
-                      value: barrioSeleccionado,
-                      decoration: InputDecoration(labelText: 'Seleccione el Barrio', border: OutlineInputBorder()),
-                      items: listaBarrios.map((b) => DropdownMenuItem(value: b, child: Text(b))).toList(),
-                      onChanged: (val) => setStateModal(() => barrioSeleccionado = val),
-                    ),
-                    SizedBox(height: 12),
-                    TextField(controller: direccionCtrl, decoration: InputDecoration(labelText: 'Dirección')),
-                    TextField(controller: ciudadanoCtrl, decoration: InputDecoration(labelText: 'Ciudadano Afectado')),
-                    TextField(controller: telefonoCtrl, decoration: InputDecoration(labelText: 'Teléfono')),
-                  ],
-                ),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(dialogContext),
-                  child: Text('Cancelar', style: TextStyle(color: Colors.grey)),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red[700]),
-                  onPressed: () async {
-                    if (tituloCtrl.text.isEmpty || barrioSeleccionado == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Complete los campos obligatorios', style: TextStyle(color: Colors.white)), backgroundColor: Colors.red));
-                      return;
-                    }
-
-                    final nuevoDato = {
-                      'categoria_id': 2,
-                      'titulo': tituloCtrl.text,
-                      'descripcion_detallada': 'Reporte desde la app',
-                      'sector_barrio': barrioSeleccionado!.toUpperCase(),
-                      'direccion_referencia': direccionCtrl.text,
-                      'latitud': 3.59,
-                      'longitud': -76.49,
-                      'datos_extra': {
-                        'ciudadano': ciudadanoCtrl.text.isNotEmpty ? ciudadanoCtrl.text : 'Anónimo',
-                        'telefono': telefonoCtrl.text.isNotEmpty ? telefonoCtrl.text : 'No registrado',
-                      }
-                    };
-
-                    bool exito = await ApiService.crearReporte(nuevoDato);
-                    Navigator.pop(dialogContext);
-                    if (exito) {
-                      _cargarReportes(reiniciar: true);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Evento registrado con éxito', style: TextStyle(color: Colors.white)), backgroundColor: Colors.green));
-                    }
-                  },
-                  child: Text('Registrar', style: TextStyle(color: Colors.white)),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    );
-  }
-
-  Color _getEstadoColor(String estado) {
-    switch (estado.toLowerCase()) {
-      case 'pendiente': return Colors.orange;
-      case 'recibido': return Colors.blue;
-      case 'en proceso': return Colors.cyan;
-      case 'visitado-de-prioridad baja': return Colors.green;
-      case 'visitado-de-prioridad media': return Colors.orange;
-      case 'visitado-de-prioridad alta': return Colors.red;
-      case 'inspeccionado': return Colors.indigo;
-      case 'cerrado': return Colors.green;
-      default: return Colors.grey;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final reportesConCoordenadas = reportes.where((r) => r.latitud != null && r.longitud != null).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('SGRD Yumbo', style: TextStyle(fontSize: 16)),
@@ -436,7 +277,9 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 1,
             child: Scaffold(
               floatingActionButton: FloatingActionButton.extended(
-                onPressed: _mostrarDialogoCreacion,
+                onPressed: () {
+                  // TODO: Implementar creación de reporte
+                },
                 backgroundColor: Colors.red[700],
                 icon: const Icon(Icons.add, color: Colors.white),
                 label: const Text('Nuevo Evento', style: TextStyle(color: Colors.white)),
@@ -485,6 +328,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
+                  // Mostrar total de resultados
+                  if (reportes.isNotEmpty || totalReportes > 0)
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      child: Text(
+                        'Mostrando ${reportes.length} de $totalReportes resultados',
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                      ),
+                    ),
                   Expanded(
                     child: reportes.isEmpty && cargando
                         ? const Center(child: CircularProgressIndicator())
@@ -506,17 +358,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   }
                                   final reporte = reportes[index];
-                                  final ciudadano = reporte.datosExtra?['ciudadano'] ?? 'Anónimo';
-                                  final telefono = reporte.datosExtra?['telefono'] ?? 'N/A';
-                                  final bool esRufe = reporte.datosExtra?['es_rufe'] == true;
+                                  final ciudadano = reporte.ciudadano ?? 'Anónimo';
+                                  final telefono = reporte.telefono ?? 'N/A';
 
                                   return Card(
                                     elevation: 2,
                                     margin: EdgeInsets.symmetric(vertical: 6),
                                     child: ListTile(
                                       leading: CircleAvatar(
-                                        backgroundColor: esRufe ? Colors.purple[50] : Colors.red[50],
-                                        child: Icon(esRufe ? Icons.assignment_ind : Icons.warning_amber_rounded, color: esRufe ? Colors.purple[700] : Colors.red[700]),
+                                        backgroundColor: Colors.red[50],
+                                        child: Icon(Icons.warning_amber_rounded, color: Colors.red[700]),
                                       ),
                                       title: Text(reporte.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
                                       subtitle: Column(
@@ -525,22 +376,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           SizedBox(height: 4),
                                           Text('📍 ${reporte.barrio} - ${reporte.direccion}'),
                                           Text('👤 $ciudadano | 📱 $telefono'),
-                                          Row(
-                                            children: [
-                                              const Text('📊 Estado: ', style: TextStyle(fontSize: 12)),
-                                              Container(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                                                decoration: BoxDecoration(
-                                                  color: _getEstadoColor(reporte.estado),
-                                                  borderRadius: BorderRadius.circular(8),
-                                                ),
-                                                child: Text(
-                                                  reporte.estado,
-                                                  style: const TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                          if (reporte.latitud != null && reporte.longitud != null)
+                                            Text('📍 ${reporte.latitud!.toStringAsFixed(6)}, ${reporte.longitud!.toStringAsFixed(6)}',
+                                                style: TextStyle(fontSize: 10, color: Colors.grey[500])),
                                         ],
                                       ),
                                       isThreeLine: true,
@@ -548,20 +386,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           IconButton(
-                                            icon: const Icon(Icons.history_edu, color: Colors.blue),
-                                            tooltip: 'Trazabilidad y Ciclo de Vida',
+                                            icon: Icon(Icons.history_edu, color: Colors.blue),
+                                            tooltip: 'Trazabilidad',
                                             onPressed: () {
                                               showDialog(
                                                 context: context,
-                                                barrierDismissible: false,
                                                 builder: (context) => TrazabilidadDialog(reporte: reporte),
                                               );
                                             },
                                           ),
                                           IconButton(
                                             icon: Icon(Icons.edit_outlined, color: Colors.blueGrey),
+                                            tooltip: 'Editar',
                                             onPressed: () => _mostrarDialogoEdicion(reporte),
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -589,12 +427,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       subdomains: ['a', 'b', 'c'],
                       userAgentPackageName: 'com.emergency_col.app',
                     ),
-                    if (reportes.isNotEmpty)
+                    if (reportesConCoordenadas.isNotEmpty)
                       PolylineLayer(
                         polylines: [
                           Polyline(
-                            points: reportes
-                                .where((r) => r.latitud != null && r.longitud != null)
+                            points: reportesConCoordenadas
                                 .map((r) => LatLng(r.latitud!, r.longitud!))
                                 .toList(),
                             strokeWidth: 4.0,
@@ -603,10 +440,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     MarkerLayer(
-                      markers: reportes
-                          .where((r) => r.latitud != null && r.longitud != null)
-                          .map((reporte) {
-                        bool esRufe = reporte.datosExtra?['es_rufe'] == true;
+                      markers: reportesConCoordenadas.map((reporte) {
                         final punto = LatLng(reporte.latitud!, reporte.longitud!);
                         return Marker(
                           point: punto,
@@ -615,10 +449,34 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Tooltip(
                             message: '${reporte.titulo}\n${reporte.barrio}',
                             child: GestureDetector(
-                              onTap: () => _mostrarDetalleRufe(reporte),
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: Text(reporte.titulo),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('📍 ${reporte.barrio}'),
+                                        Text('📌 ${reporte.direccion}'),
+                                        Text('👤 ${reporte.ciudadano ?? 'Anónimo'}'),
+                                        Text('📱 ${reporte.telefono ?? 'N/A'}'),
+                                        Text('📊 ${reporte.estado}'),
+                                      ],
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text('Cerrar'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                               child: Icon(
                                 Icons.location_on,
-                                color: esRufe ? Colors.purple[800] : Colors.red[900],
+                                color: Colors.red[900],
                                 size: 45,
                               ),
                             ),
