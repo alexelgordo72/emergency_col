@@ -57,3 +57,5 @@ firebase_options.dart
 *.zip
 backup/*.sql
 *.backup
+backup_*/
+*.tar.gz
