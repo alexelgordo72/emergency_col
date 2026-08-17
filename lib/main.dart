@@ -1,6 +1,7 @@
 import 'services/barrio_service.dart';
 import 'screens/gestion_barrios_dialog.dart';
 import 'screens/planilla_ruta_dialog.dart';
+import 'screens/dashboard/dashboard_screen.dart';
 import 'screens/trazabilidad_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -386,12 +387,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SGRD Yumbo 🇨🇴 - Dashboard Georreferenciado'),
+        title: const Text('SGRD Yumbo', style: TextStyle(fontSize: 16)),
         backgroundColor: Colors.red[700],
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.holiday_village, color: Colors.white, size: 28),
+            icon: const Icon(Icons.dashboard, color: Colors.white, size: 22),
+            tooltip: 'Dashboard',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DashboardScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.holiday_village, color: Colors.white, size: 22),
             tooltip: 'Gestión de Barrios',
             onPressed: () {
               showDialog(
@@ -401,7 +412,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.assignment_late, color: Colors.white, size: 28),
+            icon: const Icon(Icons.assignment_late, color: Colors.white, size: 22),
             tooltip: 'Generar Planilla de Ruta',
             onPressed: () {
               showDialog(
@@ -427,8 +438,8 @@ class _HomeScreenState extends State<HomeScreen> {
               floatingActionButton: FloatingActionButton.extended(
                 onPressed: _mostrarDialogoCreacion,
                 backgroundColor: Colors.red[700],
-                icon: Icon(Icons.add, color: Colors.white),
-                label: Text('Nuevo Evento', style: TextStyle(color: Colors.white)),
+                icon: const Icon(Icons.add, color: Colors.white),
+                label: const Text('Nuevo Evento', style: TextStyle(color: Colors.white)),
               ),
               body: Column(
                 children: [
