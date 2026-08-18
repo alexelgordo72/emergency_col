@@ -3,9 +3,6 @@ import 'screens/gestion_barrios_dialog.dart';
 import 'screens/planilla_ruta_dialog.dart';
 import 'screens/dashboard/dashboard_screen.dart';
 import 'screens/trazabilidad_dialog.dart';
-import 'screens/grupos_familiares_screen.dart';
-import 'screens/generar_dashboard_screen.dart';
-import 'screens/nuevo_evento_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -35,38 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final MapController _mapController = MapController();
   final LatLng _centroYumbo = const LatLng(3.5833, -76.4953);
   double _currentZoom = 14.0;
-
-  Color _getEstadoColor(String estado) {
-    if (estado == null) return Colors.grey;
-    final estadoLower = estado.toLowerCase().trim();
-    
-    if (estadoLower.contains('pendiente')) return Colors.orange;
-    if (estadoLower.contains('proceso')) return Colors.blue;
-    if (estadoLower.contains('visitado') && estadoLower.contains('alta')) return Colors.red;
-    if (estadoLower.contains('visitado') && estadoLower.contains('media')) return Colors.orange;
-    if (estadoLower.contains('visitado') && estadoLower.contains('baja')) return Colors.green;
-    if (estadoLower.contains('visitado') && estadoLower.contains('sin prioridad')) return Colors.grey;
-    if (estadoLower.contains('visitado')) return Colors.purple;
-    if (estadoLower.contains('inspeccionado')) return Colors.indigo;
-    if (estadoLower.contains('cerrado')) return Colors.green;
-    if (estadoLower.contains('validado')) return Colors.teal;
-    
-    return Colors.grey;
-  }
-
-  IconData _getEstadoIcono(String estado) {
-    if (estado == null) return Icons.help;
-    final estadoLower = estado.toLowerCase().trim();
-    
-    if (estadoLower.contains('pendiente')) return Icons.pending;
-    if (estadoLower.contains('proceso')) return Icons.hourglass_top;
-    if (estadoLower.contains('visitado')) return Icons.check_circle;
-    if (estadoLower.contains('inspeccionado')) return Icons.search;
-    if (estadoLower.contains('cerrado')) return Icons.check_circle_outline;
-    if (estadoLower.contains('validado')) return Icons.verified;
-    
-    return Icons.help;
-  }
 
   @override
   void initState() {
@@ -115,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             telefonoFiltro = filtro;
             break;
           case 'rufe':
+            // RUFE es un filtro especial que se maneja en el backend
             barrioFiltro = filtro;
             break;
         }
@@ -139,7 +105,10 @@ class _HomeScreenState extends State<HomeScreen> {
         
         totalReportes = result['total'] ?? 0;
         currentOffset += nuevosReportes.length;
+        
+        // Verificar si hay más resultados
         tieneMas = currentOffset < totalReportes;
+        
         cargando = false;
         cargandoMas = false;
       });
@@ -264,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.dashboard, color: Colors.white, size: 24),
+            icon: const Icon(Icons.dashboard, color: Colors.white, size: 22),
             tooltip: 'Dashboard',
             onPressed: () {
               Navigator.push(
@@ -274,27 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.dashboard_customize, color: Colors.white, size: 24),
-            tooltip: 'Generar Dashboard Agrupado',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const GenerarDashboardScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.family_restroom, color: Colors.white, size: 24),
-            tooltip: 'Grupos Familiares',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const GruposFamiliaresScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.holiday_village, color: Colors.white, size: 24),
+            icon: const Icon(Icons.holiday_village, color: Colors.white, size: 22),
             tooltip: 'Gestión de Barrios',
             onPressed: () {
               showDialog(
@@ -304,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.assignment_late, color: Colors.white, size: 24),
+            icon: const Icon(Icons.assignment_late, color: Colors.white, size: 22),
             tooltip: 'Generar Planilla de Ruta',
             onPressed: () {
               showDialog(
@@ -314,8 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.refresh, color: Colors.white, size: 24),
-            tooltip: 'Refrescar',
+            icon: Icon(Icons.refresh),
             onPressed: () {
               _searchController.clear();
               _cargarReportes(reiniciar: true);
@@ -329,16 +277,8 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 1,
             child: Scaffold(
               floatingActionButton: FloatingActionButton.extended(
-                onPressed: () async {
-                  // ✅ ABRIR DIÁLOGO DE NUEVO EVENTO
-                  final result = await showDialog<bool>(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) => const NuevoEventoDialog(),
-                  );
-                  if (result == true) {
-                    _cargarReportes(reiniciar: true);
-                  }
+                onPressed: () {
+                  // TODO: Implementar creación de reporte
                 },
                 backgroundColor: Colors.red[700],
                 icon: const Icon(Icons.add, color: Colors.white),
@@ -388,6 +328,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
+                  // Mostrar total de resultados
                   if (reportes.isNotEmpty || totalReportes > 0)
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -419,24 +360,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   final reporte = reportes[index];
                                   final ciudadano = reporte.ciudadano ?? 'Anónimo';
                                   final telefono = reporte.telefono ?? 'N/A';
-                                  final estado = reporte.estado ?? 'Sin estado';
-                                  final colorEstado = _getEstadoColor(estado);
 
                                   return Card(
                                     elevation: 2,
                                     margin: EdgeInsets.symmetric(vertical: 6),
                                     child: ListTile(
                                       leading: CircleAvatar(
-                                        backgroundColor: colorEstado.withOpacity(0.2),
-                                        child: Icon(
-                                          _getEstadoIcono(estado),
-                                          color: colorEstado,
-                                        ),
+                                        backgroundColor: Colors.red[50],
+                                        child: Icon(Icons.warning_amber_rounded, color: Colors.red[700]),
                                       ),
-                                      title: Text(
-                                        reporte.titulo,
-                                        style: TextStyle(fontWeight: FontWeight.bold),
-                                      ),
+                                      title: Text(reporte.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
                                       subtitle: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
@@ -446,34 +379,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           if (reporte.latitud != null && reporte.longitud != null)
                                             Text('📍 ${reporte.latitud!.toStringAsFixed(6)}, ${reporte.longitud!.toStringAsFixed(6)}',
                                                 style: TextStyle(fontSize: 10, color: Colors.grey[500])),
-                                          const SizedBox(height: 4),
-                                          Container(
-                                            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                                            decoration: BoxDecoration(
-                                              color: colorEstado.withOpacity(0.15),
-                                              borderRadius: BorderRadius.circular(12),
-                                              border: Border.all(color: colorEstado.withOpacity(0.3)),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Icon(
-                                                  _getEstadoIcono(estado),
-                                                  size: 14,
-                                                  color: colorEstado,
-                                                ),
-                                                const SizedBox(width: 6),
-                                                Text(
-                                                  estado,
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: colorEstado,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
                                         ],
                                       ),
                                       isThreeLine: true,

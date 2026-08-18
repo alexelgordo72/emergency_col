@@ -18,7 +18,6 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
   final observacionController = TextEditingController();
   bool guardando = false;
 
-  // ✅ ESTADOS EXACTOS DE LA BASE DE DATOS
   final List<String> estadosPosibles = [
     'Pendiente',
     'En Proceso',
@@ -61,12 +60,17 @@ class _TrazabilidadDialogState extends State<TrazabilidadDialog> {
       if (exito) {
         observacionController.clear();
         _cargarHistorial();
+        
+        // ✅ ACTUALIZAR EL ESTADO EN EL REPORTE
         setState(() {
           widget.reporte.estado = estadoSeleccionado;
         });
+        
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('✅ Registro guardado exitosamente'), backgroundColor: Colors.green),
         );
+        
+        // ✅ CERRAR EL DIÁLOGO Y DEVOLVER true PARA REFRESCAR LA LISTA
         Navigator.pop(context, true);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

@@ -4,7 +4,7 @@ import '../models/reporte_comunitario.dart';
 import '../models/trazabilidad_model.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://10.147.17.2:8000/api';
+  static const String baseUrl = 'http://10.147.17.2:8001/api';
 
   static Future<Map<String, dynamic>> obtenerReportes({
     String? barrio,

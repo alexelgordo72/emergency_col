@@ -1,32 +1,41 @@
 import 'dart:convert';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/barrio.dart';
+import '../config.dart';
 
 class BarrioService {
-  static const String baseUrl = 'http://10.147.17.2:8000/api';
+  static String get baseUrl => AppConfig.apiUrl;
 
   static Future<List<Barrio>> getBarrios() async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/barrios'));
+      final response = await http.get(
+        Uri.parse('$baseUrl/barrios'),
+      ).timeout(Duration(seconds: 10));
+
+      print('📡 GET barrios - Status: ${response.statusCode}');
+      
       if (response.statusCode == 200) {
-        List data = jsonDecode(utf8.decode(response.bodyBytes));
-        return data.map((e) => Barrio.fromJson(e)).toList();
+        final data = json.decode(response.body);
+        print('📡 Barrios recibidos: ${data.length}');
+        
+        if (data is List) {
+          return data.map((e) => Barrio.fromJson(e)).toList();
+        }
+        return [];
       }
       return [];
     } catch (e) {
-      print("Error de conexion: $e");
+      print('❌ Error al obtener barrios: $e');
       return [];
     }
   }
 
-  static Future<bool> createBarrio(int id, String nombre, int comuna) async {
+  static Future<bool> createBarrio(String nombre, int comuna) async {
     try {
       final response = await http.post(
         Uri.parse('$baseUrl/barrios'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
-          'id': id,
           'nombre': nombre,
           'comuna': comuna,
         }),
