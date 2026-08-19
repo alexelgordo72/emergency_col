@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../config.dart';
 import '../models/reporte_comunitario.dart';
 import '../models/trazabilidad_model.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://10.147.17.2:8001/api';
+  static String get baseUrl => AppConfig.apiUrl;
 
   static Future<Map<String, dynamic>> obtenerReportes({
     String? barrio,
@@ -16,7 +17,6 @@ class ApiService {
     try {
       final Map<String, String> queryParams = {};
       
-      // Enviar los filtros al backend
       if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
         queryParams['barrio'] = barrio;
       }
@@ -37,11 +37,18 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
+        final List<dynamic> dataList = data['data'] ?? [];
+        
+        // Convertir cada elemento a ReporteComunitario
+        final reportes = dataList.map((e) {
+          return ReporteComunitario.fromJson(e);
+        }).toList();
+        
         return {
           'total': data['total'] ?? 0,
           'limit': data['limit'] ?? limit,
           'offset': data['offset'] ?? offset,
-          'data': (data['data'] as List?)?.map((e) => ReporteComunitario.fromJson(e)).toList() ?? [],
+          'data': reportes,
         };
       } else {
         print('❌ Error: ${response.statusCode} - ${response.body}');
@@ -147,6 +154,73 @@ class ApiService {
     } catch (e) {
       print('❌ Error en actualizarEstadoTrazabilidad: $e');
       return false;
+    }
+  }
+
+  static Future<Map<String, dynamic>> buscarPorTelefono(String telefono) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/grupos-por-telefono/$telefono'),
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return {};
+    } catch (e) {
+      print('❌ Error al buscar por teléfono: $e');
+      return {};
+    }
+  }
+
+  static Future<List<dynamic>> obtenerGrupoFamiliar(String telefono) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/grupos-familiares/$telefono'),
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return [];
+    } catch (e) {
+      print('❌ Error al obtener grupo familiar: $e');
+      return [];
+    }
+  }
+
+  static Future<Map<String, dynamic>> buscarGeneral(String query, {
+    int limit = 50,
+    int offset = 0
+  }) async {
+    try {
+      final uri = Uri.parse('$baseUrl/reportes/buscar')
+          .replace(queryParameters: {
+            'q': query,
+            'limit': limit.toString(),
+            'offset': offset.toString()
+          });
+      
+      print('🔍 Buscando: $query');
+      print('📡 URL: $uri');
+      
+      final response = await http.get(uri);
+      print('📡 Búsqueda - Status: ${response.statusCode}');
+      
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return {
+          'total': data['total'] ?? 0,
+          'limit': data['limit'] ?? limit,
+          'offset': data['offset'] ?? offset,
+          'data': (data['data'] as List?)?.map((e) => ReporteComunitario.fromJson(e)).toList() ?? [],
+          'search_term': data['search_term'] ?? query,
+        };
+      } else {
+        print('❌ Error: ${response.statusCode} - ${response.body}');
+        return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+      }
+    } catch (e) {
+      print('❌ Error en búsqueda general: $e');
+      return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
     }
   }
 }

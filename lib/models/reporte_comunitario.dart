@@ -1,7 +1,7 @@
 class ReporteComunitario {
   final String id;
   final String titulo;
-  String estado;  // ← AHORA ES MUTABLE
+  String estado;  // Mutable para trazabilidad
   final String fecha;
   final String barrio;
   final String direccion;
@@ -30,6 +30,8 @@ class ReporteComunitario {
   });
 
   factory ReporteComunitario.fromJson(Map<String, dynamic> json) {
+    final datosExtra = json['datos_extra'] is Map ? json['datos_extra'] : null;
+    
     return ReporteComunitario(
       id: json['id']?.toString() ?? '',
       titulo: json['titulo'] ?? 'Sin título',
@@ -37,13 +39,13 @@ class ReporteComunitario {
       fecha: json['fecha'] ?? json['fecha_creacion'] ?? '',
       barrio: json['barrio'] ?? json['sector_barrio'] ?? 'Sin barrio',
       direccion: json['direccion'] ?? json['direccion_referencia'] ?? '',
-      ciudadano: json['ciudadano'] ?? json['datos_extra']?['ciudadano'],
-      telefono: json['telefono'] ?? json['datos_extra']?['telefono'],
+      ciudadano: json['ciudadano'] ?? datosExtra?['ciudadano'],
+      telefono: json['telefono'] ?? datosExtra?['telefono'],
       descripcion: json['descripcion'] ?? json['descripcion_detallada'],
       latitud: json['latitud']?.toDouble(),
       longitud: json['longitud']?.toDouble(),
-      comuna: json['comuna'] ?? json['datos_extra']?['comuna'],
-      datosExtra: json['datos_extra'] is Map ? json['datos_extra'] : null,
+      comuna: json['comuna'] ?? datosExtra?['comuna'],
+      datosExtra: datosExtra,
     );
   }
 

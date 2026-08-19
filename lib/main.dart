@@ -3,9 +3,6 @@ import 'screens/gestion_barrios_dialog.dart';
 import 'screens/planilla_ruta_dialog.dart';
 import 'screens/dashboard/dashboard_screen.dart';
 import 'screens/trazabilidad_dialog.dart';
-import 'screens/grupos_familiares_screen.dart';
-import 'screens/generar_dashboard_screen.dart';
-import 'screens/nuevo_evento_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -39,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Color _getEstadoColor(String estado) {
     if (estado == null) return Colors.grey;
     final estadoLower = estado.toLowerCase().trim();
-    
     if (estadoLower.contains('pendiente')) return Colors.orange;
     if (estadoLower.contains('proceso')) return Colors.blue;
     if (estadoLower.contains('visitado') && estadoLower.contains('alta')) return Colors.red;
@@ -50,21 +46,18 @@ class _HomeScreenState extends State<HomeScreen> {
     if (estadoLower.contains('inspeccionado')) return Colors.indigo;
     if (estadoLower.contains('cerrado')) return Colors.green;
     if (estadoLower.contains('validado')) return Colors.teal;
-    
     return Colors.grey;
   }
 
   IconData _getEstadoIcono(String estado) {
     if (estado == null) return Icons.help;
     final estadoLower = estado.toLowerCase().trim();
-    
     if (estadoLower.contains('pendiente')) return Icons.pending;
     if (estadoLower.contains('proceso')) return Icons.hourglass_top;
     if (estadoLower.contains('visitado')) return Icons.check_circle;
     if (estadoLower.contains('inspeccionado')) return Icons.search;
     if (estadoLower.contains('cerrado')) return Icons.check_circle_outline;
     if (estadoLower.contains('validado')) return Icons.verified;
-    
     return Icons.help;
   }
 
@@ -87,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _cargarReportes({bool reiniciar = true}) async {
     if (cargando) return;
-    
     setState(() {
       cargando = true;
       if (reiniciar) {
@@ -105,18 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
       
       if (filtro.isNotEmpty) {
         switch (_tipoFiltro) {
-          case 'barrio':
-            barrioFiltro = filtro;
-            break;
-          case 'nombre':
-            nombreFiltro = filtro;
-            break;
-          case 'telefono':
-            telefonoFiltro = filtro;
-            break;
-          case 'rufe':
-            barrioFiltro = filtro;
-            break;
+          case 'barrio': barrioFiltro = filtro; break;
+          case 'nombre': nombreFiltro = filtro; break;
+          case 'telefono': telefonoFiltro = filtro; break;
+          case 'rufe': barrioFiltro = filtro; break;
         }
       }
       
@@ -130,13 +114,11 @@ class _HomeScreenState extends State<HomeScreen> {
       
       setState(() {
         final nuevosReportes = result['data'] as List<ReporteComunitario>? ?? [];
-        
         if (reiniciar) {
           reportes = nuevosReportes;
         } else {
           reportes.addAll(nuevosReportes);
         }
-        
         totalReportes = result['total'] ?? 0;
         currentOffset += nuevosReportes.length;
         tieneMas = currentOffset < totalReportes;
@@ -231,16 +213,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         'telefono': telefonoCtrl.text.isNotEmpty ? telefonoCtrl.text.trim() : (reporte.telefono ?? 'No registrado'),
                       }
                     };
-                    
                     print('📤 Enviando datos: $datosActualizados');
                     bool exito = await ApiService.actualizarReporte(reporte.id, datosActualizados);
                     print('📡 PUT response: $exito');
                     Navigator.pop(dialogContext);
                     if (exito) {
                       _cargarReportes(reiniciar: true);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registro actualizado', style: TextStyle(color: Colors.white)), backgroundColor: Colors.green));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registro actualizado'), backgroundColor: Colors.green));
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error al actualizar', style: TextStyle(color: Colors.white)), backgroundColor: Colors.red));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error al actualizar'), backgroundColor: Colors.red));
                     }
                   },
                   child: Text('Guardar', style: TextStyle(color: Colors.white)),
@@ -270,26 +251,6 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const DashboardScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.dashboard_customize, color: Colors.white, size: 24),
-            tooltip: 'Generar Dashboard Agrupado',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const GenerarDashboardScreen()),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.family_restroom, color: Colors.white, size: 24),
-            tooltip: 'Grupos Familiares',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const GruposFamiliaresScreen()),
               );
             },
           ),
@@ -329,17 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 1,
             child: Scaffold(
               floatingActionButton: FloatingActionButton.extended(
-                onPressed: () async {
-                  // ✅ ABRIR DIÁLOGO DE NUEVO EVENTO
-                  final result = await showDialog<bool>(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) => const NuevoEventoDialog(),
-                  );
-                  if (result == true) {
-                    _cargarReportes(reiniciar: true);
-                  }
-                },
+                onPressed: () {},
                 backgroundColor: Colors.red[700],
                 icon: const Icon(Icons.add, color: Colors.white),
                 label: const Text('Nuevo Evento', style: TextStyle(color: Colors.white)),
@@ -543,37 +494,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 50,
                           child: Tooltip(
                             message: '${reporte.titulo}\n${reporte.barrio}',
-                            child: GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    title: Text(reporte.titulo),
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('📍 ${reporte.barrio}'),
-                                        Text('📌 ${reporte.direccion}'),
-                                        Text('👤 ${reporte.ciudadano ?? 'Anónimo'}'),
-                                        Text('📱 ${reporte.telefono ?? 'N/A'}'),
-                                        Text('📊 ${reporte.estado}'),
-                                      ],
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(context),
-                                        child: Text('Cerrar'),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                              child: Icon(
-                                Icons.location_on,
-                                color: Colors.red[900],
-                                size: 45,
-                              ),
+                            child: Icon(
+                              Icons.location_on,
+                              color: Colors.red[900],
+                              size: 45,
                             ),
                           ),
                         );
