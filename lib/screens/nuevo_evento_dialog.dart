@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import '../services/api_service.dart';
-import '../services/barrio_service.dart';
+import 'package:emergency_col/services/api_service.dart';
+import 'package:emergency_col/services/barrio_service.dart';
+import 'package:emergency_col/models/barrio.dart';
 
 class NuevoEventoDialog extends StatefulWidget {
-  const NuevoEventoDialog({Key? key}) : super(key: key);
+  const NuevoEventoDialog({super.key});
 
   @override
   State<NuevoEventoDialog> createState() => _NuevoEventoDialogState();
@@ -11,15 +12,18 @@ class NuevoEventoDialog extends StatefulWidget {
 
 class _NuevoEventoDialogState extends State<NuevoEventoDialog> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _tituloController = TextEditingController();
-  final TextEditingController _direccionController = TextEditingController();
-  final TextEditingController _ciudadanoController = TextEditingController();
-  final TextEditingController _telefonoController = TextEditingController();
+  final _tituloController = TextEditingController();
+  final _direccionController = TextEditingController();
+  final _ciudadanoController = TextEditingController();
+  final _cedulaController = TextEditingController();
+  final _telefonoController = TextEditingController();
+  final _descripcionController = TextEditingController();
   
+  List<Barrio> _barrios = [];
   String? _barrioSeleccionado;
-  List<String> _barrios = [];
-  bool _cargando = true;
-  bool _guardando = false;
+  String _prioridadSeleccionada = 'PRIORIDAD MEDIA';
+  bool _cargandoBarrios = true;
+  bool _cargando = false;
 
   @override
   void initState() {
@@ -31,175 +35,210 @@ class _NuevoEventoDialogState extends State<NuevoEventoDialog> {
     try {
       final barrios = await BarrioService.getBarrios();
       setState(() {
-        _barrios = barrios.map((b) => b.nombre).toList();
-        _barrios.sort();
-        _cargando = false;
+        _barrios = barrios;
+        _cargandoBarrios = false;
+        if (_barrios.isNotEmpty) {
+          _barrioSeleccionado = _barrios.first.nombre;
+        }
       });
+      print('✅ Barrios cargados: ${barrios.length}');
     } catch (e) {
-      setState(() => _cargando = false);
+      print('❌ Error cargando barrios: $e');
+      setState(() {
+        _cargandoBarrios = false;
+      });
     }
   }
 
-  Future<void> _guardarEvento() async {
+  @override
+  void dispose() {
+    _tituloController.dispose();
+    _direccionController.dispose();
+    _ciudadanoController.dispose();
+    _cedulaController.dispose();
+    _telefonoController.dispose();
+    _descripcionController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _crearReporte() async {
     if (!_formKey.currentState!.validate()) return;
-    
-    setState(() => _guardando = true);
-    
+
+    setState(() => _cargando = true);
+
     try {
-      final datos = {
-        'categoria_id': 2,
+      final data = {
         'titulo': _tituloController.text.trim(),
-        'descripcion_detallada': 'Reporte desde la app',
-        'sector_barrio': _barrioSeleccionado?.toUpperCase() ?? '',
+        'descripcion_detallada': _descripcionController.text.trim(),
+        'sector_barrio': _barrioSeleccionado ?? '',
         'direccion_referencia': _direccionController.text.trim(),
-        'latitud': 3.59,
-        'longitud': -76.49,
+        'estado': 'PENDIENTE',
         'datos_extra': {
-          'ciudadano': _ciudadanoController.text.isNotEmpty ? _ciudadanoController.text.trim() : 'Anónimo',
-          'telefono': _telefonoController.text.isNotEmpty ? _telefonoController.text.trim() : 'No registrado',
-        }
+          'ciudadano': _ciudadanoController.text.trim(),
+          'cedula': _cedulaController.text.trim(),
+          'telefono': _telefonoController.text.trim(),
+          'prioridad': _prioridadSeleccionada,
+          'fuente_origen': 'Nuevo Evento SGRD',
+        },
       };
-      
-      final exito = await ApiService.crearReporte(datos);
-      
+
+      print('📤 Creando reporte: $data');
+      final exito = await ApiService.crearReporte(data);
+
+      setState(() => _cargando = false);
+
       if (exito) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('✅ Evento registrado con éxito'), backgroundColor: Colors.green),
-        );
-        Navigator.pop(context, true);
+        if (mounted) {
+          Navigator.pop(context, true);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('✅ Reporte creado exitosamente'), backgroundColor: Colors.green),
+          );
+        }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('❌ Error al registrar el evento'), backgroundColor: Colors.red),
-        );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('❌ Error al crear el reporte'), backgroundColor: Colors.red),
+          );
+        }
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('❌ Error: $e'), backgroundColor: Colors.red),
-      );
-    } finally {
-      setState(() => _guardando = false);
+      setState(() => _cargando = false);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('❌ Error: $e'), backgroundColor: Colors.red),
+        );
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Row(
-        children: [
-          Icon(Icons.add_circle, color: Colors.red[700]),
-          SizedBox(width: 8),
-          Text('Nuevo Evento de Emergencia', style: TextStyle(fontSize: 18)),
-        ],
-      ),
-      content: Container(
-        width: 450,
-        child: _cargando
-            ? Center(child: CircularProgressIndicator())
-            : Form(
-                key: _formKey,
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextFormField(
-                        controller: _tituloController,
-                        decoration: const InputDecoration(
-                          labelText: 'Título / Asunto',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.title),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Ingrese un título';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      DropdownButtonFormField<String>(
-                        value: _barrioSeleccionado,
-                        decoration: const InputDecoration(
-                          labelText: 'Barrio',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.location_city),
-                        ),
-                        items: _barrios.map((barrio) {
-                          return DropdownMenuItem(
-                            value: barrio,
-                            child: Text(barrio),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          setState(() => _barrioSeleccionado = value);
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Seleccione un barrio';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 12),
-                      TextFormField(
-                        controller: _direccionController,
-                        decoration: const InputDecoration(
-                          labelText: 'Dirección / Referencia',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.location_on),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      TextFormField(
-                        controller: _ciudadanoController,
-                        decoration: const InputDecoration(
-                          labelText: 'Ciudadano Afectado',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.person),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      TextFormField(
-                        controller: _telefonoController,
-                        decoration: const InputDecoration(
-                          labelText: 'Teléfono de Contacto',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.phone),
-                        ),
-                        keyboardType: TextInputType.phone,
-                      ),
-                    ],
+      title: const Text('Nuevo Evento', style: TextStyle(fontWeight: FontWeight.bold)),
+      content: SizedBox(
+        width: 400,
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  controller: _tituloController,
+                  decoration: const InputDecoration(
+                    labelText: 'Título *',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) => value?.isEmpty ?? true ? 'Campo requerido' : null,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _direccionController,
+                  decoration: const InputDecoration(
+                    labelText: 'Dirección *',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) => value?.isEmpty ?? true ? 'Campo requerido' : null,
+                ),
+                const SizedBox(height: 12),
+                if (_cargandoBarrios)
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: CircularProgressIndicator(),
+                  )
+                else
+                  DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      labelText: 'Barrio',
+                      border: OutlineInputBorder(),
+                    ),
+                    value: _barrioSeleccionado,
+                    items: _barrios.map((barrio) {
+                      return DropdownMenuItem(
+                        value: barrio.nombre,
+                        child: Text(barrio.nombre),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() => _barrioSeleccionado = value);
+                    },
+                  ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _ciudadanoController,
+                  decoration: const InputDecoration(
+                    labelText: 'Ciudadano Afectado',
+                    border: OutlineInputBorder(),
                   ),
                 ),
-              ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _cedulaController,
+                  decoration: const InputDecoration(
+                    labelText: 'Cédula',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _telefonoController,
+                  decoration: const InputDecoration(
+                    labelText: 'Teléfono',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.phone,
+                ),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: _descripcionController,
+                  decoration: const InputDecoration(
+                    labelText: 'Descripción',
+                    border: OutlineInputBorder(),
+                  ),
+                  maxLines: 3,
+                ),
+                const SizedBox(height: 12),
+                DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: 'Prioridad',
+                    border: OutlineInputBorder(),
+                  ),
+                  value: _prioridadSeleccionada,
+                  items: const [
+                    DropdownMenuItem(value: 'PRIORIDAD ALTA', child: Text('🔴 Alta')),
+                    DropdownMenuItem(value: 'PRIORIDAD MEDIA', child: Text('🟡 Media')),
+                    DropdownMenuItem(value: 'PRIORIDAD BAJA', child: Text('🟢 Baja')),
+                  ],
+                  onChanged: (value) {
+                    if (value != null) {
+                      setState(() => _prioridadSeleccionada = value);
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text('Cancelar', style: TextStyle(color: Colors.grey)),
+          onPressed: _cargando ? null : () => Navigator.pop(context),
+          child: const Text('Cancelar'),
         ),
         ElevatedButton(
-          onPressed: _guardando ? null : _guardarEvento,
+          onPressed: _cargando ? null : _crearReporte,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.red[700],
             foregroundColor: Colors.white,
           ),
-          child: _guardando
-              ? Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        strokeWidth: 2,
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Text('Guardando...'),
-                  ],
+          child: _cargando
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                 )
-              : Text('Registrar Evento'),
+              : const Text('Crear Evento'),
         ),
       ],
     );

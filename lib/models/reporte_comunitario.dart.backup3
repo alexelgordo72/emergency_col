@@ -11,7 +11,7 @@ class ReporteComunitario {
   final double? latitud;
   final double? longitud;
   final int? comuna;
-  final Map<String, dynamic> datosExtra;
+  final Map<String, dynamic>? datosExtra;
 
   ReporteComunitario({
     required this.id,
@@ -26,13 +26,11 @@ class ReporteComunitario {
     this.latitud,
     this.longitud,
     this.comuna,
-    this.datosExtra = const {},
+    this.datosExtra,
   });
 
   factory ReporteComunitario.fromJson(Map<String, dynamic> json) {
-    final datosExtra = json['datos_extra'] is Map 
-        ? Map<String, dynamic>.from(json['datos_extra'] as Map) 
-        : <String, dynamic>{};
+    final datosExtra = json['datos_extra'] is Map ? json['datos_extra'] : null;
     
     return ReporteComunitario(
       id: json['id']?.toString() ?? '',
@@ -41,12 +39,12 @@ class ReporteComunitario {
       fecha: json['fecha'] ?? json['fecha_creacion'] ?? '',
       barrio: json['barrio'] ?? json['sector_barrio'] ?? 'Sin barrio',
       direccion: json['direccion'] ?? json['direccion_referencia'] ?? '',
-      ciudadano: json['ciudadano'] ?? datosExtra['ciudadano'],
-      telefono: json['telefono'] ?? datosExtra['telefono'],
+      ciudadano: json['ciudadano'] ?? datosExtra?['ciudadano'],
+      telefono: json['telefono'] ?? datosExtra?['telefono'],
       descripcion: json['descripcion'] ?? json['descripcion_detallada'],
       latitud: json['latitud']?.toDouble(),
       longitud: json['longitud']?.toDouble(),
-      comuna: json['comuna'] ?? datosExtra['comuna'],
+      comuna: json['comuna'] ?? datosExtra?['comuna'],
       datosExtra: datosExtra,
     );
   }
