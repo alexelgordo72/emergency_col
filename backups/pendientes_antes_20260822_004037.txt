@@ -1,0 +1,1049 @@
+                  id                  |                              titulo                               | estado_actual |        fecha_creacion         
+--------------------------------------+-------------------------------------------------------------------+---------------+-------------------------------
+ 93da2188-dc46-4159-b692-91d3866e4fc8 | solicitud de visita                                               | PENDIENTE     | 2026-08-21 20:03:30.97987+00
+ 0d331514-9042-4754-94ef-7d4eab5d63b9 | Solicitud inspeccion                                              | PENDIENTE     | 2026-08-21 19:51:36.026232+00
+ 1858131b-9e15-4f93-bc96-6760da8236e5 | Solicitud - Oscar Salas                                           | Pendiente     | 2026-08-21 11:58:29.265029+00
+ 30b5eb93-725d-4a9e-8e46-222ae667d1ce | Solicitud - Edeniver Pabon Astudillo                              | Pendiente     | 2026-08-21 11:58:29.26425+00
+ 6255616a-6d26-4b6a-ac94-bf94a05ca29d | Solicitud - Maria Nilsa Escobar                                   | Pendiente     | 2026-08-21 11:58:29.263283+00
+ 2af6c65c-4395-475a-b3d8-4c5f24da297b | Solicitud - Margarita Piamba Paz                                  | Pendiente     | 2026-08-21 11:58:29.262708+00
+ 1aa04788-efd3-490b-a5e4-bb490bde0165 | Solicitud - Jhon Edinson Giraldo López                            | Pendiente     | 2026-08-21 11:58:29.26212+00
+ 1a52d502-0fac-4152-9493-0d35a9e6b2e7 | Solicitud - Carolina Bolaños                                      | Pendiente     | 2026-08-21 11:58:29.261725+00
+ a256c07b-80c5-406c-8656-65a1dc0f3ac3 | Solicitud - Casaval S.A. (Alejandra Pineda Arango)                | Pendiente     | 2026-08-21 11:58:29.261176+00
+ 44989786-1f9e-4df9-9737-5890a37e411f | Solicitud - Rosa Amelia Mosquera                                  | Pendiente     | 2026-08-21 11:58:29.260665+00
+ f59a98fb-0b56-4fbf-be59-b698f725d64f | Solicitud - Carlos Sneyder Cuero Garcia                           | Pendiente     | 2026-08-21 11:58:29.260282+00
+ 36eef03b-7a03-47a5-a826-6df6d2ab52b2 | Solicitud - Ana Beiba Quintero Ramirez                            | Pendiente     | 2026-08-21 11:58:29.25994+00
+ 9ae36307-25f4-49b2-bd39-12bc9b0006ba | Solicitud - Elizabeth Martinez                                    | Pendiente     | 2026-08-21 11:58:29.259548+00
+ be00800d-0cc0-491d-a7e6-a9f5e8bb46fb | Solicitud - Maria Edelmira Cardenas                               | Pendiente     | 2026-08-21 11:58:29.25918+00
+ 74678a00-a001-4d87-a223-aceafd7e2378 | Solicitud - Luz Mery Montero Caicedo                              | Pendiente     | 2026-08-21 11:58:29.258837+00
+ af55f676-fb81-4d9c-8fbc-b383df5d878c | Solicitud - Nancy Vargas G.                                       | Pendiente     | 2026-08-21 11:58:29.258366+00
+ 712babbf-6a99-46eb-911c-2370444aaadd | Solicitud - Julian Herrera Quintero                               | Pendiente     | 2026-08-21 11:58:29.257993+00
+ 9001bd1c-035e-4c39-b98d-7f8131d7b59a | Solicitud - Claudia Lorena Zuluaga Claros                         | Pendiente     | 2026-08-21 11:58:29.257608+00
+ 2b842534-ecce-4b8d-ac8c-dc30284f8fe7 | Solicitud - Profinas S.A. (Adelaida Montoya)                      | Pendiente     | 2026-08-21 11:58:29.257164+00
+ 2621cf0c-b31f-403a-984e-eddaf8616077 | Solicitud - Ancizar Lopez                                         | Pendiente     | 2026-08-21 11:58:29.255962+00
+ dc109705-ec13-4049-b382-0a4449daf5b0 | Solicitud - Rosalba Sandoval Velazco                              | Pendiente     | 2026-08-21 11:58:29.255553+00
+ 2d133fdf-7b10-4038-b832-02d222386dfe | Solicitud - Luz Dary Gonzalez                                     | Pendiente     | 2026-08-21 11:58:29.255081+00
+ e3049bb1-c51c-4328-a8da-2626320320e3 | Solicitud - Maribel Vargas Lopez                                  | Pendiente     | 2026-08-21 11:58:29.254557+00
+ 409eee20-3bc8-45b1-9883-e7e43c46c07a | Solicitud - Diego Alejandro Rojas Valencia                        | Pendiente     | 2026-08-21 11:58:29.25406+00
+ 4eea5c66-20d9-4b6b-9bd2-cc4d531af602 | Solicitud - Amary Bermudez Ledesma                                | Pendiente     | 2026-08-21 11:58:29.253516+00
+ 68a32d05-ae9a-45c8-870b-b4f5b2659024 | Solicitud - Sonia Maria                                           | Pendiente     | 2026-08-21 11:58:29.252861+00
+ 3ad718dd-afb2-439d-b3dd-461f5571c238 | Solicitud - Marly Omaira Collazos Galindez                        | Pendiente     | 2026-08-21 11:58:29.252165+00
+ 8c9a47b9-0114-4bd4-8ec2-132bcdb4c1b1 | Solicitud - Aide Pelhene Gomez                                    | Pendiente     | 2026-08-21 11:58:29.251828+00
+ d0c07201-df79-478e-a9d6-db1df31a0133 | Solicitud - Ines Yaneth Paya                                      | Pendiente     | 2026-08-21 11:58:29.251483+00
+ 3ee2739b-3847-44d4-abac-d500db16df5a | Solicitud - Rosario Cadavia Ortega                                | Pendiente     | 2026-08-21 11:58:29.251081+00
+ aebcb565-964a-4c47-83c1-c4e4d9aedfbb | Solicitud - Angelica Maria Berdugo Tangarife                      | Pendiente     | 2026-08-21 11:58:29.250707+00
+ 15bc6856-4528-4056-bdd2-5b30089866c9 | Solicitud - Victor Muñoz                                          | Pendiente     | 2026-08-21 11:58:29.25031+00
+ 4d01faae-3f9b-470c-9e61-e9f6e9122e12 | Solicitud - Luis Harold Moreno                                    | Pendiente     | 2026-08-21 11:58:29.24995+00
+ 315c0be2-03b5-4fc3-ba48-a9e495c6ca7c | Solicitud - Giselle Chavez                                        | Pendiente     | 2026-08-21 11:58:29.24954+00
+ 59076bce-5516-4ae2-838e-9fb575cb3dfe | Solicitud - Jaime Arturo Castillo Corredor                        | Pendiente     | 2026-08-21 11:58:29.249167+00
+ 82423559-5b5a-4d15-83e3-14f529bcf64e | Solicitud - Maria Hermelinda Perez Castillo                       | Pendiente     | 2026-08-21 11:58:29.248778+00
+ 1c8f4e37-7f8d-4856-affc-55e782065c13 | Solicitud - Luz Marina Moreno Cardenas                            | Pendiente     | 2026-08-21 11:58:29.248327+00
+ d4e9ab45-3f41-4742-bd8f-d7edd878fcaa | Solicitud - Dayda Prado Rojas                                     | Pendiente     | 2026-08-21 11:58:29.247937+00
+ 22630e79-ccea-4714-9cb2-c55ef6acc30d | Solicitud - Amparo Vasquez                                        | Pendiente     | 2026-08-21 11:58:29.247461+00
+ cf7571bf-6ff9-48c9-b6fb-c6f24e6d3819 | Solicitud - Sandra Aristizabal                                    | Pendiente     | 2026-08-21 11:58:29.247061+00
+ 3a200f4e-e3cc-44b7-9ebb-ada5200ddad7 | Solicitud - Luz Adriana Rivera                                    | Pendiente     | 2026-08-21 11:58:29.246571+00
+ 50fa9a7f-d45b-4a4c-9434-8dbceb8f19c1 | Solicitud - Juan Elias Chavez                                     | Pendiente     | 2026-08-21 11:58:29.246138+00
+ 87115e9a-e712-4513-b6af-54d0d0991609 | Solicitud - Leidy Montes                                          | Pendiente     | 2026-08-21 11:58:29.245743+00
+ 75fbab4b-175e-4321-8512-fe2fb40c3b01 | Solicitud - Jesus Danilo Cortazar                                 | Pendiente     | 2026-08-21 11:58:29.245251+00
+ c7783db8-efd5-48bf-bffb-68c71e2e624c | Solicitud - Beatriz Moreno de Amaya                               | Pendiente     | 2026-08-21 11:58:29.244828+00
+ 12d06604-46dd-4c3f-a81e-7608beb1f760 | Solicitud - Biuny Smith Ardila Monroy                             | Pendiente     | 2026-08-21 11:58:29.244205+00
+ a8b30699-9614-495d-8c72-4982c520c8c9 | Solicitud - Ofir Henao Morales                                    | Pendiente     | 2026-08-21 11:58:29.243637+00
+ 50177326-f966-4942-9bb4-ace450356dcc | Solicitud - Wilson Valencia Gomez                                 | Pendiente     | 2026-08-21 11:58:29.243054+00
+ 822122fc-20f7-4c3d-b416-a135a8e28202 | Solicitud - Diana Jhoana                                          | Pendiente     | 2026-08-21 11:58:29.242325+00
+ 873719cf-15f0-42d4-a7a5-b97c7109eeb7 | Solicitud - Luis Fernando Lita                                    | Pendiente     | 2026-08-21 11:58:29.241497+00
+ 4da9745b-bcc3-4e38-a7e4-ba0db2da2af4 | Solicitud - Jenny Falla Ordozo                                    | Pendiente     | 2026-08-21 11:58:29.240932+00
+ df6343e8-0ff1-42e3-8dda-fc272ba72383 | Solicitud - Carmen Patricia Vargas Rojas                          | Pendiente     | 2026-08-21 11:58:29.240134+00
+ 33faef8d-5a65-405f-9125-3615ed900fcf | Solicitud - Marlene Valencia Astaiza                              | Pendiente     | 2026-08-21 11:58:29.239475+00
+ b7a36969-19df-46aa-9423-ade228becc1f | Solicitud - Jorge Enrique Moreno                                  | Pendiente     | 2026-08-21 11:58:29.238759+00
+ f4a4a65d-fba0-4b49-aaf3-8cd7e73caddd | Solicitud - Cristina Chavez                                       | Pendiente     | 2026-08-21 11:58:29.238026+00
+ d98ec976-8ec5-48d8-834e-f18ca4938848 | Solicitud - Mariela Lopez Arango                                  | Pendiente     | 2026-08-21 11:58:29.23451+00
+ 84f03ce1-cc89-49d0-8287-7bb85de264b2 | Solicitud - Maria Elena Sanchez                                   | Pendiente     | 2026-08-21 11:55:16.112623+00
+ 19abc5fd-7151-4c0f-88c9-a7bb79db84a8 | Solicitud - Lucera Cerquera                                       | Pendiente     | 2026-08-21 11:55:16.112004+00
+ 9e492d1f-851c-4a5a-832d-a79425b5ee8e | Solicitud - Alejandro Guzman                                      | Pendiente     | 2026-08-21 11:55:16.111373+00
+ e910525a-90a5-4c36-b33d-5af0eeb87e84 | Solicitud - Rubiela Galindez                                      | Pendiente     | 2026-08-21 11:55:16.110772+00
+ 99a8e26c-acb7-48d2-ae43-996382a84f9c | Solicitud - Fiely Gutierrez                                       | Pendiente     | 2026-08-21 11:55:16.110073+00
+ 632ebfc0-3592-495d-8cba-58f6ad98be8a | Solicitud - Luiz Bernardo Pinchao                                 | Pendiente     | 2026-08-21 11:55:16.109218+00
+ def43cb7-29be-4d7d-b1b8-0c993a5e4b36 | Solicitud - Clisofon Londoño                                      | Pendiente     | 2026-08-21 11:55:16.108506+00
+ 6337efc7-eeb5-43b7-9614-1d8d2694cf8a | Solicitud - Arnulfo Muñoz Soscue                                  | Pendiente     | 2026-08-21 11:55:16.108151+00
+ 4f32bf06-7252-45b9-8b77-b4ed3815fb9c | Solicitud - Clara Ines Silva                                      | Pendiente     | 2026-08-21 11:55:16.107846+00
+ 313981e9-e30e-46dd-a036-74d222bcde7b | Solicitud - Benito Hoyos Muñoz                                    | Pendiente     | 2026-08-21 11:55:16.107491+00
+ 5383869a-5800-4777-b576-8993830ac4b0 | Solicitud - Yuri Hernandez                                        | Pendiente     | 2026-08-21 11:55:16.107096+00
+ 8cfc2209-daf6-4575-8a50-2bf62ade2983 | Solicitud - Abrahan Clavere                                       | Pendiente     | 2026-08-21 11:55:16.106683+00
+ 79af1dcc-4e41-409b-9558-0c9fb6d26d04 | Solicitud - Esperanza Cardenas                                    | Pendiente     | 2026-08-21 11:55:16.106015+00
+ a65ab895-55ad-4071-93b9-31275ba2ea6c | Solicitud - Patricia Rengifo Alvarez                              | Pendiente     | 2026-08-21 11:55:16.105617+00
+ b3456d5f-e7aa-498e-b553-774769a1eb27 | Solicitud - Julieth Muñoz                                         | Pendiente     | 2026-08-21 11:55:16.105086+00
+ bb4da7af-f8b9-44ea-9ae8-dd01726e1402 | Solicitud - Zoraida Guaca Potosi                                  | Pendiente     | 2026-08-21 11:55:16.104554+00
+ f732cbb9-9a9a-4d75-adb5-63514a2a9500 | Solicitud - Leimy Alexandra Calambas Montilla                     | Pendiente     | 2026-08-21 11:55:16.104187+00
+ dd30a310-cff5-4091-91a8-ef40aad8e327 | Solicitud - Viviana Ortega                                        | Pendiente     | 2026-08-21 11:55:16.103783+00
+ 3f600336-a15c-456d-8fc0-c9079029df78 | Solicitud - Ruth Arbelaez Gutierrez                               | Pendiente     | 2026-08-21 11:55:16.103464+00
+ e293426f-48d0-4720-b621-171a08b36b03 | Solicitud - Alex Fernando Alonso                                  | Pendiente     | 2026-08-21 11:55:16.103082+00
+ 03744326-79e4-4df4-b3ea-23045d50ebff | Solicitud - Fabiola Lopez Garreta                                 | Pendiente     | 2026-08-21 11:55:16.102632+00
+ 11a85be0-73e2-4d5d-8b00-c5cb343096c0 | Solicitud - Ana Lucia Rios                                        | Pendiente     | 2026-08-21 11:55:16.102041+00
+ 3d433d28-ad91-4d93-8ba4-3e8461aea78d | Solicitud - Gloria Yainna Fernandez Correa                        | Pendiente     | 2026-08-21 11:55:16.101637+00
+ 4d2d00ce-fb35-44d7-ba4d-e9cb28de8483 | Solicitud - Yenny Camacho                                         | Pendiente     | 2026-08-21 11:55:16.100646+00
+ 529ad157-c784-410d-945c-7dd5af87b2de | Solicitud - Emerson Gamboa Malagon                                | Pendiente     | 2026-08-21 11:55:16.099592+00
+ 34c6c628-3948-4259-8c5b-60e8bf62d462 | Solicitud - Yesenia Vasquez Rivera                                | Pendiente     | 2026-08-21 11:55:16.098829+00
+ e5cbe618-3d4b-44d4-82aa-bf9a85391d66 | Solicitud - Juan Angulo Kamu                                      | Pendiente     | 2026-08-21 11:55:16.095003+00
+ 94d6f905-2074-45d2-82f5-c7c3d0ec2df9 | Solicitud - Maria Delicia Gonzales                                | Pendiente     | 2026-08-21 11:52:36.001862+00
+ 82df3337-1570-471a-82d0-afa46e044c72 | Solicitud - Lucelly Loaiza Sambony                                | Pendiente     | 2026-08-21 11:52:36.001464+00
+ 8044dddf-90d8-436b-b54d-de09ec83f837 | Solicitud - Adriana Patricia Orcita                               | Pendiente     | 2026-08-21 11:52:36.001009+00
+ 5efe311f-0e4b-4bd0-bb03-c3e1f180c076 | Solicitud - Yolonda Bojorge                                       | Pendiente     | 2026-08-21 11:52:36.000597+00
+ ebf373c6-a485-46de-b81b-a06aa413ca8e | Solicitud - Victor Manuel Moreno                                  | Pendiente     | 2026-08-21 11:52:36.000024+00
+ 5cc974a2-3806-4ad5-8238-9904d1c6a5d0 | Solicitud - Ana Maria Valencia                                    | Pendiente     | 2026-08-21 11:52:35.999609+00
+ 8eafc1fa-051f-46f2-b073-15ccdb7245b5 | Solicitud - Sandra Eugenia Zamora Franco                          | Pendiente     | 2026-08-21 11:52:35.999256+00
+ 5160a8e0-0762-4921-8e39-a18885dd50c5 | Solicitud - Clara Ines Silva                                      | Pendiente     | 2026-08-21 11:52:35.998895+00
+ bf39d4fd-1389-4b2b-ab29-39580bfe45fe | Solicitud - Judith Romero                                         | Pendiente     | 2026-08-21 11:52:35.998224+00
+ 312ab5ef-e71d-4251-a588-4f97e3c138ab | Solicitud - Alicia Nuñez                                          | Pendiente     | 2026-08-21 11:52:35.99785+00
+ 7c483d9e-5bb4-45cd-a17f-68ada6375bb3 | Solicitud - Ramiro Quintero Caldiron                              | Pendiente     | 2026-08-21 11:52:35.997438+00
+ 9e1afcbf-a59f-4e0a-bdd7-d4654351d794 | Solicitud - Nelly del Carmen Chauza                               | Pendiente     | 2026-08-21 11:52:35.997063+00
+ 3ad4ced5-c562-46f0-9b1e-b0a145f82566 | Solicitud - Cesar Augusto Prado Martinez                          | Pendiente     | 2026-08-21 11:52:35.996674+00
+ 1b4b4a84-e3c3-480c-8b0c-5c0a7a829673 | Solicitud - Mary Hidalgo                                          | Pendiente     | 2026-08-21 11:52:35.996195+00
+ d22bab9f-7fd8-42f0-b605-0f037f09e4f2 | Solicitud - Natasha Rengifo Buelvas                               | Pendiente     | 2026-08-21 11:52:35.995669+00
+ 656d069d-2352-49ff-9ddb-8d9c1dd9f29f | Solicitud - Simon Bolaños                                         | Pendiente     | 2026-08-21 11:52:35.995138+00
+ a30f6523-aa35-4fb8-8252-d2304c09ebcb | Solicitud - Simon Bolaños                                         | Pendiente     | 2026-08-21 11:52:35.994297+00
+ 3e9571cc-72d3-4b3a-a56e-f99dc4bf0011 | Solicitud - Miguel Angel Soabedra                                 | Pendiente     | 2026-08-21 11:52:35.993662+00
+ 6f649467-6e92-456a-9bb6-dfb97c5592b6 | Solicitud - Pedronel Moreno                                       | Pendiente     | 2026-08-21 11:52:35.98552+00
+ 497d7afa-98ea-44e6-a14c-219a7d97198a | Reporte Urgente                                                   | PENDIENTE     | 2026-08-20 20:49:27.703397+00
+ fe0c25e2-4b3b-4e8f-8705-7efa33eb1dd1 | Prueba final                                                      | PENDIENTE     | 2026-08-20 20:27:19.83866+00
+ 1c2dda4b-2711-40db-b8f1-5b365fe6d94e | Reporte                                                           | PENDIENTE     | 2026-08-19 20:18:40.908039+00
+ 0fd3ead0-2bb7-4a88-93a1-291ea6f4afad | RUFE 254 - Katerine Pelaez Bochorquez                             | PENDIENTE     | 2026-08-19 18:30:34.275942+00
+ fd987d80-fc2b-40e1-a95a-c7008b192117 | RUFE 251 - Vladimir Correa Giraldo                                | PENDIENTE     | 2026-08-19 18:29:30.11887+00
+ b6904856-00e6-422f-a313-09937f79dc6d | RUFE 250 - Maria Eugenia Lozano                                   | PENDIENTE     | 2026-08-19 18:28:20.014092+00
+ c71d7f6c-7d3b-437a-b028-94dc02a1d6b2 | RUFE 249 - Santo Ricardo Egred Otero                              | PENDIENTE     | 2026-08-19 18:28:20.013415+00
+ be6af279-d5d8-4ef3-83a7-059177e9833b | RUFE 248 - Cecilia Elena Battle Rodriguez                         | PENDIENTE     | 2026-08-19 18:28:20.012758+00
+ 7994d959-7b28-47d0-999b-9e35dfd16692 | RUFE 247 - Edel Ruber Castro Arias                                | PENDIENTE     | 2026-08-19 18:28:20.011998+00
+ 5f68df2f-d019-4126-87ba-b8154b12acd2 | RUFE 246 - Nubia Rojas Bolaños                                    | PENDIENTE     | 2026-08-19 18:28:20.008612+00
+ 8a968a75-9fc1-4249-9f68-7c1810de2f96 | RUFE 245 - Hector Fabio Cabezas Bonilla                           | PENDIENTE     | 2026-08-19 18:17:42.973873+00
+ 3a8b7dba-f25b-4108-bdf2-91ac77958169 | RUFE 244 - Jose Rene Gomez Campo                                  | PENDIENTE     | 2026-08-19 18:17:42.973157+00
+ df3d4d98-10a1-4a62-b39b-9decd565193c | RUFE 243 - Hugo Piamba Jimenez                                    | PENDIENTE     | 2026-08-19 18:17:42.97239+00
+ e36c45eb-246a-42c7-9984-4481dea0a514 | RUFE 242 - Jhon Ever Lamayo Plaza                                 | PENDIENTE     | 2026-08-19 18:17:42.97176+00
+ 186d22c5-303c-4601-b88e-3b55927915a1 | RUFE 241 - Julian Otoya                                           | PENDIENTE     | 2026-08-19 18:17:42.968177+00
+ 7f1cf51c-a096-47d4-ab02-afb6c8911afa | RUFE 240 - Monica Salazar Abello                                  | PENDIENTE     | 2026-08-19 18:13:33.564608+00
+ 720fe379-e07c-453b-88b6-8bb7f84e8f5b | RUFE 239 - Laurentina Joaqui Hoyos                                | PENDIENTE     | 2026-08-19 18:13:33.563968+00
+ d3b2fd9f-bfc2-4499-b080-a8f102aeb855 | RUFE 238 - Carlos Enrique Posada Rivera                           | PENDIENTE     | 2026-08-19 18:13:33.563268+00
+ ba9ad3df-6171-48de-9613-525c70ced078 | RUFE 237 - Luz Marina Posada Monsalve                             | PENDIENTE     | 2026-08-19 18:13:33.562597+00
+ 8a44bd94-9990-43ac-ad9a-1d6cd8e43ca1 | RUFE 236 - Otilia Isidora Astudillo Alvarez                       | PENDIENTE     | 2026-08-19 18:13:33.559374+00
+ aa941d05-3077-41b4-a64c-e57cf5a48744 | RUFE 235 - Noralba Quiñones                                       | PENDIENTE     | 2026-08-19 18:10:43.698926+00
+ 35fed1ee-9ec0-47c9-afea-f4f8091e1884 | RUFE 234 - Leany Gomez Beltran                                    | PENDIENTE     | 2026-08-19 18:10:43.697804+00
+ a3457afe-83b6-4abe-b7c9-073a68060ca0 | RUFE 233 - Fabriciana Velazco Trochez                             | PENDIENTE     | 2026-08-19 18:10:43.696536+00
+ 59226e65-fc5c-43fe-881f-274668e9c9f3 | RUFE 232 - Luis Edwardo Franco Muñoz                              | PENDIENTE     | 2026-08-19 18:10:43.695652+00
+ b6122f14-a02f-4b44-a1da-0ef78cfd7a7f | RUFE 231 - Rocket Artemio Ortiz                                   | PENDIENTE     | 2026-08-19 18:10:43.692576+00
+ 8c64d43f-9713-4fd6-8358-63c7d05c9504 | RUFE 230 - Daniel Andres Arcila Ramírez                           | PENDIENTE     | 2026-08-19 18:09:37.553863+00
+ 52a7e382-97b8-44cd-ba01-48c9251588b0 | RUFE 229 - Juan Ramón Gutierrez Marin                             | PENDIENTE     | 2026-08-19 18:09:37.552692+00
+ 92d9b03c-ace3-4448-a370-a790e88186fc | RUFE 228 - Jose Felix Giraldo                                     | PENDIENTE     | 2026-08-19 18:09:37.552061+00
+ 39f13c31-8423-4268-9ce9-828c29d54b74 | RUFE 227 - Maria Patricia Guerrero                                | PENDIENTE     | 2026-08-19 18:09:37.551403+00
+ 8b6988a9-ad94-4a15-a243-b70f1c787cd1 | RUFE 226 - Juan Carlos Salazar Castaño                            | PENDIENTE     | 2026-08-19 18:09:37.548054+00
+ 0a87c3e5-cd96-4d5b-a86b-50cb8a536cd4 | RUFE 219 - Percides Sanchez                                       | PENDIENTE     | 2026-08-19 18:05:13.639359+00
+ 72f476cd-9e83-4008-a36c-5c67183020ce | RUFE 218 - Orfelina Gomez Chito                                   | PENDIENTE     | 2026-08-19 18:05:13.638191+00
+ 35bec7fe-46e1-4905-99bd-3776551d6bc7 | RUFE 217 - Fernando Londoño Casas                                 | PENDIENTE     | 2026-08-19 18:05:13.636975+00
+ 07ccf329-0dd8-496e-bebd-5fa14cf2e449 | RUFE 216 - Isabel Cristina Arboleda Correa                        | PENDIENTE     | 2026-08-19 18:05:13.635128+00
+ 0b56f15f-9192-408b-a39f-d6c5c9c130ba | RUFE 215 - William David Diaz                                     | PENDIENTE     | 2026-08-19 18:05:13.630511+00
+ a843c2b2-35b8-4117-9261-a7153d737dad | RUFE 220 - Olmedo Zuñiga Gomez                                    | PENDIENTE     | 2026-08-19 17:47:05.707774+00
+ 7592c3e2-5c93-4a24-a137-b771185f2cbb | RUFE 225 - Miguel Navas                                           | PENDIENTE     | 2026-08-19 17:45:50.089335+00
+ a0e88a89-f86c-4f87-ba37-9ad1a1024018 | RUFE 224 - Lucelly Ramires Sanchez                                | PENDIENTE     | 2026-08-19 17:45:50.088657+00
+ 99ff1162-8eec-4818-8453-6fd54ef7ae06 | RUFE 223 - Lucas Urbano Gomez                                     | PENDIENTE     | 2026-08-19 17:45:50.087936+00
+ 3178aab3-35da-4f81-bdaa-a5ebafa7be70 | RUFE 222 - Fredy Zuñiga Galindez                                  | PENDIENTE     | 2026-08-19 17:45:50.087227+00
+ 8804cc2e-6be2-48ba-a638-686a1c1af5cf | RUFE 221 - Claudia Rocio Giraldo Riaño                            | PENDIENTE     | 2026-08-19 17:45:50.083954+00
+ ebe33626-5f9b-4bfa-adbe-341d52728714 | Prueba desde API                                                  | PENDIENTE     | 2026-08-19 17:21:59.331216+00
+ 14dfc338-d526-46b1-99d5-335ec675a612 | Visita Pendiente 6 - Angelo Sanchez Zuleta                        | PENDIENTE     | 2026-08-19 02:46:49.096026+00
+ 71200282-c25a-4ced-b8c9-805dbcc57322 | Visita Pendiente 6 - Marco Fidel Sosis                            | PENDIENTE     | 2026-08-19 02:46:49.090539+00
+ 675203f3-6e91-4eca-bf84-6d957c20ca9c | Visita Pendiente 5 - Luis Norberto Velaza                         | PENDIENTE     | 2026-08-19 02:45:20.636791+00
+ 83717bb6-ae4f-4471-88f1-dd243467f641 | Visita Pendiente 5 - Jose Leonardo Gonzalez                       | PENDIENTE     | 2026-08-19 02:45:20.636216+00
+ 994a3023-4f96-4ed8-b486-5f06d4603c43 | Visita Pendiente 5 - Marqori Polido Herrera                       | PENDIENTE     | 2026-08-19 02:45:20.635615+00
+ e1e36625-24d2-4dc1-a94b-9d703a272cb6 | Visita Pendiente 5 - Fredy Motato y Nancy Perez                   | PENDIENTE     | 2026-08-19 02:45:20.634915+00
+ 8b1e4b36-c54d-4c75-aa81-3e059cb946e5 | Visita Pendiente 5 - Ammira Arroyo                                | PENDIENTE     | 2026-08-19 02:45:20.634279+00
+ d94040bc-f61c-4144-8ec7-863d9562e427 | Visita Pendiente 5 - James I. Ligmun                              | PENDIENTE     | 2026-08-19 02:45:20.63372+00
+ 7c8c1d78-68d6-4f34-bc24-8df602ac196d | Visita Pendiente 5 - Luis Fdo Ordoñez                             | PENDIENTE     | 2026-08-19 02:45:20.633103+00
+ 68297088-c05b-489f-93be-f6051c6e9603 | Visita Pendiente 5 - Rosa Blanca Pardo                            | PENDIENTE     | 2026-08-19 02:45:20.632509+00
+ e7eba413-cc49-42f0-b17b-32fece1acf9a | Visita Pendiente 5 - Natalia Andrea Ordoñez C.                    | PENDIENTE     | 2026-08-19 02:45:20.631282+00
+ 5e93617e-8775-4903-87bd-6b5a998fb56d | Visita Pendiente 5 - Melida de Jesus Doge                         | PENDIENTE     | 2026-08-19 02:45:20.630599+00
+ 7706cab7-90b2-40d7-8020-83499b6de60d | Visita Pendiente 5 - Liliana Prado Kájas                          | PENDIENTE     | 2026-08-19 02:45:20.629959+00
+ 0596edec-ea5b-43e8-abe7-32246d529411 | Visita Pendiente 5 - Diana Carolina Diaz                          | PENDIENTE     | 2026-08-19 02:45:20.629321+00
+ fe2a07c9-9f90-438b-adfc-c661e8741b92 | Visita Pendiente 5 - Juan Manuel Largo y Melissa Castañeda        | PENDIENTE     | 2026-08-19 02:45:20.628721+00
+ f73f9101-2d02-4ca2-bdc7-a1addc2ace09 | Visita Pendiente 5 - Diego Arnulfo Arroyo                         | PENDIENTE     | 2026-08-19 02:45:20.628097+00
+ afa2deed-c97e-4c0f-81bf-1cc7ec154727 | Visita Pendiente 5 - Hailen Alexandra Barrios Florez              | PENDIENTE     | 2026-08-19 02:45:20.627415+00
+ 770a1bd1-954f-41b5-b762-8e27a0ac7d98 | Visita Pendiente 5 - Nubia Estella Campos                         | PENDIENTE     | 2026-08-19 02:45:20.626666+00
+ 41ed6801-a28b-496f-9038-b478f14a05b4 | Visita Pendiente 5 - Jose Miguel Alvarez                          | PENDIENTE     | 2026-08-19 02:45:20.626062+00
+ d769ad95-4e3a-437e-9bc5-08cfde7d840f | Visita Pendiente 5 - Elizabeth Martinez                           | PENDIENTE     | 2026-08-19 02:45:20.625358+00
+ b993a99e-3aa6-441a-8e5d-6f0e27e73b0c | Visita Pendiente 5 - Aliria Ramirez Ocampo                        | PENDIENTE     | 2026-08-19 02:45:20.624759+00
+ 598f9388-ae77-4a07-aa9a-ddc4909f0c50 | Visita Pendiente 5 - Zoraida Polanco Cardona                      | PENDIENTE     | 2026-08-19 02:45:20.624039+00
+ 265fe769-6fa8-445f-8931-30027c33ab2c | Visita Pendiente 5 - Patricia Quintero Mazuera                    | PENDIENTE     | 2026-08-19 02:45:20.623392+00
+ 0cfa3b90-0a50-47da-8239-3b030dd3284c | Visita Pendiente 5 - Beneida Lozada Aguirre                       | PENDIENTE     | 2026-08-19 02:45:20.622749+00
+ 0ebff710-996b-4dee-9567-ba9fbd5a5eff | Visita Pendiente 5 - Carmen Rosa Luna Garzón                      | PENDIENTE     | 2026-08-19 02:45:20.62205+00
+ a333619d-63b6-46ad-99ff-246e5e995dba | Visita Pendiente 5 - Daniel Alejandro Franco Garcia               | PENDIENTE     | 2026-08-19 02:45:20.621456+00
+ e61e18b6-0988-4783-abf9-fec41775e242 | Visita Pendiente 5 - Elisa Arce                                   | PENDIENTE     | 2026-08-19 02:45:20.620907+00
+ 0f9b7f7b-c92b-466e-b71b-0b547ae8ec21 | Visita Pendiente 5 - Brayan Valencia                              | PENDIENTE     | 2026-08-19 02:45:20.620348+00
+ 02f832fe-fa44-4b84-806f-ff627325663a | Visita Pendiente 5 - Diego Salazar Toro                           | PENDIENTE     | 2026-08-19 02:45:20.619214+00
+ a6482887-5606-41e0-a0d1-2905b7608ec2 | Visita Pendiente 5 - Jaime Paredes                                | PENDIENTE     | 2026-08-19 02:45:20.618582+00
+ 79fcbc74-2038-4fc0-80b4-8311fbe5f61a | Visita Pendiente 5 - Lina Marcela Lopez Mosquera                  | PENDIENTE     | 2026-08-19 02:45:20.618015+00
+ d5a39cf5-8e22-4edf-a6e7-74f76a6aa586 | Visita Pendiente 5 - Carlos Steven Prado Moncaleano               | PENDIENTE     | 2026-08-19 02:45:20.617415+00
+ db69ff4d-0dab-4595-9afd-525a5bdcfcf6 | Visita Pendiente 5 - Jairo Vivero Romero                          | PENDIENTE     | 2026-08-19 02:45:20.616753+00
+ 7f5c8e7d-8f7f-48c3-9903-86af8f609024 | Visita Pendiente 5 - Maria Zulena Navia Sanchez                   | PENDIENTE     | 2026-08-19 02:45:20.616136+00
+ 2ec162ad-1645-4415-b78a-208d43361805 | Visita Pendiente 5 - Jorge Arlex Marulanda Laverde                | PENDIENTE     | 2026-08-19 02:45:20.615229+00
+ f509aab1-7450-4db7-96ea-4914d9613d03 | Visita Pendiente 5 - Dagoberto Castaño Garcia                     | PENDIENTE     | 2026-08-19 02:45:20.614564+00
+ 8cd9d89d-460d-4382-b76f-412e0b790fe1 | Visita Pendiente 5 - Fernando Muñoz                               | PENDIENTE     | 2026-08-19 02:45:20.613965+00
+ 003ddfb2-3cfe-4963-8230-ccbaa2598869 | Visita Pendiente 5 - Gilma Vinasco Agudelo                        | PENDIENTE     | 2026-08-19 02:45:20.613267+00
+ adeb8444-b796-45e9-b8b9-613824a1d9a1 | Visita Pendiente 5 - Angelica Maria Paz Cruz                      | PENDIENTE     | 2026-08-19 02:45:20.612609+00
+ e4f6c7d0-f0f7-4e03-baea-0f810a891246 | Visita Pendiente 5 - Aura Stella Arenas                           | PENDIENTE     | 2026-08-19 02:45:20.611944+00
+ 32c0109f-c0d5-4b9e-b98d-e54283c7d8c1 | Visita Pendiente 5 - Maria Digna Rodriguez Orozco                 | PENDIENTE     | 2026-08-19 02:45:20.611333+00
+ 3ed1cb2b-e3ee-49ec-9500-5f32dfc83cc9 | Visita Pendiente 5 - Manuel Yesid Palomino Benitez                | PENDIENTE     | 2026-08-19 02:45:20.610611+00
+ 53f8b4b9-52e9-4a3a-95c9-522df19deced | Visita Pendiente 5 - Jesus Alberto Ruiz Sanchez                   | PENDIENTE     | 2026-08-19 02:45:20.609832+00
+ 1a8fab8c-aa84-448a-9a4c-26df12bdea80 | Visita Pendiente 5 - Fanny Ledesma                                | PENDIENTE     | 2026-08-19 02:45:20.60927+00
+ 075d0a2b-caaa-44c4-bc1b-5bfb5e350bbd | Visita Pendiente 5 - Humberto Calderon Galindes                   | PENDIENTE     | 2026-08-19 02:45:20.608699+00
+ d4b8fe88-8398-477b-8861-2df19078bc42 | Visita Pendiente 5 - NiNi Johana Gutierrez Loaiza                 | PENDIENTE     | 2026-08-19 02:45:20.608159+00
+ b1c1e6ca-9207-4958-97d0-b9d28b1413ce | Visita Pendiente 5 - Rosa Edith Rojas Daza                        | PENDIENTE     | 2026-08-19 02:45:20.607589+00
+ fe26026e-d5b2-40b2-9895-748780d57e36 | Visita Pendiente 5 - Lina Marcela Sanchez Acero                   | PENDIENTE     | 2026-08-19 02:45:20.60693+00
+ 0af20fff-f4e0-4d36-8c3e-11e6f3e378c0 | Visita Pendiente 5 - Luz Nely Chito                               | PENDIENTE     | 2026-08-19 02:45:20.606353+00
+ 95ad9d59-d31f-4587-b16a-6abec1b5063a | Visita Pendiente 5 - Carlos Andres Garcia Agudelo                 | PENDIENTE     | 2026-08-19 02:45:20.605825+00
+ 9c69cb11-04d6-4356-9221-67d3a0684c8c | Visita Pendiente 5 - Doris Bolaños                                | PENDIENTE     | 2026-08-19 02:45:20.605292+00
+ e9ec6a56-faa7-439e-bc69-26692658b1f9 | Visita Pendiente 5 - Nataly Ortega                                | PENDIENTE     | 2026-08-19 02:45:20.604774+00
+ bd63d987-208b-49d1-ac6f-b4809ad2eb61 | Visita Pendiente 5 - Amanda Martinez                              | PENDIENTE     | 2026-08-19 02:45:20.604215+00
+ f0c93b23-c12b-4abb-b2d6-eeb2b22ae0d8 | Visita Pendiente 5 - Nilton Caviedes Simbaqueva                   | PENDIENTE     | 2026-08-19 02:45:20.603713+00
+ e7ca03a8-0e6f-4862-b574-34ad463d7ba3 | Visita Pendiente 5 - Ines Yaneth Paya                             | PENDIENTE     | 2026-08-19 02:45:20.603188+00
+ a64ce7fb-04dc-4bfd-a6eb-1d31f54a9633 | Visita Pendiente 5 - Guillermo Imbachi Martinez                   | PENDIENTE     | 2026-08-19 02:45:20.602593+00
+ b617eb3e-cd76-45a3-b834-c60496baaba5 | Visita Pendiente 5 - Omar Erazo Ortiz                             | PENDIENTE     | 2026-08-19 02:45:20.602048+00
+ 06d5e8ce-89f0-44cf-9b9c-a204f8e2dcdf | Visita Pendiente 5 - Jartza Clariteth Palacio                     | PENDIENTE     | 2026-08-19 02:45:20.601498+00
+ 65d8134d-2e46-4a6e-9172-7aa8ffe92987 | Visita Pendiente 5 - Diego Fernando Salazar Ocampo                | PENDIENTE     | 2026-08-19 02:45:20.600989+00
+ 5678f392-0de8-4392-ab6f-c9381f4634fc | Visita Pendiente 5 - Leidy Yolanda Salas                          | PENDIENTE     | 2026-08-19 02:45:20.600469+00
+ ff15a3a3-eaa2-4746-a316-cadb689b8f72 | Visita Pendiente 5 - Diomar Gonzales                              | PENDIENTE     | 2026-08-19 02:45:20.599944+00
+ 7ccfeb5a-8a65-4a58-a685-09a0401481f0 | Visita Pendiente 5 - Yvonne Alejandra Muñoz Marillas              | PENDIENTE     | 2026-08-19 02:45:20.599389+00
+ 48bd1d26-85b5-4419-bbc0-6564f7d487cd | Visita Pendiente 5 - Lamaris Castaño                              | PENDIENTE     | 2026-08-19 02:45:20.598776+00
+ 2f00a3e0-2588-4c53-adb9-fca14bd55a83 | Visita Pendiente 5 - Nana Teresa Rivera                           | PENDIENTE     | 2026-08-19 02:45:20.598079+00
+ 32659c46-a3ee-4be3-9db2-70fe18943044 | Visita Pendiente 5 - Maria Shirley Obando                         | PENDIENTE     | 2026-08-19 02:45:20.597433+00
+ c8884478-afeb-4421-9d49-399a8dae1e4c | Visita Pendiente 5 - Eduardo Ramos                                | PENDIENTE     | 2026-08-19 02:45:20.596764+00
+ d8a58ed1-20af-401f-bb34-2b685158edd6 | Visita Pendiente 5 - Har Esmilda Ordoñez                          | PENDIENTE     | 2026-08-19 02:45:20.596175+00
+ 452a57d6-9af8-4104-b528-bf9409d2e95f | Visita Pendiente 5 - Ruliana Gomez Alzate                         | PENDIENTE     | 2026-08-19 02:45:20.59561+00
+ 49921273-fca3-4763-9a3a-f4d189233252 | Visita Pendiente 5 - Carlos Ernesto Rodriguez                     | PENDIENTE     | 2026-08-19 02:45:20.594951+00
+ f2ad10bf-2a9b-4d16-82eb-b40e215d2dd0 | Visita Pendiente 5 - Jhon Jairo Fernandez Gonzales                | PENDIENTE     | 2026-08-19 02:45:20.594385+00
+ 948aab94-1efc-4448-a988-7cffabe1c721 | Visita Pendiente 5 - Luciano Cabrera Mercado                      | PENDIENTE     | 2026-08-19 02:45:20.593826+00
+ 5e985f2d-db8b-4a26-b87b-e20a54c85a19 | Visita Pendiente 5 - Ramiro Lopez España                          | PENDIENTE     | 2026-08-19 02:45:20.593143+00
+ b550ee6f-e8cf-453b-abdc-7711d9d89ba0 | Visita Pendiente 5 - Julia Maria Bermudez Villa                   | PENDIENTE     | 2026-08-19 02:45:20.592542+00
+ 53e46ab1-6cbc-42d4-bd7a-27d833b3e5cb | Visita Pendiente 5 - Stella Galeano Celada                        | PENDIENTE     | 2026-08-19 02:45:20.591887+00
+ d64af3d4-e990-449c-9f82-b6678b3210dc | Visita Pendiente 5 - Marina Ewetio                                | PENDIENTE     | 2026-08-19 02:45:20.591239+00
+ af4206a9-1ab2-4729-8698-3e1a06e8a1e2 | Visita Pendiente 5 - Angel Castro Ocampo                          | PENDIENTE     | 2026-08-19 02:45:20.590482+00
+ e6e8cf39-9267-46c6-a3c5-030dc1fe2718 | Visita Pendiente 5 - Maria Mabel                                  | PENDIENTE     | 2026-08-19 02:45:20.589759+00
+ 7217f552-2680-410e-a5df-93224b24944d | Visita Pendiente 5 - Laurentina Guetio Campo                      | PENDIENTE     | 2026-08-19 02:45:20.589023+00
+ 7f0bed6a-4f25-4688-9c7b-fcc644c0e08c | Visita Pendiente 5 - Yamilet Perez Dica                           | PENDIENTE     | 2026-08-19 02:45:20.588142+00
+ f224f53a-1b2d-47e3-9890-22c291612696 | Visita Pendiente 5 - Brandon Yesid Artega                         | PENDIENTE     | 2026-08-19 02:45:20.586942+00
+ 74f53e8e-4593-4b6b-84dd-fedc23cb5ca5 | Visita Pendiente 5 - Martha Villagaran                            | PENDIENTE     | 2026-08-19 02:45:20.586006+00
+ c72f97fa-934b-4a88-8ea2-132d80c695f8 | Visita Pendiente 5 - Elizabeth Martinez                           | PENDIENTE     | 2026-08-19 02:45:20.581028+00
+ d2ee53d4-8050-4785-8791-e0c4a4e6c482 | Visita Pendiente 4 - Amparo Cerizato                              | PENDIENTE     | 2026-08-19 02:42:28.952854+00
+ 33997da5-eefd-4279-9fe9-6e5771339fb8 | Visita Pendiente 4 - Daniela Carmona                              | PENDIENTE     | 2026-08-19 02:42:28.952296+00
+ d99e49de-5055-4c73-afa0-fb81ab41c29a | Visita Pendiente 4 - Francia Elena Chate Ibarra                   | PENDIENTE     | 2026-08-19 02:42:28.951723+00
+ 0217dd06-80bf-4173-9ebf-aea7e8f6f69c | Visita Pendiente 4 - Luis Alfonso Montoya Montoya                 | PENDIENTE     | 2026-08-19 02:42:28.951085+00
+ 64580b1d-11a4-408a-a7b1-caf3f998cfad | Visita Pendiente 4 - Jhon Obando Londono                          | PENDIENTE     | 2026-08-19 02:42:28.950402+00
+ 80e99b95-47e8-4d7f-beaf-a4511723b87d | Visita Pendiente 4 - Maria Manuelita Ortiz Realpe                 | PENDIENTE     | 2026-08-19 02:42:28.949727+00
+ 411b41a7-39eb-499a-9f8d-4a7e18033761 | Visita Pendiente 4 - Michael Brayden Obando Restrepo              | PENDIENTE     | 2026-08-19 02:42:28.949077+00
+ 38d47aee-02e6-41f8-b867-f22bb6144363 | Visita Pendiente 4 - Laura Vanessa Chaparro Salazar               | PENDIENTE     | 2026-08-19 02:42:28.948415+00
+ f50965a3-1c9e-44e1-8a59-d03fd07b894c | Visita Pendiente 4 - Maria Fernanda Bustos                        | PENDIENTE     | 2026-08-19 02:42:28.947838+00
+ a9ea5b61-1b50-4fa6-9607-4c7d81d0b2ea | Visita Pendiente 4 - Monica Hoyos                                 | PENDIENTE     | 2026-08-19 02:42:28.946498+00
+ f59c3007-3c9d-422f-9c72-6c11b7e9a943 | Visita Pendiente 4 - Teresa Galindez                              | PENDIENTE     | 2026-08-19 02:42:28.945773+00
+ 482b852e-1e15-4fe6-912d-ef04338086b8 | Visita Pendiente 4 - Maria Del Carmen Obando Cardona              | PENDIENTE     | 2026-08-19 02:42:28.945166+00
+ bbb792cd-3d1a-4aef-99bf-d84fd6c7d107 | Visita Pendiente 4 - Ruben Dario Gutierrez Salinas                | PENDIENTE     | 2026-08-19 02:42:28.943664+00
+ 7c808d71-43bc-453a-9fdb-05c5c9322ac3 | Visita Pendiente 4 - Ines Granada                                 | PENDIENTE     | 2026-08-19 02:42:28.942817+00
+ 73585a09-b5b4-431c-9aca-25587f7112a2 | Visita Pendiente 4 - Tulia Hoyos Leyton                           | PENDIENTE     | 2026-08-19 02:42:28.942162+00
+ 01cc1f01-9162-4bd3-9ac9-0e76521179d3 | Visita Pendiente 4 - Julian Dario Quinteko Toko                   | PENDIENTE     | 2026-08-19 02:42:28.941523+00
+ 41af5a4c-f45e-49f6-902b-dd9d2087cff8 | Visita Pendiente 4 - Martha Rubio                                 | PENDIENTE     | 2026-08-19 02:42:28.94083+00
+ 6a1f0c38-c496-4e55-9cee-23bef959520d | Visita Pendiente 4 - Blanca Nubia Cardona                         | PENDIENTE     | 2026-08-19 02:42:28.939994+00
+ cff53033-056b-4be7-b78c-17b8996f1b7e | Visita Pendiente 4 - Rojalba Muñoz                                | PENDIENTE     | 2026-08-19 02:42:28.939221+00
+ 8cf65c78-bdf7-4696-82d5-a820256fb191 | Visita Pendiente 4 - Edelma Vivas                                 | PENDIENTE     | 2026-08-19 02:42:28.938405+00
+ 8d57ddcf-3fc6-4e35-8f32-cbeae0e2a07a | Visita Pendiente 4 - Luz Miriam Guevara Alvarez                   | PENDIENTE     | 2026-08-19 02:42:28.936914+00
+ 774d7331-4137-4dc6-97d3-b0803a0115f8 | Visita Pendiente 4 - Ana Maria Chate Mosquera                     | PENDIENTE     | 2026-08-19 02:42:28.936166+00
+ 5bb7a1d2-e54c-4a45-90a5-bf7b42b2e018 | Visita Pendiente 4 - Maria Lilia Granados                         | PENDIENTE     | 2026-08-19 02:42:28.935375+00
+ 5078e88b-a909-4503-a652-f56a346dcb5b | Visita Pendiente 4 - Noe Rengifo Gomez                            | PENDIENTE     | 2026-08-19 02:42:28.93456+00
+ 2acab2bd-b908-4c82-865c-63a9e571a98d | Visita Pendiente 4 - Zandra Liliana Injuasti Avila                | PENDIENTE     | 2026-08-19 02:42:28.933782+00
+ e0a6cb9f-cad4-4b43-b7bc-2529e3a77820 | Visita Pendiente 4 - Jose Albeiro Rios Agudelos                   | PENDIENTE     | 2026-08-19 02:42:28.93296+00
+ e221a6f0-633d-408e-92a9-8487880ba896 | Visita Pendiente 4 - Constanza Castañeda Niño                     | PENDIENTE     | 2026-08-19 02:42:28.932184+00
+ 9c9bf053-8fff-4fe3-a575-12f1271d57a5 | Visita Pendiente 4 - Vladimir Osma                                | PENDIENTE     | 2026-08-19 02:42:28.931439+00
+ 2fb551f5-9c09-417e-9a10-4e5aaad00e48 | Visita Pendiente 4 - Maria Edilma Galeano Garcia                  | PENDIENTE     | 2026-08-19 02:42:28.930505+00
+ fa53a504-fb34-48b3-a0cd-266ce857c184 | Visita Pendiente 4 - Yolanda Gikon Cadilllo                       | PENDIENTE     | 2026-08-19 02:42:28.929535+00
+ e6b319bf-8ffb-4d87-911f-4e151450e44e | Visita Pendiente 4 - Amilbia Gaviria Gomez                        | PENDIENTE     | 2026-08-19 02:42:28.928725+00
+ 2bd5caf9-6d05-4f3b-8031-e73abc60838b | Visita Pendiente 4 - Daniela Jovel Escobar                        | PENDIENTE     | 2026-08-19 02:42:28.927944+00
+ e5050d69-718a-49c9-80fe-df4a4fe353f8 | Visita Pendiente 4 - Luis Felipe Zambrano                         | PENDIENTE     | 2026-08-19 02:42:28.927184+00
+ 1a553d82-e5b3-44e4-ae5a-ca01083f23bf | Visita Pendiente 4 - Fundación El Caracoli                        | PENDIENTE     | 2026-08-19 02:42:28.926344+00
+ dbbb2f77-0df8-46ca-bda9-a551e6342728 | Visita Pendiente 4 - Centro Industrial Palmaseca                  | PENDIENTE     | 2026-08-19 02:42:28.925531+00
+ cbaee4aa-40c6-4a5d-9539-c976a0a67bc0 | Visita Pendiente 4 - Rosario Cavadia Ortega                       | PENDIENTE     | 2026-08-19 02:42:28.924743+00
+ 1e0aab0c-8109-4694-8f6b-e1f059a4476b | Visita Pendiente 4 - Desconocido Bellavista                       | PENDIENTE     | 2026-08-19 02:42:28.923909+00
+ e9bc42d5-f207-430e-90c2-69fae70c04c4 | Visita Pendiente 4 - Gloria Sthefany Rodriguez                    | PENDIENTE     | 2026-08-19 02:42:28.9231+00
+ abf682f0-6c39-442b-82bb-f82f2e3e704c | Visita Pendiente 4 - Luisa Fernanda Piedrahita Diaz               | PENDIENTE     | 2026-08-19 02:42:28.921626+00
+ aaee26ef-5aeb-4bbd-be6c-b215ea3b391c | Visita Pendiente 4 - Laura Camila Franco Pelaez                   | PENDIENTE     | 2026-08-19 02:42:28.920671+00
+ e576213d-b4f5-44fe-b0b1-64b15ac4fc08 | Visita Pendiente 4 - Teobaldo Collazos Gavia                      | PENDIENTE     | 2026-08-19 02:42:28.916834+00
+ 66139e3d-af06-47b3-b718-542b65879aa4 | Visita Pendiente 4 - Paula Andrea Urbano Pardo                    | PENDIENTE     | 2026-08-19 02:42:28.914439+00
+ 407b4009-11de-451d-9d36-4cd1448df8cd | Visita Pendiente 4 - Olga Irene Restrepo Velez                    | PENDIENTE     | 2026-08-19 02:42:28.913619+00
+ b62a7fa3-2842-4f07-8901-ca06c4647e17 | Visita Pendiente 4 - Jessica Corena Quintero                      | PENDIENTE     | 2026-08-19 02:42:28.912851+00
+ 0b4256bf-5e64-4eec-ad2e-c4235d779800 | Visita Pendiente 4 - Luz Mery Tovar Lopez                         | PENDIENTE     | 2026-08-19 02:42:28.912117+00
+ f42f11d5-c22f-4b6c-af76-f555f2ba6b9d | Visita Pendiente 4 - Cesar Octavio Flechas Bonilla                | PENDIENTE     | 2026-08-19 02:42:28.911294+00
+ e8d9486f-d81a-4a83-b61c-f61bedce71c1 | Visita Pendiente 4 - Jose Orlando Valencia                        | PENDIENTE     | 2026-08-19 02:42:28.910341+00
+ fb371629-6c50-4997-a58a-d2562dbc7125 | Visita Pendiente 4 - Bernavi Alfonso Lopez                        | PENDIENTE     | 2026-08-19 02:42:28.908613+00
+ 1c5f130f-4f80-4a4d-ab25-8149bc44e6ce | Visita Pendiente 4 - Nestor Tibaduiza                             | PENDIENTE     | 2026-08-19 02:42:28.907892+00
+ dcb42bdb-c0bd-4862-a0bd-c7454fbcfa57 | Visita Pendiente 4 - Celmira Vergara                              | PENDIENTE     | 2026-08-19 02:42:28.906608+00
+ 17097607-d7d7-4c02-a0ca-b258cc87a4ad | Visita Pendiente 4 - Ana Nelly Valencia Jaramillo                 | PENDIENTE     | 2026-08-19 02:42:28.905831+00
+ baa4a05a-564d-4242-a79f-fa87319cebd1 | Visita Pendiente 4 - Monica Galvez Gonzalez                       | PENDIENTE     | 2026-08-19 02:42:28.905051+00
+ e4147390-5f8a-4cd6-aec3-b3c70fe6e146 | Visita Pendiente 4 - Finki                                        | PENDIENTE     | 2026-08-19 02:42:28.904319+00
+ d4454b39-4dd8-4883-803a-453eec2300a4 | Visita Pendiente 4 - Amanda Cuero                                 | PENDIENTE     | 2026-08-19 02:42:28.903468+00
+ 51d6606c-f54e-4cb9-ae95-7a13cc67f010 | Visita Pendiente 4 - Solon Arboleda Cuero                         | PENDIENTE     | 2026-08-19 02:42:28.902539+00
+ bf10d295-4419-4dd7-a5fb-069c9b533507 | Visita Pendiente 4 - Abel Diaz                                    | PENDIENTE     | 2026-08-19 02:42:28.901753+00
+ 9ef961cb-a9d3-48b7-bb22-a78db02f3b18 | Visita Pendiente 4 - Marcela Vanegas                              | PENDIENTE     | 2026-08-19 02:42:28.90096+00
+ ec2f16e1-8395-4ac5-82cd-edfe65810528 | Visita Pendiente 4 - Ana Milena Velasquez Vidal                   | PENDIENTE     | 2026-08-19 02:42:28.899946+00
+ 56190240-4a7d-486d-90d8-d49a1315138c | Visita Pendiente 4 - Karen Estrada                                | PENDIENTE     | 2026-08-19 02:42:28.898884+00
+ b64c6548-7226-416f-9db9-c0bdf429e14f | Visita Pendiente 4 - Fidel Ruiz Heredia                           | PENDIENTE     | 2026-08-19 02:42:28.897214+00
+ 395f4730-793b-49dc-b799-cb4fcc2814d8 | Visita Pendiente 4 - Marino Bermeo Rengifo                        | PENDIENTE     | 2026-08-19 02:42:28.896254+00
+ 37214475-655a-4841-806c-27466483d83b | Visita Pendiente 4 - Alba Elena Correa Arduzuta                   | PENDIENTE     | 2026-08-19 02:42:28.895296+00
+ 414488f6-0e27-4619-8d11-b0c3881c0914 | Visita Pendiente 4 - Damasio Perez Castillo                       | PENDIENTE     | 2026-08-19 02:42:28.890193+00
+ 9cd4efa0-b7dd-4567-94fa-ad7c726804b9 | Visita Pendiente 3 - Sandra Patricia Henao                        | PENDIENTE     | 2026-08-19 02:40:15.022004+00
+ 4f850e85-7b63-4731-9770-6416d6b5e4ac | Visita Pendiente 3 - Karen Estrada                                | PENDIENTE     | 2026-08-19 02:40:15.021097+00
+ 2d8c838b-0aaa-4628-916b-32a746ae25ad | Visita Pendiente 3 - Sara Garcia                                  | PENDIENTE     | 2026-08-19 02:40:15.020025+00
+ fd543317-7a8f-42e7-8109-0c30257dd6b5 | Visita Pendiente 3 - Pedro Antonio Gonzales                       | PENDIENTE     | 2026-08-19 02:40:15.018624+00
+ ae6316c6-69c0-4b2f-8d09-74c4e363c785 | Visita Pendiente 3 - Faisury Arana                                | PENDIENTE     | 2026-08-19 02:40:15.016403+00
+ 9b550be1-9122-48eb-86db-864d4d864a7f | Visita Pendiente 3 - Laura Campo                                  | PENDIENTE     | 2026-08-19 02:40:15.015005+00
+ 2ac3276c-d2e4-4c1c-8238-1707a89057fd | Visita Pendiente 3 - Shirley Masquera Valencia                    | PENDIENTE     | 2026-08-19 02:40:15.013397+00
+ 064a24d7-8c1e-4cac-951e-3d041c9b11d4 | Visita Pendiente 3 - Zonia Felisa Tintinago                       | PENDIENTE     | 2026-08-19 02:40:15.012394+00
+ c7b40b01-080a-4b3c-8133-5d80a1a9fe0b | Visita Pendiente 3 - Zulzima Rios                                 | PENDIENTE     | 2026-08-19 02:40:15.01132+00
+ 488d41ee-421f-4998-8a64-b5489374d666 | Visita Pendiente 3 - Adriana Puente                               | PENDIENTE     | 2026-08-19 02:40:15.010337+00
+ 090233b0-fb90-4e27-93cc-f5155ce40358 | Visita Pendiente 3 - Moilen Orozco Vicuña                         | PENDIENTE     | 2026-08-19 02:40:15.009125+00
+ 70f3d04c-526b-4b4d-9a88-f38bba2c52d4 | Visita Pendiente 3 - Maria Fernanda Niño Cifuentes                | PENDIENTE     | 2026-08-19 02:40:15.00815+00
+ 84ea1bb2-955f-4e42-97aa-8ac73ec81ba2 | Visita Pendiente 3 - Victoria Garcia                              | PENDIENTE     | 2026-08-19 02:40:15.006902+00
+ 686eeb9a-2322-4ecf-a959-4dd027ef004b | Visita Pendiente 3 - Monical Jaramillo Lozano                     | PENDIENTE     | 2026-08-19 02:40:15.00592+00
+ babc271d-8a1d-4873-90b5-696d8983baff | Visita Pendiente 3 - Sandra Carvajal                              | PENDIENTE     | 2026-08-19 02:40:15.004338+00
+ 79d7affb-f36f-406e-a016-18334421fff0 | Visita Pendiente 3 - Maria del Carmen                             | PENDIENTE     | 2026-08-19 02:40:15.003233+00
+ 76cca71d-4e77-4cbc-8ef7-07501e2ce4ba | Visita Pendiente 3 - Muritza Hermontic                            | PENDIENTE     | 2026-08-19 02:40:15.002087+00
+ aaeecd36-96f1-481a-ac4e-3b3ae3329a26 | Visita Pendiente 3 - Emperatriz                                   | PENDIENTE     | 2026-08-19 02:40:15.001074+00
+ 9b9cd6f8-3a7d-4f8a-8d89-8c7a70518f58 | Visita Pendiente 3 - Victor Manuel Renteria                       | PENDIENTE     | 2026-08-19 02:40:15.000161+00
+ 37380867-75bb-49d0-8b93-2f72a89273d4 | Visita Pendiente 3 - Estella Quiroga                              | PENDIENTE     | 2026-08-19 02:40:14.999203+00
+ 6f0b3581-6e89-468a-983d-86362bd2e862 | Visita Pendiente 3 - Luz Marina Misa                              | PENDIENTE     | 2026-08-19 02:40:14.998+00
+ c71ec795-cda0-4545-904e-8f8048a18520 | Visita Pendiente 3 - Luiz Arbey Mourrique                         | PENDIENTE     | 2026-08-19 02:40:14.996886+00
+ 978ed481-12a9-4cb8-a82b-4f08fae44506 | Visita Pendiente 3 - Marcial Oracio Bolaños                       | PENDIENTE     | 2026-08-19 02:40:14.995961+00
+ e960b325-8c24-4019-a111-b900a340a41d | Visita Pendiente 3 - Angi Michel Puertas                          | PENDIENTE     | 2026-08-19 02:40:14.994897+00
+ 8d485c36-4762-4370-9228-21890641d1cc | Visita Pendiente 3 - Luz Alba Sanchez                             | PENDIENTE     | 2026-08-19 02:40:14.993752+00
+ 6603fe70-15e9-4cc9-815b-5bf10c1920c3 | Visita Pendiente 3 - Nuvia Portilla                               | PENDIENTE     | 2026-08-19 02:40:14.992545+00
+ 959a3e5b-8bee-4e68-ac2f-82f836fd1247 | Visita Pendiente 3 - Francaydi Olgovin                            | PENDIENTE     | 2026-08-19 02:40:14.991+00
+ e8bd05f8-810a-4d9f-bc38-14d35c6b99e7 | Visita Pendiente 3 - Tulua Alfonso Garcia                         | PENDIENTE     | 2026-08-19 02:40:14.989769+00
+ 00f4efc2-f096-43cc-95c0-9e24af847a9a | Visita Pendiente 3 - Maria Abigail Caisa                          | PENDIENTE     | 2026-08-19 02:40:14.984193+00
+ 3230a5c6-fe59-46f6-a8a5-2548a1e72012 | Visita Pendiente 2 - Carlos Pedroso                               | PENDIENTE     | 2026-08-19 02:35:39.716505+00
+ b31f8b1c-cf01-46ee-be93-67580597565f | Visita Pendiente 2 - Morls Teresa Pedroso                         | PENDIENTE     | 2026-08-19 02:35:39.716028+00
+ c24a6a45-5d04-4a11-a8c2-21dbcdf55380 | Visita Pendiente 2 - Sin Nombre                                   | PENDIENTE     | 2026-08-19 02:35:39.715515+00
+ b2441398-edae-4e46-8c2b-41a03cabd5e1 | Visita Pendiente 2 - Lorena Luke Cagia                            | PENDIENTE     | 2026-08-19 02:35:39.714533+00
+ 8853deee-c943-4983-8865-8734b0e4f4bb | Visita Pendiente 2 - Patricia Chaves                              | PENDIENTE     | 2026-08-19 02:35:39.713952+00
+ bb5b2aa3-cb22-4e2f-b3ef-346e6d241810 | Visita Pendiente 2 - Jiovanna Hurtado Vanegas                     | PENDIENTE     | 2026-08-19 02:35:39.713473+00
+ bebb4a6a-1e55-4f90-88e7-8c0f3eb10ab7 | Visita Pendiente 2 - Jose Luiz                                    | PENDIENTE     | 2026-08-19 02:35:39.713005+00
+ dfb86d05-c43e-41e1-a464-aca84d84f68d | Visita Pendiente 2 - Cristian Posligua                            | PENDIENTE     | 2026-08-19 02:35:39.712532+00
+ 2b2f1630-ad53-4d2a-b40e-ee028d632571 | Visita Pendiente 2 - Alba Mansabel                                | PENDIENTE     | 2026-08-19 02:35:39.712053+00
+ 03715e46-b7d3-4d5c-a493-8d74ed742c28 | Visita Pendiente 2 - Nicolas Lopez                                | PENDIENTE     | 2026-08-19 02:35:39.711568+00
+ 260142b1-f9b4-405e-b8f2-9c9118da79d8 | Visita Pendiente 2 - Isidro Lopez                                 | PENDIENTE     | 2026-08-19 02:35:39.711066+00
+ f832cc74-e95a-474d-a7f5-e12986ebed81 | Visita Pendiente 2 - James Zalazar                                | PENDIENTE     | 2026-08-19 02:35:39.710509+00
+ 3975a125-ee13-4342-8742-c66ff6a2670c | Visita Pendiente 2 - Maria Aide Calderon                          | PENDIENTE     | 2026-08-19 02:35:39.710012+00
+ 724dd52d-8404-4e2e-871d-3cdeb78bd929 | Visita Pendiente 2 - Juan David Sarmiento Escobar                 | PENDIENTE     | 2026-08-19 02:35:39.709523+00
+ 60563bec-7510-4a03-9314-8926a573e2ca | Visita Pendiente 2 - Idami Galvez                                 | PENDIENTE     | 2026-08-19 02:35:39.709002+00
+ 1ab38d6c-5302-4d33-ab2b-786a0c2c5bb2 | Visita Pendiente 2 - Fernando Prado                               | PENDIENTE     | 2026-08-19 02:35:39.7085+00
+ 7ebd0d58-d5b8-4c81-8983-c6d4bf4e1c67 | Visita Pendiente 2 - Neva Savvia                                  | PENDIENTE     | 2026-08-19 02:35:39.707991+00
+ 4dc6309d-ec25-4d86-ba2f-3c44a1fedaed | Visita Pendiente 2 - Clara Ines Mosquera                          | PENDIENTE     | 2026-08-19 02:35:39.7075+00
+ c9300e3c-0732-453f-bb6a-2422c57f0e7b | Visita Pendiente 2 - Jorge Mosquera                               | PENDIENTE     | 2026-08-19 02:35:39.706949+00
+ 4bf08141-71f6-4a7d-890f-a51e16e8db9e | Visita Pendiente 2 - Korina Ines Paredes Reina                    | PENDIENTE     | 2026-08-19 02:35:39.706436+00
+ 7abebdcd-6df0-4dad-8b5e-4ab0e4cb02b0 | Visita Pendiente 2 - Aculio Fonseca                               | PENDIENTE     | 2026-08-19 02:35:39.705724+00
+ 961845ed-4bb6-4d77-8dc2-e1a936ac70b7 | Visita Pendiente 2 - Alejandra Lopez                              | PENDIENTE     | 2026-08-19 02:35:39.705268+00
+ 1ccd529e-2823-4cf7-979b-d5c8742877f3 | Visita Pendiente 2 - Joogin Rene Gonzalez                         | PENDIENTE     | 2026-08-19 02:35:39.704723+00
+ 616b84f9-252d-4b43-8872-7692d40e2c05 | Visita Pendiente 2 - Madelen Comba Lopez                          | PENDIENTE     | 2026-08-19 02:35:39.704183+00
+ 10ae3c4a-35b8-435f-b160-ff7b3d5ddb8e | Visita Pendiente 2 - Leydi Largo                                  | PENDIENTE     | 2026-08-19 02:35:39.703634+00
+ 1b631ad8-31a5-4f31-881d-3a13a81a9ab6 | Visita Pendiente 2 - Maria Alejandra Bedoya Naranjo               | PENDIENTE     | 2026-08-19 02:35:39.703044+00
+ ea139a0f-c865-4d79-85b1-3c1b497dc35e | Visita Pendiente 2 - Sandra Gimenez Loaiza                        | PENDIENTE     | 2026-08-19 02:35:39.702391+00
+ 3de1ed7f-87fe-4b31-9474-c997c089a576 | Visita Pendiente 2 - Luis Fernando Moreno                         | PENDIENTE     | 2026-08-19 02:35:39.698543+00
+ 6f3c5247-7b6e-47f1-a861-3df8880b7913 | Visita Pendiente - Maria Cenide Polonio Cuero                     | PENDIENTE     | 2026-08-19 02:29:47.154188+00
+ 624f31fe-c514-4980-a510-e65149ba0757 | Visita Pendiente - Tanundo Moreno Rodriguez                       | PENDIENTE     | 2026-08-19 02:29:47.153654+00
+ ff5afe54-6c41-4fd6-a74c-f854afbc2f86 | Visita Pendiente - German Alberto Diaz                            | PENDIENTE     | 2026-08-19 02:29:47.153019+00
+ 7c82e635-e3ef-4847-837a-4f640d6f1583 | Visita Pendiente - Harold Garcia                                  | PENDIENTE     | 2026-08-19 02:29:47.152404+00
+ 4a5f40f7-8062-4c55-a1fe-08d8f9219809 | Visita Pendiente - Johana Agudelo                                 | PENDIENTE     | 2026-08-19 02:29:47.151649+00
+ 2ae4647b-7970-4e26-a6aa-310e1eb653fd | Visita Pendiente - Sandra Vargas                                  | PENDIENTE     | 2026-08-19 02:29:47.150819+00
+ 3147420c-4be6-4f2d-9d91-4d903f4c684b | Visita Pendiente - Jis C. Suarez Agudelo                          | PENDIENTE     | 2026-08-19 02:29:47.150034+00
+ d4b21817-df06-48b8-be78-038e3876ac21 | Visita Pendiente - Ruth Gallego                                   | PENDIENTE     | 2026-08-19 02:29:47.149253+00
+ a7848b54-c92c-44ce-a2eb-3462a946ea87 | Visita Pendiente - Liliana Ospina                                 | PENDIENTE     | 2026-08-19 02:29:47.148448+00
+ 1540a545-a40c-4ea7-b23c-d38a4a9e637a | Visita Pendiente - Gladuls Walleth Calpe Casanouc                 | PENDIENTE     | 2026-08-19 02:29:47.144406+00
+ 0f9041a4-11a7-4331-8831-2a677ad5f990 | RUFE 202 - Delly Lopez Moreno                                     | PENDIENTE     | 2026-08-18 19:01:20.022907+00
+ 3f7062cd-ddc4-4395-b6ba-41b772f0735e | RUFE 201 - Mary Luz Marin                                         | PENDIENTE     | 2026-08-18 19:01:20.021007+00
+ f8fb91ee-9322-4ec0-a404-d0099ed0e2b7 | RUFE 175 - Angela Mendez Ortiz                                    | PENDIENTE     | 2026-08-18 16:28:05.095858+00
+ 13a072db-6735-4e6f-a8c6-6a29ad59e58e | Reporte WP: SANDRA PATRICIA GRISALES                              | PENDIENTE     | 2026-08-18 15:37:32.541382+00
+ 21fd66ff-4c32-4d91-b079-0df58d12a08a | Reporte WP: VICENCIO BONILLA                                      | PENDIENTE     | 2026-08-18 15:37:32.540205+00
+ c7d66855-e0db-41a3-b640-e4a5789690d0 | Reporte WP: BLANCA NUBIA NARVAEZ ALVAREZ                          | PENDIENTE     | 2026-08-18 15:37:32.539099+00
+ c8e313c3-1a59-43f8-b1dc-a70dd94e4fbf | Reporte WP: MARTIN RODRIGUEZ                                      | PENDIENTE     | 2026-08-18 15:37:32.538074+00
+ 2b178c1c-c039-4b10-8061-b94cf8f09e4a | Reporte WP: ANGIE ALEIDA IPIALES GARCIA                           | PENDIENTE     | 2026-08-18 15:37:32.537193+00
+ aaac2257-104c-4e40-a128-97c25fe68677 | Reporte WP: JHON BREYNER QUINTERO                                 | PENDIENTE     | 2026-08-18 15:37:32.536262+00
+ a3e27a2c-5867-47ef-a382-8d06565a5767 | Reporte WP: STEFANY                                               | PENDIENTE     | 2026-08-18 15:37:32.535424+00
+ 9d1224c3-2a0f-4141-8ff7-71cfa51602a2 | Reporte WP: JULIA ROSA JARAMILLO                                  | PENDIENTE     | 2026-08-18 15:37:32.534593+00
+ eac7e325-eb15-42ff-8ed4-7c6a6a41f95b | Reporte WP: ISABEL CRISTINA GARCIA                                | PENDIENTE     | 2026-08-18 15:37:32.533726+00
+ 5213e8b5-79de-4f6d-8a72-05b3af4527ea | Reporte WP: MARTHA LUCIA RUIZ                                     | PENDIENTE     | 2026-08-18 15:37:32.532831+00
+ d3127048-96f4-440f-989b-e41c86a9ac93 | Reporte WP: ALEXANDRA SANDOVAL MONTOYA                            | PENDIENTE     | 2026-08-18 15:37:32.532023+00
+ c52e7a9c-449d-44c0-bc2c-e002d3eb1e40 | Reporte WP: WILLIAM DAVID DIAZ                                    | PENDIENTE     | 2026-08-18 15:37:32.531177+00
+ b94a245b-13f5-424a-83ad-11d87c2a293c | Reporte WP: FRANCIA ELENA MARTINEZ                                | PENDIENTE     | 2026-08-18 15:37:32.530295+00
+ d6be6476-7a13-44ec-b429-498389231f22 | Reporte WP: DIEGO FERNANDO GIRALDO                                | PENDIENTE     | 2026-08-18 15:37:32.529336+00
+ bf440438-535b-4e02-bb1d-c03b25295f01 | Reporte WP: ALBA MARIA RIVERA                                     | PENDIENTE     | 2026-08-18 15:37:32.528255+00
+ 268ef44c-cb35-429d-95dd-2fc95b704bd4 | Reporte WP: WEIMAR TONUZCO PEREZ                                  | PENDIENTE     | 2026-08-18 15:37:32.527342+00
+ 86614a23-a464-4572-9cfb-8510dbca9b76 | Reporte WP: JESUS ALFREDO GUERRERO                                | PENDIENTE     | 2026-08-18 15:37:32.52645+00
+ 3b6f6ff3-594d-4285-9c3b-25ee9a106be5 | Reporte WP: MIRTHA MARGOT MUÑOZ                                   | PENDIENTE     | 2026-08-18 15:37:32.525237+00
+ 479dca64-0a9e-46c2-8c44-3b444bb5e849 | Reporte WP: JOSE FERNEY MUÑOZ                                     | PENDIENTE     | 2026-08-18 15:37:32.524153+00
+ b7d9648b-adda-4b2c-9159-21222bace70b | Reporte WP: VIDRIOS DE OCCIDENTE SAS/JAIME ANDRES AGUILAR         | PENDIENTE     | 2026-08-18 15:37:32.523196+00
+ 8c8f546a-4cf0-4072-bd06-c5146d150db9 | Reporte WP: MARIA BERENICE MORALES                                | PENDIENTE     | 2026-08-18 15:37:32.522239+00
+ 0d74162b-8b30-4572-855b-048b99ee58f4 | Reporte WP: JHON JAIRO MACEDA                                     | PENDIENTE     | 2026-08-18 15:37:32.521314+00
+ 64150bb0-f50b-4f32-9305-894d26d17c8c | Reporte WP: HENRY ABADIA                                          | PENDIENTE     | 2026-08-18 15:37:32.520247+00
+ 91941d66-a1e7-4fb1-8d34-2c08d5ad149e | Reporte WP: LUZ MARY QUISOBONI                                    | PENDIENTE     | 2026-08-18 15:37:32.519332+00
+ b606f856-9724-43f5-9c4e-a721c61a461d | Reporte WP: ZURLEY PALADINES                                      | PENDIENTE     | 2026-08-18 15:37:32.518469+00
+ f50593d4-27aa-4e0e-8703-0464832245ff | Reporte WP: EVELIN ZULEY PEREA SALINAS                            | PENDIENTE     | 2026-08-18 15:37:32.517576+00
+ 1f5bfafe-0e81-40fc-804c-395de647c6ff | Reporte WP: OSCAR MUESES                                          | PENDIENTE     | 2026-08-18 15:37:32.516709+00
+ 3f3b12bc-1247-454b-be5a-1859daed3dde | Reporte WP: CLAUDIA MENDEZ                                        | PENDIENTE     | 2026-08-18 15:37:32.515873+00
+ a99201f9-9771-41ab-bffd-c0915aee4cc8 | Reporte WP: MARIELA LOPEZ ARANGO                                  | PENDIENTE     | 2026-08-18 15:37:32.515046+00
+ 07208e0b-623b-4095-b312-9e888eac59d9 | Reporte WP: CLARA INES BARRAGAN TOVAR                             | PENDIENTE     | 2026-08-18 15:37:32.514239+00
+ 87e707b7-72ac-49db-8321-d875bb01384a | Reporte WP: VICTORIA PRISCO                                       | PENDIENTE     | 2026-08-18 15:37:32.513423+00
+ 5d50ee31-b3e5-4c98-8eaa-92b0106d6183 | Reporte WP: EDUARDO GIL                                           | PENDIENTE     | 2026-08-18 15:37:32.512622+00
+ 0fd63647-a9da-4640-a139-59a36acfc4f2 | Reporte WP: HECTOR FABIO ESPINOSA MARIN                           | PENDIENTE     | 2026-08-18 15:37:32.511819+00
+ 9e03939d-a09e-43ca-9dec-926d10e0cc93 | Reporte WP: MARINO CHAVES                                         | PENDIENTE     | 2026-08-18 15:37:32.511002+00
+ b1e5289e-d3cf-4361-82aa-89cf1bb8776c | Reporte WP: DERCOPLANTAS FORETAL/CLAUDIA GALEANO                  | PENDIENTE     | 2026-08-18 15:37:32.509308+00
+ 8c6d539a-f2b6-4862-b26f-ac751569ad7f | Reporte WP: ROSALBA SANDOVAL VELAZCO                              | PENDIENTE     | 2026-08-18 15:37:32.508172+00
+ 98566880-361e-4f44-a7db-5460e90b2150 | Reporte WP: UVER LAME CAMAYO                                      | PENDIENTE     | 2026-08-18 15:37:32.507076+00
+ 2de5b057-0b5f-46c2-9f3d-77f76f1227b9 | Reporte WP: JUAN RODRIGUEZ                                        | PENDIENTE     | 2026-08-18 15:37:32.505866+00
+ efa2a450-7965-414e-bdeb-9acd9b47b9e5 | Reporte WP: MARTIN ESTEBAN SANDOVAL                               | PENDIENTE     | 2026-08-18 15:37:32.504657+00
+ 83c5a345-b6f0-4834-a40f-be1a7dd35187 | Reporte WP: VIDRIOS DE OCCIDENTE SAS                              | PENDIENTE     | 2026-08-18 15:37:32.503346+00
+ 7e551a04-1e2a-4c99-bd1a-6da230b7dbd5 | Reporte WP: ROBIRIA ESCOBAR                                       | PENDIENTE     | 2026-08-18 15:37:32.502509+00
+ fef39479-fdbd-4d25-985c-78e3a32ca5cc | Reporte WP: RUBIELA ASTAIZA                                       | PENDIENTE     | 2026-08-18 15:37:32.501602+00
+ 2b2d9fab-ee3d-485e-a767-b7e6dbdf68ad | Reporte WP: CIRO ALBERTO GRAJALES                                 | PENDIENTE     | 2026-08-18 15:37:32.500712+00
+ 78e67c68-4006-407f-8305-50f8db4afc3a | Reporte WP: MARLENY PAYA RODRIGUEZ                                | PENDIENTE     | 2026-08-18 15:37:32.499922+00
+ 082849e7-be01-4d19-a7eb-011f3cccc1cc | Reporte WP: CARMENZA MARTINEZ CERON                               | PENDIENTE     | 2026-08-18 15:37:32.499121+00
+ e9f4bebc-4db4-469f-8938-2f7b87ba7c36 | Reporte WP: DEYANIRA CORDOBA ERAZO                                | PENDIENTE     | 2026-08-18 15:37:32.498291+00
+ 998476b4-66cb-4d5a-a97f-16fbf3ece69e | Reporte WP: WILSON ROJAS                                          | PENDIENTE     | 2026-08-18 15:37:32.497436+00
+ c01fd840-d798-49f6-b12e-47a97fd4b93d | Reporte WP: ELIA JOHANNA LASSO QUINTINAGO                         | PENDIENTE     | 2026-08-18 15:37:32.496514+00
+ d87ebe6c-af41-45f9-921e-8945d18cf4bd | Reporte WP: LAURA MARTINEZ                                        | PENDIENTE     | 2026-08-18 15:37:32.49483+00
+ 48346545-0549-4b22-8062-b3c8b6e4dee3 | Reporte WP: DIANA PAOLA MOSCOSO                                   | PENDIENTE     | 2026-08-18 15:37:32.493985+00
+ 45362831-7a12-4c26-bb19-961fba0133cf | Reporte WP: ZAMIRA PABON                                          | PENDIENTE     | 2026-08-18 15:37:32.493076+00
+ d5c6c694-d922-4c51-ae33-b5ce0bc9d400 | Reporte WP: HAMINTON QUILINDO GARCIA                              | PENDIENTE     | 2026-08-18 15:37:32.49198+00
+ f9b69ace-9b15-4cd5-bcdc-196599aeccd6 | Reporte WP: ANA LUCRECIA GUZMAN                                   | PENDIENTE     | 2026-08-18 15:37:32.490979+00
+ 2d32329d-27f7-460b-9a94-8bab7e2a4176 | Reporte WP: CONSUELO LUGO ARIAS                                   | PENDIENTE     | 2026-08-18 15:37:32.489785+00
+ a6659feb-aa15-480e-860b-971e7132bca6 | Reporte WP: ANLLY VANESA ARRECHEA RIASCOS                         | PENDIENTE     | 2026-08-18 15:37:32.487186+00
+ 5c41aafd-0515-460e-8151-2347075f3ce2 | Reporte WP: HECTOR FABIO JORDAN GALINDO                           | PENDIENTE     | 2026-08-18 15:37:32.48621+00
+ 3831e495-c8e0-45c6-9093-8604b96a77f4 | Reporte WP: OMAR GONZALEZ                                         | PENDIENTE     | 2026-08-18 15:37:32.485286+00
+ 0079dccf-1900-4a30-82c3-24485d3d3a0c | Reporte WP: LEIVER FERNANDEZ GARCIA                               | PENDIENTE     | 2026-08-18 15:37:32.4844+00
+ bd481600-3d98-4cc7-a2b8-ed0814fc0c2c | Reporte WP: DIANA CAROLINA PAZ                                    | PENDIENTE     | 2026-08-18 15:37:32.48357+00
+ f6fb8c29-9426-4913-9cd2-055638c3429b | Reporte WP: FRANCEDY PULGARIN                                     | PENDIENTE     | 2026-08-18 15:37:32.482764+00
+ 3d6e82e6-e4f0-425f-bd4f-05d57e9a2a9b | Reporte WP: JOSE LUIS AVILA VIDAL                                 | PENDIENTE     | 2026-08-18 15:37:32.481973+00
+ 71986539-2214-4f7e-9ac7-7f8bcea50217 | Reporte WP: DIANA CAROLINA MARQUEZ                                | PENDIENTE     | 2026-08-18 15:37:32.480229+00
+ 326717b6-8fbf-44d2-b5d2-fc5763fbc60f | Reporte WP: ROSILBETH LEON                                        | PENDIENTE     | 2026-08-18 15:37:32.479402+00
+ 076a3d60-c3c5-4b6e-a823-030a5c81c38d | Reporte WP: ROY ALPHA SA                                          | PENDIENTE     | 2026-08-18 15:37:32.47857+00
+ cd098196-8b84-4259-b01c-228b63afe642 | Reporte WP: TULIO MARINO RODRIGUEZ                                | PENDIENTE     | 2026-08-18 15:37:32.477677+00
+ 2bb04cc9-0b5d-44de-9ed7-9536ad590312 | Reporte WP: DELIA CASTILLO                                        | PENDIENTE     | 2026-08-18 15:37:32.476607+00
+ 751b2440-2516-4737-8b72-fd8e561c393b | Reporte WP: NIDIA LUCELI RIVERA PANTOJA                           | PENDIENTE     | 2026-08-18 15:37:32.475646+00
+ be0b2711-fe54-43b7-a03b-0b1593871518 | Reporte WP: ORFILIA ECHEVERRY                                     | PENDIENTE     | 2026-08-18 15:37:32.474498+00
+ 1b6db184-08ae-4f2b-9216-8e2010e0ed85 | Reporte WP: CARLA VANESSA OLIVEROS                                | PENDIENTE     | 2026-08-18 15:37:32.473525+00
+ e0074cbe-c1cc-45a8-a5d0-2c866796f277 | Reporte WP: CONSTANZA DIAZ                                        | PENDIENTE     | 2026-08-18 15:37:32.472444+00
+ af696ff5-ecba-447e-964a-df5e7aea4b5e | Reporte WP: MAXIEL HEREDIA                                        | PENDIENTE     | 2026-08-18 15:37:32.471486+00
+ 3ce67a27-d842-47bb-b7e0-cf14c6d785e7 | Reporte WP: DAYERLI HEREDIA                                       | PENDIENTE     | 2026-08-18 15:37:32.470219+00
+ 77f9f756-40fc-4bf7-9690-b5ba98c2f9f4 | Reporte WP: LILI JOHANA ZUÑIGA HOYOS                              | PENDIENTE     | 2026-08-18 15:37:32.469357+00
+ 5853eea1-b5b4-429f-96e4-603c48ae5f0c | Reporte WP: MIREYA OVIEDO                                         | PENDIENTE     | 2026-08-18 15:37:32.46853+00
+ 68f15f9c-d18f-46e0-af77-8f01ba985c74 | Reporte WP: FABIOLA PEÑA                                          | PENDIENTE     | 2026-08-18 15:37:32.467684+00
+ 40786a21-5175-4ae9-9add-c4aba332c005 | Reporte WP: ARTURO MORIANO                                        | PENDIENTE     | 2026-08-18 15:37:32.4668+00
+ be4d0c58-e5d8-47f0-a672-2317dd5c2b48 | Reporte WP: MARIA FERNANDA MARTINEZ                               | PENDIENTE     | 2026-08-18 15:37:32.46594+00
+ f6addf70-cd52-4bbe-9f11-962dd8f8b74e | Reporte WP: ENRIQUE QUINTERO DIAZ                                 | PENDIENTE     | 2026-08-18 15:37:32.465051+00
+ 16802519-0cae-4f54-986a-f49dcc6f59a6 | Reporte WP: OMAR LEONARDO ASCANIO RAMIREZ                         | PENDIENTE     | 2026-08-18 15:37:32.464134+00
+ 3d9d3a8a-be73-4efc-9cd1-877344e764f8 | Reporte WP: NELLY JIMENEZ GUTIERREZ/ALEJANDRA JIMENEZ             | PENDIENTE     | 2026-08-18 15:37:32.46315+00
+ 9569928f-a10c-4380-be4a-e84a4800447a | Reporte WP: JUAN CARLOS CHANTRE MANCERA                           | PENDIENTE     | 2026-08-18 15:37:32.462299+00
+ 5f5e50c5-2d7a-4d45-a938-6bfa889f9f15 | Reporte WP: RUBEN DARIO SATIZABAL MARTINEZ                        | PENDIENTE     | 2026-08-18 15:37:32.461389+00
+ e752b2b7-17e5-4db6-abda-983f20101cb3 | Reporte WP: CENTELSA BY NEXANS                                    | PENDIENTE     | 2026-08-18 15:37:32.460382+00
+ 0d088032-5006-4ba3-b6e9-0d1cb843cd94 | Reporte WP: ESTANCIATEX                                           | PENDIENTE     | 2026-08-18 15:37:32.459514+00
+ e91b2ffb-3aa7-4221-abf5-23ae27e86b73 | Reporte WP: JUAN CARLOS TRUJILLANO VERGARA                        | PENDIENTE     | 2026-08-18 15:37:32.458651+00
+ 889b4802-7dcf-4ded-b478-984ec9fb7d69 | Reporte WP: NORBELLY NARVAEZ RENGIFO                              | PENDIENTE     | 2026-08-18 15:37:32.456786+00
+ a50342aa-f7aa-44c4-a129-dd85e465a632 | Reporte WP: DAÑO EN LA VIA POR EL TEMBLOR                         | PENDIENTE     | 2026-08-18 15:37:32.455878+00
+ 886ef727-dce0-4d81-ac7d-491ccd712cd8 | Reporte WP: DIANA SHIRLEY CHAMORRO                                | PENDIENTE     | 2026-08-18 15:37:32.454964+00
+ 50ff10c3-a63b-46d6-8c94-5b977d812cec | Reporte WP: MIREYA CAICEDO VELEZ                                  | PENDIENTE     | 2026-08-18 15:37:32.451652+00
+ bf1f88ab-5b0b-414f-a9ef-cc3a499dbd4d | Reporte WP: ERIKA ALEXANDRA PABON MUÑOZ                           | PENDIENTE     | 2026-08-18 15:37:32.45081+00
+ 35eef3b2-0dfe-408e-b0eb-2c79e904c1d2 | Reporte WP: JOHANA HOMES POINZON                                  | PENDIENTE     | 2026-08-18 15:37:32.449967+00
+ ddd0c204-02ac-45e4-b651-a4104baac452 | Reporte WP: NHORA EVA TABORDA MIRANDA/LINA MOLINA                 | PENDIENTE     | 2026-08-18 15:37:32.449054+00
+ 109133ef-bef3-4e77-9f9a-4a5c40f3d534 | Reporte WP: MARIA ROMINA DURANGO                                  | PENDIENTE     | 2026-08-18 15:37:32.448175+00
+ 5f25a4db-7e5f-42c8-9635-de7893621717 | Reporte WP: ELIZABETH CAICEDO                                     | PENDIENTE     | 2026-08-18 15:37:32.447337+00
+ c4af679a-0eb8-4b56-8f0e-7b284a129b47 | Reporte WP: JOSE LOAIZA                                           | PENDIENTE     | 2026-08-18 15:37:32.445662+00
+ 53d716dc-83a9-44cd-baaa-22443fe5c2c5 | Reporte WP: CARLOS HENRY CANO                                     | PENDIENTE     | 2026-08-18 15:37:32.444681+00
+ bf722704-05c9-4574-98e1-3c9d760540aa | Reporte WP: ANGELICA AGUIRRE                                      | PENDIENTE     | 2026-08-18 15:37:32.443882+00
+ e517ea13-35a7-49ba-821b-8d91c387a582 | Reporte WP: JHON MARULANDA                                        | PENDIENTE     | 2026-08-18 15:37:32.443044+00
+ da00f19e-935e-43fb-a3e9-f6cccabbb577 | Reporte WP: JAIRO SANCHEZ BERMUDEZ                                | PENDIENTE     | 2026-08-18 15:37:32.442174+00
+ 57ce1bed-9032-4acc-aa5c-6e555ea97659 | Reporte WP: COLEGIO PRINCIPE DE PAZ/SORAYA ENCISO                 | PENDIENTE     | 2026-08-18 15:37:32.441285+00
+ 5b140827-eaea-482a-885c-cd228f9826c9 | Reporte WP: ANA LUCIA CARVAJAL                                    | PENDIENTE     | 2026-08-18 15:37:32.440191+00
+ 8e19e7ec-d68c-4e1e-87f1-485fd0ec3f0a | Reporte WP: WILLIAM LOPEZ                                         | PENDIENTE     | 2026-08-18 15:37:32.439231+00
+ afd7c572-9245-4091-bf07-e0b83f4b1b35 | Reporte WP: ISABELLA                                              | PENDIENTE     | 2026-08-18 15:37:32.438319+00
+ 3f38e947-ba67-4c19-b53d-464cad89064d | Reporte WP: ZORAIDA RIVERA                                        | PENDIENTE     | 2026-08-18 15:37:32.437395+00
+ ba8052a2-dad2-4e28-9c56-43f70e719043 | Reporte WP: ANA MIRIAM JOAQUI LOPEZ                               | PENDIENTE     | 2026-08-18 15:37:32.436339+00
+ d40766f5-1b51-40b5-8e87-b9fdd410cf71 | Reporte WP: ELCIRA MEDINA GIRALDO                                 | PENDIENTE     | 2026-08-18 15:37:32.435432+00
+ e6ebc62d-dc4c-421c-ac6d-f6aa54d95d64 | Reporte WP: BERTHA LUCIA CORREA SEGURA                            | PENDIENTE     | 2026-08-18 15:37:32.434515+00
+ a50f1ff2-4969-4144-95b6-8840c311c75b | Reporte WP: MARIA ELENA QUIJANO SANCHEZ                           | PENDIENTE     | 2026-08-18 15:37:32.433507+00
+ 6c677b4b-6591-416b-89da-8fc283f9a1a0 | Reporte WP: MARIA ISABEL PEREZ                                    | PENDIENTE     | 2026-08-18 15:37:32.432462+00
+ d63d4256-e80d-406d-8241-aef3f7575327 | Reporte WP: LEIDY SALAZAR                                         | PENDIENTE     | 2026-08-18 15:37:32.431459+00
+ 006e5fc6-73ba-4cb6-9e16-9ede9dd596eb | Reporte WP: JUAN CARLOS SALCEDO MURCIA                            | PENDIENTE     | 2026-08-18 15:37:32.430421+00
+ 3533f20c-8e7e-4394-933e-e63d12a4fb8c | Reporte WP: NELLY DELGADO GARCES                                  | PENDIENTE     | 2026-08-18 15:37:32.425784+00
+ d9acc0fb-b40e-4cc2-a44e-93b3abd63cf4 | REPORTE GESTORA - JAIME ZUÑIGA                                    | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ cfae467f-f8e6-4bfd-9c6d-a763ccd1a7b1 | REPORTE GESTORA - EVELIO MONTENEGRO                               | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ fe96b522-d8a4-4194-b568-782037c53459 | REPORTE GESTORA - ZAMBULON GARZON                                 | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 75516aff-e4cd-4cd7-90af-2edddf5e6792 | REPORTE GESTORA - INES MAMBUSCAY                                  | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 487ccaa2-92e8-432a-ba2a-931faf03dea1 | REPORTE GESTORA - MARINO GOMEZ                                    | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 44b919ba-e213-4242-966b-df08a032eace | REPORTE GESTORA - VICTOR MUÑOZ                                    | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 3c4ca204-9e44-4dc7-9088-f843bd8bfa93 | REPORTE GESTORA - MARGOT MONTERO MUÑOZ - JHON ALEXANDER BURGOS    | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ c902ccef-6ba4-49a1-960a-337e7c47803a | REPORTE GESTORA - KIARA LEMOS                                     | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 2766ed01-422a-4e85-a438-d81ae29919b5 | REPORTE GESTORA - EDILSON ESQUIVEL LOPEZ                          | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ bee8d03c-e312-4234-ba4b-ef868128c676 | REPORTE GESTORA - MARINO GOMEZ                                    | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 60683c71-56ba-4a16-ba48-ba644c45178a | REPORTE GESTORA - GLORIA DIAZ                                     | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 9b2f4faa-139f-4c29-9261-515fa65f78c3 | REPORTE GESTORA - VIVIANA PÉREZ                                  +| PENDIENTE     | 2026-08-18 02:43:50.461878+00
+                                      | JOSÉ NELSON PÉREZ                                                 |               | 
+ 100025e4-dd3c-48e7-93da-b4995eff2717 | REPORTE GESTORA - DIANA POSADA                                    | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 5bc126cd-019e-4e1e-b51a-4cb4abf98a11 | REPORTE GESTORA - ESNEIDER HEREDIA                                | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ e217ca08-e849-4704-853b-fb462d50d3fc | REPORTE GESTORA - DAYERLI HERRERA                                 | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 2a22419e-d3c8-4963-832c-50fb65b273e6 | REPORTE GESTORA - ANA MILENA GUTIERREZ                            | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ a5cceaeb-8c39-41e5-b8dd-90f12a698b67 | REPORTE GESTORA - ROSA GUZMAN                                     | PENDIENTE     | 2026-08-18 02:43:50.461878+00
+ 3c62e519-c5c0-4d7f-9446-ffbe109d5568 | REPORTE WHATSAPP - GLORIA INES ZAPATA - PRIORIDAD BAJA            | Pendiente     | 2026-08-16 00:00:00+00
+ f8bf8514-0059-4e1a-acd6-ed32aba5d139 | REPORTE WHATSAPP - VICTOR MANUEL CUERO - PRIORIDAD BAJA           | Pendiente     | 2026-08-16 00:00:00+00
+ bf7fb11c-a88b-4cfe-a525-f97d3720b1d2 | REPORTE WHATSAPP - EDGAR ALFONSO BOTERO - PRIORIDAD BAJA          | Pendiente     | 2026-08-16 00:00:00+00
+ 41985818-f26a-40e3-8210-65719ceb9f54 | REPORTE WHATSAPP - NANCY ESPERANZA LOAIZA - PRIORIDAD MEDIA       | Pendiente     | 2026-08-16 00:00:00+00
+ 31072143-0f95-4992-9975-2c0716c69ef4 | REPORTE WHATSAPP - LUZ ADRIANA HERRERA - PRIORIDAD BAJA           | Pendiente     | 2026-08-16 00:00:00+00
+ 5b260814-daa9-4d4f-8e02-2d003c86bea6 | REPORTE WHATSAPP - JOSE LUIS YELA - PRIORIDAD MEDIA               | Pendiente     | 2026-08-16 00:00:00+00
+ 436e7982-fd00-4d9c-8ce7-d84a5b8db542 | REPORTE WHATSAPP - MARLENY DEL SOCORRO VELEZ - PRIORIDAD MEDIA    | Pendiente     | 2026-08-16 00:00:00+00
+ 8b1f0dcd-4576-47f3-be7a-5ae8cef0cdb4 | REPORTE WHATSAPP - ALVARO ENRIQUE CARDONA - PRIORIDAD ALTA        | Pendiente     | 2026-08-16 00:00:00+00
+ 22bb0859-90eb-4306-9a69-74811d07c0d3 | REPORTE WHATSAPP - LUIS GONZALO CARVAJAL RAMOS - PRIORIDAD BAJA   | Pendiente     | 2026-08-16 00:00:00+00
+ ef905f58-4382-4e81-9adc-d09f11f148b6 | REPORTE WHATSAPP - HERNAN DARIO VELEZ - PRIORIDAD BAJA            | Pendiente     | 2026-08-16 00:00:00+00
+ 900b787e-3732-415a-828c-90c6aa40f80c | REPORTE WHATSAPP - AIDA LUCIA GOMEZ - PRIORIDAD MEDIA             | Pendiente     | 2026-08-16 00:00:00+00
+ f92958a5-6f36-458d-b5dd-700d9c029c6a | REPORTE WHATSAPP - JAIRO HERNAN VALENCIA - PRIORIDAD BAJA         | Pendiente     | 2026-08-16 00:00:00+00
+ a89f8d88-17e1-4996-a160-5a5a4225a890 | REPORTE WHATSAPP - GLADYS ELENA RESTREPO - PRIORIDAD MEDIA        | Pendiente     | 2026-08-16 00:00:00+00
+ 2a1e5c1f-b31e-4baf-a41a-60954ba122c6 | REPORTE WHATSAPP - LUIS EDUARDO RAMIREZ - PRIORIDAD BAJA          | Pendiente     | 2026-08-16 00:00:00+00
+ cf59a7c8-42d4-4245-8470-642394a2b5f4 | REPORTE WHATSAPP - CLAUDIA PATRICIA MORALES - PRIORIDAD MEDIA     | Pendiente     | 2026-08-16 00:00:00+00
+ e5ac3e3f-2cd5-4a00-aa86-eec4d647954b | REPORTE WHATSAPP - NUBIA STELLA PAZ - PRIORIDAD MEDIA             | Pendiente     | 2026-08-16 00:00:00+00
+ a1331caf-0512-44eb-9a22-c92d30fd63c2 | REPORTE WHATSAPP - CAROLL EMILSEN GARCIA BOLAÑOS - PRIORIDAD ALTA | Pendiente     | 2026-08-16 00:00:00+00
+ a5496e40-942b-40eb-b40f-88e59ce57b19 | REPORTE WHATSAPP - RAFAEL ANTONIO SALAZAR - PRIORIDAD BAJA        | Pendiente     | 2026-08-16 00:00:00+00
+ ccc15255-2424-4c1a-a106-9c292f476503 | REPORTE WHATSAPP - LILIANA PATRICIA HERRERA - PRIORIDAD ALTA      | Pendiente     | 2026-08-16 00:00:00+00
+ 06f9bb8c-4422-4b0b-a8d2-53dd27ded7a9 | REPORTE WHATSAPP - TERESA GALINDEZ - PRIORIDAD BAJA               | Pendiente     | 2026-08-16 00:00:00+00
+ bd2340c7-c5b3-44d3-88da-cf51f523ebf6 | REPORTE WHATSAPP - FERNANDO JOSE OSPINA - PRIORIDAD ALTA          | Pendiente     | 2026-08-16 00:00:00+00
+ 7065f844-7ef2-45cb-abec-97054812dcb5 | REPORTE WHATSAPP - MARIA INES CORREA - PRIORIDAD MEDIA            | Pendiente     | 2026-08-16 00:00:00+00
+ bb3e323c-a954-4a03-9c63-ede9f6fadda0 | REPORTE WHATSAPP - DIANA MARCELA CARDENAS - PRIORIDAD MEDIA       | Pendiente     | 2026-08-16 00:00:00+00
+ ca0477ca-e849-40b2-bca3-8e841af82d2e | REPORTE WHATSAPP - JORGE ENRIQUE GIRON - PRIORIDAD ALTA           | Pendiente     | 2026-08-16 00:00:00+00
+ 3e0714de-a576-4116-b967-3247b8caf7aa | REPORTE WHATSAPP - MARTHA LUCIA ESCOBAR - PRIORIDAD MEDIA         | Pendiente     | 2026-08-16 00:00:00+00
+ d1982eb9-ba2b-4319-bf2a-f80b98b1d192 | REPORTE WHATSAPP - ALVARO JOSE LOPEZ - PRIORIDAD MEDIA            | Pendiente     | 2026-08-16 00:00:00+00
+ e1e1a33d-f770-4a87-9c63-2db50c3f18f8 | REPORTE WHATSAPP - CARMEN ROSA VIAFARA - PRIORIDAD MEDIA          | Pendiente     | 2026-08-16 00:00:00+00
+ 514b2ce1-1251-4b64-af12-e3e4cd5b2709 | REPORTE WHATSAPP - MAURICIO ALEJANDRO VILLA - PRIORIDAD BAJA      | Pendiente     | 2026-08-16 00:00:00+00
+ 98a164c6-0b51-489d-9977-baeeadc234c3 | REPORTE WHATSAPP - GUSTAVO ADOLFO HENAO - PRIORIDAD BAJA          | Pendiente     | 2026-08-16 00:00:00+00
+ 086aa380-3fd1-46aa-a8b0-22c315087f36 | REPORTE WHATSAPP - CARLOS ALBERTO MARIN - PRIORIDAD BAJA          | Pendiente     | 2026-08-16 00:00:00+00
+ 8dbb7fc4-f55b-411d-b561-9c48c33a6d36 | REPORTE WHATSAPP - TERESA DE JESUS LONDOÑO - PRIORIDAD MEDIA      | Pendiente     | 2026-08-16 00:00:00+00
+ b6a686ba-8d32-4d8f-ba50-ec55c26afbee | REPORTE WHATSAPP - JAVIER EDUARDO MUÑOZ - PRIORIDAD BAJA          | Pendiente     | 2026-08-16 00:00:00+00
+ bc466665-0a0f-4229-9826-4ed15e908c34 | REPORTE WHATSAPP - ALBA NUBIA CAICEDO - PRIORIDAD MEDIA           | Pendiente     | 2026-08-16 00:00:00+00
+ a01b206e-e40b-46f3-a7b8-c69ac6832d05 | REPORTE WHATSAPP - JAIME ANDRES RUIZ - PRIORIDAD ALTA             | Pendiente     | 2026-08-16 00:00:00+00
+ c4fa6fae-732c-4a9a-9e18-9348465d86a8 | REPORTE WHATSAPP - MARLENY OROZCO - PRIORIDAD MEDIA               | Pendiente     | 2026-08-16 00:00:00+00
+ 3dd6f3bc-27ae-4e11-b227-3bcacd80ce94 | REPORTE WHATSAPP - CARLOS JULIO MONCADA - PRIORIDAD BAJA          | Pendiente     | 2026-08-16 00:00:00+00
+ c750e3a6-c57c-4d87-ac6c-f1c3ccfecb89 | REPORTE WHATSAPP - YOLANDA RESTREPO - PRIORIDAD MEDIA             | Pendiente     | 2026-08-16 00:00:00+00
+ b054176c-4c50-4192-b36b-0dd236dc61d8 | REPORTE WHATSAPP - HECTOR MARIO POSSO - PRIORIDAD MEDIA           | Pendiente     | 2026-08-16 00:00:00+00
+ 51a2082e-1617-4df7-a320-b7bc64d9d48f | REPORTE WHATSAPP - SANDRA MILENA QUINTERO - PRIORIDAD MEDIA       | Pendiente     | 2026-08-16 00:00:00+00
+ 1d15d06a-4873-4e16-9bbb-9d5091db4255 | REPORTE WHATSAPP - DIEGO ARMANDO GOMEZ - PRIORIDAD ALTA           | Pendiente     | 2026-08-16 00:00:00+00
+ fedba394-1d9d-4be3-8e9d-db9b4c67097d | REPORTE WHATSAPP - MARIA CONSUELO BEDOYA - PRIORIDAD MEDIA        | Pendiente     | 2026-08-16 00:00:00+00
+ 2d567bb7-c10b-4117-becd-956c72c6094b | REPORTE WHATSAPP - FRANCISCO JAVIER CALLE - PRIORIDAD BAJA        | Pendiente     | 2026-08-16 00:00:00+00
+ 7bf34282-bd88-46b3-a430-7f7e1d055335 | REPORTE WHATSAPP - MARGARITA SUAREZ - PRIORIDAD MEDIA             | Pendiente     | 2026-08-16 00:00:00+00
+ 56961aaa-736f-4099-9804-3d4f3191aa6e | REPORTE WHATSAPP - AMPARO MEJIA - PRIORIDAD ALTA                  | Pendiente     | 2026-08-16 00:00:00+00
+ f0afdc3f-3a63-4a60-b98a-2621565aad4e | REPORTE WHATSAPP - LUCIA FERNANDA MORA - PRIORIDAD ALTA           | Pendiente     | 2026-08-16 00:00:00+00
+ 17f8cca0-6a53-499f-bdb3-7a930e6ad7cf | REPORTE WHATSAPP - MARIA EUGENIA ZAPATA - PRIORIDAD MEDIA         | Pendiente     | 2026-08-16 00:00:00+00
+ f97760de-6607-488a-b009-b9ff7d4a0aad | REPORTE WHATSAPP - SANDRA RIVERA - PRIORIDAD MEDIA                | Pendiente     | 2026-08-16 00:00:00+00
+ 9ad4675f-cbee-4ec2-bbbd-ac757ee76c17 | REPORTE WHATSAPP - ORLANDO DE JESUS RENGIFO - PRIORIDAD BAJA      | Pendiente     | 2026-08-16 00:00:00+00
+ 7701b101-8d7a-4d66-8ef4-3c0b159fbf03 | REPORTE WHATSAPP - VICTOR HUGO CALLE - PRIORIDAD ALTA             | Pendiente     | 2026-08-16 00:00:00+00
+ 154721e2-11d9-42ef-bb18-1ecc8eccf886 | REPORTE WHATSAPP - JORGE ALBERTO VIAFARA - PRIORIDAD MEDIA        | Pendiente     | 2026-08-16 00:00:00+00
+ 04023208-9189-43da-b126-e1cccb9a90f6 | REPORTE WHATSAPP - PATRICIA YANETH OROZCO - PRIORIDAD MEDIA       | Pendiente     | 2026-08-16 00:00:00+00
+ 7b8839e2-6d06-4820-9a02-ae2ce29cefd9 | REPORTE WHATSAPP - CARLOS ARTURO MORA - PRIORIDAD BAJA            | Pendiente     | 2026-08-16 00:00:00+00
+ 743bba29-7ef6-474e-9ea9-04b3d9143e9b | Entrega AHE - Folio 2 - Silvia Castillo                           | Pendiente     | 2026-08-15 17:26:43.034473+00
+ 7e250f37-fc87-40ba-b4ce-272772275ce0 | Sol-20260815-065                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 026caadb-047a-4c5f-8af8-f37d16c18e06 | Sol-20260815-068                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 0e25876f-b276-4855-b5d8-71a9a5728e58 | Sol-20260815-070                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 85a4d601-0a30-4dab-9a8a-abc67efb8f52 | Sol-20260815-077                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 7917f23d-0079-485d-bb04-dd6dfe87868f | Sol-20260815-120                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 74dfae27-3b7e-49de-bc01-ed8fa9584f80 | Sol-20260815-110                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ c672c5f6-daa6-4639-9663-962562f16b8e | Sol-20260815-078                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 73967ae4-c24c-4d5c-b6b3-66ac11f4eac3 | Sol-20260815-111                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ bb89efb7-fda4-4368-ab69-8b0966516bac | Sol-20260815-108                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 4e8ba60e-8245-456c-92bc-8867ca5e01db | Sol-20260815-107                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ d132cc4b-7660-4416-859b-94440dbf65e5 | Sol-20260815-093                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ b4726f87-9639-4a31-8754-0802deb54e78 | Sol-20260815-119                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ b99094d5-43f3-4950-85e8-5ca47a57e900 | Sol-20260815-114                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ 1df7525b-f035-4cc0-9fab-27d1daee3859 | Sol-20260815-060                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 5396e3f8-41be-47bd-8279-0c35ee10b7b8 | Sol-20260815-084                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 60c9bd02-4f02-4f17-a7cf-327773a69e84 | Sol-20260815-091                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 9bf089d0-109d-4949-be07-dea8a8505502 | Sol-20260815-097                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ de30cbf1-947e-4d4d-8c31-2076ff06c9e6 | Sol-20260815-094                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ b6da6782-10c1-439f-8221-62e20eb9cc1e | Sol-20260815-090                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ e6a8f969-8b6f-4c11-bc1c-e57598df0527 | Sol-20260815-100                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 440c10e2-079b-43b3-80f1-d30dece2966f | Sol-20260815-086                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 626c87a9-500c-4809-afc3-8923caebf579 | Sol-20260815-089                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 1a0f46e9-e257-4f98-aeee-39340f1ec16f | Sol-20260815-069                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ db953f20-c05c-4415-b018-c0ce30f3070f | Sol-20260815-079                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ 384df6b9-ab9b-4896-8afc-e6e5b3442bdf | Sol-20260815-076                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ 64e9cc92-75be-4596-b71a-7a9468387064 | Sol-20260815-071                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ e179f10f-9fd4-48b1-a642-c03d65984405 | Sol-20260815-104                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 1f97b9a2-6766-4e53-ba3b-30bbef8b8c38 | Sol-20260815-088                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 91bb4a86-7a72-4a86-ac9c-ea3a7796dcf2 | Sol-20260815-063                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ f01a89a4-0dff-450b-a9b3-28c40a2eeeb2 | Sol-20260815-103                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ ef616bfa-e0f8-4463-9ffa-285338b8569b | Sol-20260815-105                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ 1a6ffcb4-b20f-4a6b-8781-b2c66e7096cd | Sol-20260815-083                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 8d8a91aa-5cbb-468a-bf88-bb89c24f12c0 | Sol-20260815-074                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 7f8660a2-2349-4501-8e52-3bfccd0ce212 | Sol-20260815-061                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 7ac5de3c-ff86-4a94-b606-d731dcbd22d1 | Sol-20260815-066                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ fbfdfacf-e417-4a2c-bc49-c0f4256d9817 | Sol-20260815-067                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ c98f4ce5-d042-4fb6-b17f-05dd33358c50 | Sol-20260815-082                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ db05f585-ae71-42de-87f4-e86b81c09ae7 | Sol-20260815-118                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ b3a52015-ddf7-4bb0-97f7-0c1441dd5986 | Sol-20260815-112                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 5090ffab-6eed-4a6c-94a0-b86a3856a71f | Sol-20260815-062                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 21dc7f72-58d9-4456-91e7-949d26298db3 | Sol-20260815-064                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 7e6292cf-0f6c-4fbb-9832-408b45246a7e | Sol-20260815-073                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 0ce74eb1-a938-432d-80f5-0e3f5f34d0d7 | Sol-20260815-102                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 447dd966-1f95-4738-8596-8eca5709754d | Sol-20260815-092                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 777d6468-4e7b-46bb-8848-d067674f10b9 | Sol-20260815-072                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 63c28313-ec36-4124-ae44-c656131e14fb | Sol-20260815-101                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ d42cce2f-677c-4ef8-b49e-125e61e4647d | Sol-20260815-080                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ a0434f30-2352-4b20-bf04-679e07e5a5e9 | Sol-20260815-085                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 1748ec43-5a59-4911-8d9e-24741c07cb3d | Sol-20260815-075                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 75a1710c-fc94-4f77-a5a5-f002f1c7aefc | Sol-20260815-098                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 3fc72165-f6bd-402a-976c-3f57cb34be68 | Sol-20260815-115                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 3a4fb3d2-3d16-4659-8478-e2e9ef6f9087 | Sol-20260815-113                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ c8307e65-c831-472a-9b42-ad5718afe1d2 | Sol-20260815-116                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 8e75fe14-0b5d-4e50-b054-5d485b3f376d | Sol-20260815-117                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 9cf740e7-5f9b-4858-bed6-5f16c06b331a | Sol-20260815-106                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 3aa53c32-cda1-4f95-aeda-f644270ab533 | Sol-20260815-081                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ cea8d5d6-13d0-4bef-a032-190f4661ed6b | Sol-20260815-095                                                  | Pendiente     | 2026-08-15 14:18:02.085043+00
+ c7372ef3-6d97-4363-a45b-e48f8e390df2 | Sol-20260815-109                                                  | PENDIENTE     | 2026-08-15 14:18:02.085043+00
+ 1615b327-9423-48ae-bbd2-66004349f1e0 | Sol-20260815-048                                                  | Pendiente     | 2026-08-15 14:13:10.295144+00
+ bbaa009e-9a9a-4c43-b5d4-53f5f31cc9b9 | Sol-20260815-007                                                  | Pendiente     | 2026-08-15 14:13:10.295144+00
+ ec43eed3-375e-4fe6-a0de-f01d5049b1ec | Sol-20260815-043                                                  | Pendiente     | 2026-08-15 14:13:10.295144+00
+ ee53d771-50a5-4454-b8dd-99bde657526e | Sol-20260815-047                                                  | Pendiente     | 2026-08-15 14:13:10.295144+00
+ 5bf4b5c8-26b2-474d-8701-db571d6f02d3 | Sol-20260815-026                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ a7234dcc-5bd4-495a-b5f9-6a62de04f1ca | Sol-20260815-018                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 55634688-ed62-4997-ba36-a45482115565 | Sol-20260815-001                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ b6e5baad-2fd0-417a-89a7-d126d2c0a77e | Sol-20260815-040                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ ac466ed8-75fa-4d0e-a1a1-6b3e8beee538 | Sol-20260815-056                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ fd226e18-1cc0-4d0c-ba5d-161077581d31 | Sol-20260815-019                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 1a0b4019-ca1c-43f6-b9d5-fa2dff6cbfa4 | Sol-20260815-036                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 80c854c5-6aeb-4fdb-bbf6-006a66ec6974 | Sol-20260815-032                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ e09a18c9-3738-489f-a9f4-2c694a27b048 | Sol-20260815-050                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ e8f086e1-4576-4e75-8d9f-ad9569077286 | Sol-20260815-029                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ c1fa0568-7341-4739-a0b3-4135eb61fc07 | Sol-20260815-025                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 9f6560af-e301-4b45-a53c-57d6fd9349a6 | Sol-20260815-059                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 48316acd-4249-4b98-befd-7bc4e832ce42 | Sol-20260815-057                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ f6316f04-89e1-44ae-b157-6c65dfc08a32 | Sol-20260815-054                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 1c8195ae-a7fa-48a7-8e7f-f3df0d45bb12 | Entrega AHE - Folio 1 - Javier Hoyos Velasco                      | Pendiente     | 2026-08-15 14:13:10.295144+00
+ b66f383f-13bf-4b7d-b5d3-d86d5913f8c0 | Sol-20260815-006                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 4eda0636-450b-471c-8df3-07f921233c2a | Sol-20260815-012                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 1d5fc94d-832e-4f66-bbb6-73f140b67c2b | Sol-20260815-015                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 17531209-aa7f-4f09-b0de-60cf2e9594f9 | Sol-20260815-014                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 21d281dc-102c-4646-87f6-653b5bd12d63 | Sol-20260815-013                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 88db0a17-5024-4d16-a406-354d67fdf692 | Sol-20260815-017                                                  | Pendiente     | 2026-08-15 14:13:10.295144+00
+ 1274a96f-6455-406c-81ac-af1ce4a0e9af | Sol-20260815-002                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ f0af69ac-9c53-43b1-8782-639a9b417052 | Sol-20260815-037                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 01cb4110-70bc-454a-9dea-22dbbbfb9478 | Sol-20260815-052                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 37357e6f-7119-4575-8b78-61fb012adf6f | Sol-20260815-051                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ c6c075a3-a96e-4dcc-b204-cd6ea1e84399 | Sol-20260815-005                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 8f68e9c1-da66-4188-ad48-24dff501585b | Sol-20260815-004                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 1abbfa7e-f37b-48f6-b64d-4677bdcfd480 | Sol-20260815-031                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 6898a674-d37f-4f2a-987f-108920d8583d | Sol-20260815-028                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 8bf02225-3857-4f2f-8281-3cfc85d31b14 | Sol-20260815-049                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ d0ba002f-1b92-4cb9-9a7c-961b883b9d7a | Sol-20260815-030                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 11da3284-f967-4622-bb9b-b801dd861405 | Sol-20260815-035                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ eec92a3f-d10d-4449-818d-fe52bd450f21 | Sol-20260815-023                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 84bcb31b-c0f9-44bb-9f5d-c6b303f3db4b | Sol-20260815-024                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 526995a8-c31f-4682-8c0d-e02a1213b239 | Sol-20260815-021                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 46ea58d6-0bf8-4eb4-84e8-fe8d63f5cbc2 | Sol-20260815-016                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ a9a38cf4-5412-4ffb-a5a2-14fcb7b7dbfa | Sol-20260815-022                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 49df16d2-f0b7-48e9-babf-f8dfc4210474 | Sol-20260815-020                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ e83cb0ca-ce33-4316-a44a-ffaf0655f1a3 | Sol-20260815-038                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 52b3b5f2-8a5b-431d-878e-f97eca6cfa91 | Sol-20260815-042                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 6b3ffd7e-2c2b-415f-bf6f-6da675e99b0f | Entrega AHE - Folio 2 - Jennifer Ortega                           | Pendiente     | 2026-08-15 14:13:10.295144+00
+ f1541ba0-21b9-4c0d-b9f0-ec0680006941 | Sol-20260815-039                                                  | Pendiente     | 2026-08-15 14:13:10.295144+00
+ 8e9ffbcc-ee8d-402c-9c8e-9e47c5cf3897 | Sol-20260815-010                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ e7ff0b4f-464a-4a17-90d5-7826fbb55b87 | Sol-20260815-011                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ bdf1158b-e049-4f55-a5b5-1923c312af8a | Sol-20260815-044                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 7c320de1-af87-413f-a9da-e9396fcf35b9 | Sol-20260815-055                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ 0d35edd1-6c58-4b55-9e35-afc241ab9e73 | Sol-20260815-058                                                  | PENDIENTE     | 2026-08-15 14:13:10.295144+00
+ ef22fdc6-7f8b-45b1-a3a9-4e41ea2bbf0b | REPORTE WHATSAPP - ANA MILENA LONDOÑO - PRIORIDAD MEDIA           | Pendiente     | 2026-08-15 00:00:00+00
+ 310969d7-c35a-4331-9b26-d57ffd0866b7 | REPORTE WHATSAPP - HECTOR FABIO RIVERA - PRIORIDAD BAJA           | Pendiente     | 2026-08-15 00:00:00+00
+ b173b560-6c9d-48a9-9ba1-03af17f3b1fe | REPORTE WHATSAPP - NIDIA ESPERANZA LOPEZ - PRIORIDAD MEDIA        | Pendiente     | 2026-08-15 00:00:00+00
+ a532b272-346b-4829-b7af-59a9e82cffa0 | REPORTE WHATSAPP - JORGE ELIECER CARDONA - PRIORIDAD ALTA         | Pendiente     | 2026-08-15 00:00:00+00
+ 783fced4-a325-4d16-b977-1ec65d2b0973 | REPORTE WHATSAPP - MARIA ELENA TASCÓN - PRIORIDAD MEDIA           | Pendiente     | 2026-08-15 00:00:00+00
+ 7c02dbce-793d-4e2a-ad28-01364e34d688 | REPORTE WHATSAPP - DIEGO FERNANDO RAMIREZ - PRIORIDAD ALTA        | Pendiente     | 2026-08-15 00:00:00+00
+ 96b9e234-c4e5-4aed-8581-92abfff013c8 | REPORTE WHATSAPP - SANDRA PATRICIA MORALES - PRIORIDAD BAJA       | Pendiente     | 2026-08-15 00:00:00+00
+ aa8e9341-a960-42e1-a44f-8a1a625ad6fd | REPORTE WHATSAPP - ALVARO HERNAN QUINTERO - PRIORIDAD MEDIA       | Pendiente     | 2026-08-15 00:00:00+00
+ 5919d230-041d-49f9-871b-7b048a72ce03 | REPORTE WHATSAPP - BLANCA LUCY MARIN - PRIORIDAD MEDIA            | Pendiente     | 2026-08-15 00:00:00+00
+ a17a0481-6d59-414e-bdf8-c1d1717ae825 | REPORTE WHATSAPP - LILIANA PATRICIA BEDOYA - PRIORIDAD MEDIA      | Pendiente     | 2026-08-15 00:00:00+00
+ f6b80a8a-8774-4e62-883b-450cdeff2718 | REPORTE WHATSAPP - FERNANDO ANTONIO MONTOYA - PRIORIDAD MEDIA     | Pendiente     | 2026-08-15 00:00:00+00
+ bfc2c0c2-7a5d-4780-ae02-e9d3eff459de | REPORTE WHATSAPP - OLGA LUCIA GUERRERO - PRIORIDAD MEDIA          | Pendiente     | 2026-08-15 00:00:00+00
+ 1616a08f-7b39-40a9-9d3f-da3a6e97495e | REPORTE WHATSAPP - GUSTAVO ADOLFO PARRA - PRIORIDAD BAJA          | Pendiente     | 2026-08-15 00:00:00+00
+ 4006ae98-73bd-421e-b399-6fec32a1b6f3 | REPORTE WHATSAPP - PATRICIA ELENA CASTRILLON - PRIORIDAD MEDIA    | Pendiente     | 2026-08-15 00:00:00+00
+ fb7a889a-0bf8-48d0-ad05-0336a04a81c1 | REPORTE WHATSAPP - Carmen Fabiola trejos - PRIORIDAD BAJA         | Pendiente     | 2026-08-15 00:00:00+00
+ 3acddfe7-107f-43a3-856a-5f01424c119c | REPORTE WHATSAPP - Jose Sidney Salazar Avila - PRIORIDAD BAJA     | Pendiente     | 2026-08-15 00:00:00+00
+ 7f75423e-e87f-4af9-80d6-d41a15061357 | REPORTE WHATSAPP - Maria Ocaris castaño loaiza - PRIORIDAD  MEDIA | Pendiente     | 2026-08-15 00:00:00+00
+ 3b998fc1-c8f2-4104-bf02-8b1a32413fa0 | REPORTE WHATSAPP - LUIS ALFONSO LOPEZ - PRIORIDAD MEDIA           | Pendiente     | 2026-08-15 00:00:00+00
+ ce2e09d1-2661-48fe-aa45-f3e429e83fb0 | REPORTE WHATSAPP - ROBINSON GUSTAVO GUZMAN - PRIORIDAD BAJA       | Pendiente     | 2026-08-15 00:00:00+00
+ 516d39e4-eeba-4578-9ac0-4ecd05b5b8c4 | REPORTE WHATSAPP - CLAUDIA XIMENA MUÑOZ OSPINA - PRIORIDAD MEDIA  | Pendiente     | 2026-08-15 00:00:00+00
+ c8b4b60e-0537-4fac-a4b5-961b48f122cc | REPORTE WHATSAPP - MARGARITA SILVA - PRIORIDAD MEDIA              | Pendiente     | 2026-08-15 00:00:00+00
+ 5e15dd91-b50e-4ed5-a7a5-b6876f9dd7c1 | REPORTE WHATSAPP - ALICIA MORENO - PRIORIDAD BAJA                 | Pendiente     | 2026-08-15 00:00:00+00
+ acbbb41d-f8bd-45d7-b2a4-7ef6ad029947 | REPORTE WHATSAPP - MARIA DE JESUS GOMEZ - PRIORIDAD MEDIA         | Pendiente     | 2026-08-15 00:00:00+00
+ 5ee8456f-edbf-4e72-88eb-bb8da70c2a41 | REPORTE WHATSAPP - ALBA LUCIA ORTEGA - PRIORIDAD BAJA             | Pendiente     | 2026-08-15 00:00:00+00
+ 7f1947e2-5bf9-4d8e-a5b4-03b1f77841b1 | REPORTE WHATSAPP - AIDA LUZ MARIN - PRIORIDAD MEDIA               | Pendiente     | 2026-08-15 00:00:00+00
+ 0e96c7aa-13f5-4f82-8c8f-acf70cbbbfe7 | REPORTE WHATSAPP - MARTHA CECILIA GOMEZ - PRIORIDAD MEDIA         | Pendiente     | 2026-08-15 00:00:00+00
+ ff8af60f-236a-4069-8bf6-f99b96d3c81c | REPORTE WHATSAPP - JAIRO ALBERTO MEJIA - PRIORIDAD ALTA           | Pendiente     | 2026-08-15 00:00:00+00
+ e9f62b9a-6b8f-41ec-98ce-4b2076205e4e | REPORTE WHATSAPP - ESPERANZA RESTREPO - PRIORIDAD MEDIA           | Pendiente     | 2026-08-15 00:00:00+00
+ 8d202275-cae5-448e-9bc2-2c57c526cd5a | REPORTE WHATSAPP - GLADYS YANETH OSPINA - PRIORIDAD MEDIA         | Pendiente     | 2026-08-15 00:00:00+00
+ ec9048a4-466b-4a79-90ad-4d4fb3c89374 | REPORTE WHATSAPP - CARLOS ARTURO VALENCIA - PRIORIDAD BAJA        | Pendiente     | 2026-08-15 00:00:00+00
+ 8067f984-1712-4666-a93c-3cf2d823d9dc | REPORTE WHATSAPP - LUZ MERY CAICEDO - PRIORIDAD ALTA              | Pendiente     | 2026-08-15 00:00:00+00
+ 2646967b-ddeb-43fb-a68c-194e1315dfe9 | Reporte Comunitario Manual - Ref: 4                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 59ab417e-3d4a-4554-91f0-400b784b46a5 | Reporte Comunitario Manual - Ref: 11                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 75d334d6-81d0-4cd9-ad07-6b4da4b93204 | Reporte Comunitario Manual - Ref: 4                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ fd5b2a01-2cc4-4428-9323-745bb1d74a3f | Reporte Comunitario Manual - Ref: 9                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ c4cccf7b-4f0b-4aad-8fb3-d6e0947d0e8d | Reporte Comunitario Manual - Ref: 16                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 3d3fe346-b2b9-4079-80ce-a6e1bd863110 | Reporte Comunitario Manual - Ref: 6                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 2536a2ad-1ffa-4f2e-a317-c4936dfa6870 | Reporte Comunitario Manual - Ref: 18                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 993e04c6-7e38-4bf0-8ba1-ecc31e9ee6c5 | Reporte Comunitario Manual - Ref: 15                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 14f7c7d3-310c-42f9-a655-75c45d36edd5 | Reporte Comunitario Manual - Ref: 20                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 290cda6c-fc4c-441d-9658-58a31164a4e5 | Reporte Comunitario Manual - Ref: 18                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 4baa2a6a-e7eb-4de4-845f-e66c62e843a0 | Reporte Comunitario Manual - Ref: 9                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 2fb7ffb6-226a-4e64-a4d8-3e6188104907 | Entrega AHE - Folio 2 - Lina Ortega                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 511c6259-fb3c-4011-9220-0675d2aaa46a | Reporte Comunitario Manual - Ref: 18                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 22009e21-ef08-4d9b-b18f-463fc276be42 | Reporte Comunitario Manual - Ref: 35                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ a01b5e44-35ed-480b-8943-45eb602c663e | Reporte Comunitario Manual - Ref: 18                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 0422f977-2460-44ff-a6f2-d34f6b735b95 | Reporte Comunitario Manual - Ref: 1                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 47bb1c4d-c0d9-4167-8d20-7fcbf96f5543 | Reporte Comunitario Manual - Ref: 4                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ fee21ef6-38bf-4a17-a99e-093e53549678 | Reporte Comunitario Manual - Ref: 17                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 00535728-b63c-4a71-8dc3-3e076247cb7f | Reporte Comunitario Manual - Ref: 8                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ aeef50b6-929a-40aa-81bc-40a23d7fc588 | Reporte Comunitario Manual - Ref: 5                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 4b6d765e-3f9d-46f4-bbb6-d62c826320e2 | Reporte Comunitario Manual - Ref: 12                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ c768854b-0e26-462f-aa54-2b28e4f1851a | Reporte Comunitario Manual - Ref: 3                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 48610f91-5496-4a57-9307-5ca591aa510f | Reporte Comunitario Manual - Ref: 31                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 1c151b26-948e-4e5f-aa45-24f31b573460 | Reporte Comunitario Manual - Ref: 4 P                             | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 9806020d-6898-4b82-b7bc-1939682076db | Reporte Comunitario Manual - Ref: P 22                            | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ c7edb54c-4b14-45f4-b4c7-630189ad882a | Reporte Comunitario Manual - Ref: 15                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ c5b599aa-9f87-49b7-973e-868c72bd4fdb | Reporte Comunitario Manual - Ref: 8                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 2f44188e-0d8a-4e93-81ef-f49c294f9a9e | Reporte Comunitario Manual - Ref: 15                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 8d6d3141-5851-47bf-81b7-5a7bdfff2aac | Reporte Comunitario Manual - Ref: 6                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 348e65fd-28e0-4f54-b341-5279049ca137 | Reporte Comunitario Manual - Ref: 2                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ ae62c244-ad5c-4cca-b24c-a14d28bba454 | Reporte Comunitario Manual - Ref: 21                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 44571eef-c535-47e3-9704-51151f989224 | Reporte Comunitario Manual - Ref: 7                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ c9b7c57f-3b45-4c1d-a256-9d07b828790e | Reporte Comunitario Manual - Ref: P 19                            | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 2841ac39-54d3-4756-9daa-45c7c27b6258 | Reporte Comunitario Manual - Ref: 18                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ ec333033-ba9e-4f9f-8c5f-30209a9b4915 | Reporte Comunitario Manual - Ref: 3 P                             | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 20db9bbb-9342-41f6-8ccc-b7069e91c754 | Reporte Comunitario Manual - Ref: P 18                            | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 1c4181ff-0dab-4565-bb0c-7936b80ef312 | Reporte Comunitario Manual - Ref: 18                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 62450e41-2764-4707-a85c-deba06b034b4 | Reporte Comunitario Manual - Ref: 14                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 968abba0-2ecf-4f77-91c0-b121ae00b3e7 | Reporte Comunitario Manual - Ref: 3                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ c8b93d41-e802-4b7b-ba7a-11949544d25b | Reporte Comunitario Manual - Ref: 10                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 144b996f-2547-45eb-b5f1-21087c041589 | Reporte Comunitario Manual - Ref: 15                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 762eb79a-dc90-486f-8ca5-91b546d1ec76 | Reporte Comunitario Manual - Ref: 35                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 008d09ae-8f99-425c-94ca-e03a31cf1a94 | Reporte Comunitario Manual - Ref: 14                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 727f3677-3706-4368-b627-d789d120274f | Reporte Comunitario Manual - Ref: 11                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ b7248ab1-3b8f-452a-b013-7ad1953d5a8e | Reporte Comunitario Manual - Ref: 7                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 0351c19e-b785-4dd5-a440-2cb2c1d093f0 | Reporte Comunitario Manual - Ref: 11                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ b9098efa-52fa-407a-ab39-56061f86fcca | Reporte Comunitario Manual - Ref: 8                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ dbe7365b-3721-43f0-9876-d4ffa4b333ae | Reporte Comunitario Manual - Ref: 54                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 67864265-df7e-4c88-b57c-112cd2cacc3b | Reporte Comunitario Manual - Ref: 53                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ e90148ff-404e-463a-a237-d96504d6dbc0 | Reporte Comunitario Manual - Ref: 24                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 5054a886-07c1-439d-a674-c09f0581caf3 | Reporte Comunitario Manual - Ref: 18                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 39256200-225b-441b-a254-67f373ea33ae | Reporte Comunitario Manual - Ref: 47                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 8ca702d5-2999-4004-8f98-9d8a2f8bd5b7 | Reporte Comunitario Manual - Ref: 2                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ d029d9b5-df19-425f-abd8-6b3588699940 | Reporte Comunitario Manual - Ref: 49                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 6b27cc66-b4f0-4a7d-8df2-4c75c6d200f4 | Reporte Comunitario Manual - Ref: 4                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 47afec2e-9034-4a26-927c-4053388a7b6c | Reporte Comunitario Manual - Ref: 16                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 7ccc405d-4fea-418b-87d2-bab8200ab6bb | Reporte Comunitario Manual - Ref: 11                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ be99a54c-38c9-45f9-8702-168bdd61808a | Reporte Comunitario Manual - Ref: 7                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ fc220916-9cbe-4e45-baaa-641b23a45843 | Reporte Comunitario Manual - Ref: 30                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 12617b57-5668-4280-a57c-6366abb038b9 | Reporte Comunitario Manual - Ref: 35                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 3ea1536e-44ef-48db-8654-b2cad5a46e6d | Reporte Comunitario Manual - Ref: 20                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 8d720c20-b845-4a76-b3d2-589f213f27ce | Reporte Comunitario Manual - Ref: 1                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 1b46398f-96bc-4fc5-a93e-01792fe2bdec | Reporte Comunitario Manual - Ref: 3                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 67e31a6e-17c0-4d41-ad0a-a44b35f1c46d | Reporte Comunitario Manual - Ref: 18                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ f64e0b38-048b-42f9-a6c6-a3b7fe072eb3 | Reporte Comunitario Manual - Ref: 6                               | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 13b79cd9-73d3-4cf8-9754-cbe40100fab2 | Reporte Comunitario Manual - Ref: 46                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 8686df5c-b4c0-4866-8bf2-89129e2dd91e | Reporte Comunitario Manual - Ref: 21                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ e9ad683e-08c9-413c-8600-9b564db4b4aa | Reporte Comunitario Manual - Ref: 21                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 2e81c754-1a9f-4e5b-94c3-39daea3f2686 | Reporte Comunitario Manual - Ref: 11                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ ed6be88b-4394-43c8-a086-5f435992cc63 | Reporte Comunitario Manual - Ref: 17                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ d2bea19f-aeaa-480f-9656-9ff84ff77ce8 | Reporte Comunitario Manual - Ref: 32                              | Pendiente     | 2026-08-14 20:58:47.338923+00
+ 88af4030-f342-4532-aa36-5007b3efb262 | Reporte Comunitario Manual - Ref: 1                               | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 22853af0-f0bb-4764-8998-111657cde33e | Reporte Comunitario Manual - Ref: 31                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ ecfb519c-d2c8-4a68-baf7-940839c111cd | Reporte Comunitario Manual - Ref: 23                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 1b5c83bd-fe9c-4f69-a16c-ccc078d2c2c5 | Reporte Comunitario Manual - Ref: 28                              | PENDIENTE     | 2026-08-14 20:58:47.338923+00
+ 1902e2ff-8f51-4dc1-a392-48302ea56462 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 5a071f61-a6b6-470b-9fad-8831e3c0df6e | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ a2e2fa12-527b-4efb-8293-7a6711b506e0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 47407d75-3d08-4652-b861-f3ffbc9b7116 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 3fadaebe-9ab9-4495-80f5-41807b122584 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 4acbb306-4b0a-4b01-a651-77531cfa46a0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ d19be4d8-6284-4476-be37-72b73910780d | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 16e6678e-e8ec-432f-8515-acfa3a2a67b1 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 5dca9b29-b653-4812-9cf0-64e985de26e1 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 7bb351fa-aee6-49de-a76c-ec1a0f88d0d5 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ d7194fc7-abdf-4791-b630-0f8ed387dac5 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 45d7cd6b-25ea-4e2d-b6c6-026067cbadd5 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 8e465155-5599-4073-8757-cd5663b1ea3e | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 3f74bdd5-e9e0-4ce3-8f9a-fbd1ddeb952b | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 9ea61f01-63c9-4510-b0a9-393a4e3ee8d0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 03b577cb-1618-46ee-8f96-9d34d625fdb7 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 1462c662-17ff-4cfd-b465-cf666b25b3b8 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 712d3090-dd1e-4f76-96af-865907707d2f | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ dd853f0b-ceb0-4594-a5c4-0cbef7b44876 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 9110c922-4145-4bbb-8766-3e6a5f7627c0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 46eb5ab2-2ab2-4d50-b417-8e1a5fe57ea0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ b7b917a3-5239-4aae-a20a-12541792893c | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ c5c5c2f7-34cc-4123-bdce-3c8040f2721d | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 20a88124-bfe0-4f8f-8834-1683c839fba5 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 1fedf136-cdb3-4a30-ad06-8bfe5ea49ca7 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ f17fc841-5de0-460d-ad07-32a3316b5b0c | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ f6d77f11-f07b-4f22-bc75-18565bdfc418 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 5bb0c94c-4442-4f85-8af0-93cca4055896 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ c9aa58cb-9333-43b2-8999-f4b216e9e9ae | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:13:33.001827+00
+ 3307c027-8a5d-4f5a-94e6-5a366f45e91a | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 0db3117f-fcba-4318-8a25-8998f06dafd0 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 27609c8b-3404-40f8-9083-e60cdbe53b3e | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ c16265d8-58f0-4a97-8295-709854acf6d8 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ b428df6b-b898-4be7-b03a-f6d5099f4512 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ a5702a56-e51e-43df-bc6e-ce2da2c3f015 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 1faa9c42-1d2c-4c02-bc2e-12c7e4a1af7a | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 6cb8d86c-1d4e-4ea8-bce2-1a65dd548773 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 8c8d3849-1990-40fc-9f58-47ed14699ad3 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 93f2370e-ef06-48fe-bfe7-9017c1a5e798 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 52dc9a42-026b-4bca-8322-4055ae7c7040 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ b3dbe0a2-f2cf-4f26-bb60-471335d9810e | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 64e49611-4edd-4bd7-b232-cd3ae451b735 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 0ae16385-1e9c-4929-8ed7-3c20aa9965a3 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 6dec915a-0e51-4d24-b632-d7ef3f39f67f | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 3b25bac0-cf48-4388-adf7-8ced4719747b | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ dcdff74e-7592-4ea1-8304-a7cba55cd9c0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ f323d93a-4a86-4b07-ae5d-e0d3dfc4f45d | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ e2085232-45c5-48eb-b336-05fa88d32d4e | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ a6969088-f728-4b4d-b1bf-355de024e97b | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ edc3f54f-6fb7-4cf4-9ccc-84300dce634c | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ b2cd93f0-d423-48a9-bc30-5991cd88144c | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ c9d51089-bdd9-4f7c-8be8-f492b34b894b | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 919987e6-bbef-46ad-92a8-3f29c7d3c823 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 3a7d12bd-77d2-4526-bbf7-01852970e998 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ b2f6e05d-cbf4-4bf4-9140-363e695bd687 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 7f9e217e-350a-4ea9-b46e-9bfc8fd3206d | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 616d7e0a-3819-4f8e-83ec-f7f330e5381a | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 1a5e6eb3-ca46-4aa9-9244-d3d8c3f73af1 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 9ce69f1e-8625-4a95-8370-98b5b0f8b11c | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 9eda60e8-548c-45c5-b6ed-34b70a9396db | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 2efcb1e0-4ee0-4ec3-ae8b-ac19db3fa6c6 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ ae7bc83d-d9c6-4d8a-80e1-5e16a0dda0a9 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 372fa5fd-49f8-4293-b316-2eb926710a82 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ b57f9508-a79c-4c0e-8092-f227feb5ec74 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 6c763b00-65a6-4962-a80d-2b472412a68c | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 1f3f14e8-4522-466c-b69d-5c9b5478bdbb | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 38500eef-a0c0-4704-a6ef-09dd58fe1c17 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ ec6e4da1-d80a-443f-a9f5-d84c7405d3c1 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 468ff68b-0b52-4294-918b-02071a73a9c0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 5f57c29c-823b-4efb-afe3-30b93cfcffb0 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 4346e4f4-66db-460a-a737-a8b3f73931a2 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 068f9c63-4375-485c-af98-b3a00bdbf90c | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ e0135c30-9119-4e9a-9604-f278c7014f04 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 7029241a-ee5a-4de0-82de-121d6219d1df | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ fb34d2e6-ea0a-4b1a-89e8-7173723a5b37 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ fe036806-1e7f-4431-a5a6-3f95eb68a21d | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 2f312c8b-6e3d-4b79-946f-1cdd5df2ce2d | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 0d85e581-fea0-4754-accc-58f01347673a | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ e504a147-455c-41a0-a8e9-1a567d48dc01 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 4ab6c46b-6fff-44ea-a948-bc57ad92a862 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 09ade1cd-8403-416f-bae1-a3fd79bc7730 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ d93ca771-6ba8-4297-8210-78c771fc5e96 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ b6620aaa-8002-4894-b252-e9aa58176d43 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ d336dfcb-452d-4b75-a5cc-4c7ce52d4a32 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ d75c2b55-dbc7-4c93-9266-3105f26b1f0d | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 9a3c806c-dcf2-4eff-a44b-e97cbb4ace6f | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ b8539946-a8ea-4a41-b456-45c0c461aea8 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 0970912d-6e87-4beb-bbb8-d9c8e79d5a18 | Afectación Estructural                                            | PENDIENTE     | 2026-08-13 23:08:44.809366+00
+ 8c3032a9-2e84-4a1f-b4af-97b8adf0ecd4 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 864c480b-fa59-45ae-ae93-f14530e651d6 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ b97fa5fe-8e26-4a52-8cb6-fd4651fe590b | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 2a8cc865-f6c0-45f6-9287-82923cd90fe3 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ 6b1eb138-4450-471c-9ed9-9896d13343f3 | Afectación Estructural                                            | Pendiente     | 2026-08-13 23:08:44.809366+00
+ a9fb4866-7753-414c-a1ad-74dea860148f | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ 4df8a782-3611-4e76-92bd-ad14db2067c8 | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ 27f085e4-8fd9-4f6b-a5a0-6d6a94b8fb9c | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ ed0c2587-c267-467b-a4bd-6bbd532dbed8 | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ dbf2c817-473b-4264-ac23-e5b338f667dd | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ 31ad7317-b1fe-4d95-b4c7-cd0f1581730f | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ b2a91ec1-8a37-45c3-bc9d-ff9a4d8d4bf7 | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ b8748a41-b66c-415a-8e96-5416f4dbccac | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ 445c46c7-cd24-476b-a6e3-7096685b91a2 | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ ca15edef-f798-4bd4-9557-5505ac04a496 | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ 0becea2e-39ff-4e44-98cb-800b5374d8d4 | Censo Afectación Estructural                                      | Pendiente     | 2026-08-13 23:04:09.762707+00
+ 6c366dfc-4cd1-4422-974a-935a7948c57d | Reporte Definitivo                                                | Pendiente     | 2026-08-13 17:12:17.658013+00
+ 0fa886f1-60e1-43ed-904a-d596581e4faa | Reporte - Ana Rut Collazos                                        | Pendiente     | 2026-08-13 14:12:09.389906+00
+ 85b8e6f2-b7b4-46af-a234-5730b63194d7 | Reporte - Manda Lucia Velazco Marin                               | Pendiente     | 2026-08-13 14:12:09.389906+00
+ d79a3557-dcb4-4cba-a264-ac4cf8710c43 | Reporte - Michel Dayana Aragon                                    | Pendiente     | 2026-08-13 14:12:09.389906+00
+ 6e3dbb00-34f2-4756-9532-25ad6f065922 | Reporte - Esneda Moreno Lopez                                     | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ f03d4543-7d33-4083-a806-9ec5fecd98e0 | Reporte - Nur Maria Paz Carvajal                                  | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 7d1ee39a-d68b-48ed-91c2-14a28b43dcb4 | Reporte - Ana Ligia Valencia                                      | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 570c0713-2deb-44e7-9ebc-aaa047c4a036 | Reporte - Mariela Benabides                                       | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 1aafa4eb-d9e8-4803-a234-3b5c598ad1b2 | Test Actualización                                                | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ b5eef32d-ffe0-46e6-86ba-0e1c602d19d4 | Reporte - Sulma Santiago                                          | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ c7801027-f827-494a-9188-ab036acf6a62 | Reporte - Paula Andrea Bedoya Holguin                             | Pendiente     | 2026-08-13 14:12:09.389906+00
+ fca56a03-bf60-4e00-8205-d54527f78b4f | Reporte - Norbiyeth Gomez                                         | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 073d7ada-d543-4dbc-baae-6429c5f91ea9 | Reporte - Lucen Gomez                                             | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 43430b0d-253f-4333-8f7d-554a640c6325 | Reporte - Flor Elena Rodriguez                                    | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 3cafb947-7949-4f64-aa91-7eef9fc989dd | Reporte - Maria de los Angeles Rojas Suarez                       | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 0348e096-35c0-4262-a912-c6cedd582be3 | Reporte - Paola Andrea Sarria                                     | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ 7e01fd0a-9166-467f-8fa1-cba5c1e9e369 | Reporte - Luiz Alberto Cerquera                                   | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ e222c096-0a3a-4b30-a108-bbe709f534cb | Reporte - Delia Ines Piñacue Pardo                                | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ cb2b97a6-a421-435c-9926-fdfbcbf572fc | Reporte - Eresa Angulo Cortez                                     | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ a99fa85f-8857-4beb-b9e9-749e9c37d3bf | Reporte - Marco Antonio Corcino                                   | Pendiente     | 2026-08-13 14:12:09.389906+00
+ b2e1577b-2e25-493c-9141-4831d436cbe0 | Reporte - Aldemar Camacho                                         | PENDIENTE     | 2026-08-13 14:12:09.389906+00
+ f74126f8-3e2a-4a7c-b5bc-160965865215 | Reporte - Fabio Hernan Ruma                                       | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ b9a450de-ccae-4340-bc34-124e33773d7b | Reporte - Javier Vernal                                           | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ 1eb6a3d7-24d0-49b9-ae4c-0b60b95ba94e | Reporte - Jairo Enrique Garzon                                    | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ f34214da-56d1-45fd-81ba-4cf4dbeb9cc0 | Reporte - Pedro Limas                                             | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ 0b2f90a3-c3e6-453f-a310-ad241ee0f99f | Reporte - Rosario Garcia Soto                                     | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ ebcdafb4-ebdc-4f1e-84ea-4a11159b1c90 | Reporte - Wara Pachico                                            | Pendiente     | 2026-08-13 14:10:28.323378+00
+ 045bd6c4-703c-40e7-ad97-0c5de0f1b3c5 | Reporte - Claudia Fernanda Garces                                 | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ 7218f7d1-8041-42e6-95c9-1207c248ac42 | Reporte - Antonio Alvarez                                         | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ fff96e5f-57a7-4068-80e9-32dbd1f36345 | Reporte - Diego Balcazar                                          | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ 4f749ddc-79cd-4eb1-95fb-5c9c787249f5 | Reporte - Johny Rodriguez                                         | PENDIENTE     | 2026-08-13 14:10:28.323378+00
+ 0ff82e90-3bba-4bbd-a7b2-b7dc7b29b3a8 | Reporte - Yuzdary Cordoba                                         | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ cf4d6ea6-501b-4511-a055-d4393333aa0c | Reporte - Clara Ayala                                             | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 3a92d9e8-cf47-4e8a-a195-aec8b51557dc | Reporte - Pablo Emilio Hernandez                                  | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ ca72abfa-8a03-42fe-9174-45bc31b41c34 | Reporte - Marcela Martinez                                        | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 89c73128-1fe7-4431-8929-b55d6abbc264 | Reporte - Arless Humberto Quisoboni                               | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 2e32d634-906d-402b-ae42-449868b73a51 | Reporte - Maria Alejandra Escobar                                 | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 69155709-2820-4274-ba2c-d942ed832ed9 | Reporte - Robert Chacon                                           | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 949d57a9-1976-48ad-b459-4aee8df09574 | Reporte - Martha Liliana Perez                                    | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 5cbccfc1-e2f7-4e4b-8a84-482116a8cfe4 | Reporte - Pomar                                                   | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 56c7768a-b1be-409c-a023-d7aefc165eca | Reporte - Luis Aragon                                             | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 296a4e47-1af0-420f-ad27-8d7ccc927805 | Reporte - Yurany Andrea Mera                                      | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 1bab8443-cdf6-4166-8ccf-fce412e0e854 | Reporte - Alfredo Davila                                          | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ ff192f7d-0546-4437-9cd4-7c683513f58e | Reporte - Maria Elena Rivas                                       | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ defe474f-0f56-441a-b54a-6bf7c2ef114b | Reporte - Lorena Perez                                            | Pendiente     | 2026-08-13 14:09:00.798482+00
+ b981e2ec-0df4-481d-82bc-b767fa7da52c | Reporte - Sergio Gomez                                            | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 752da747-7653-45a4-a993-7434913a9456 | Reporte - Susana del Carmin                                       | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 6fbd7e43-8d47-4a8d-8dd0-df286aa7ec9e | Reporte - Zulay Vanesa Lopez                                      | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 47303950-5bfe-46a5-bf33-5e433a410928 | Reporte - Blanca Nidia Hoyos                                      | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ af021313-46ad-4873-90ba-fa863dbf7cc4 | Reporte - Alex Almeira Calderon                                   | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ fb2c8138-2f21-432f-b8f9-7c9030859fe4 | Reporte - Jhonatan Claros                                         | Pendiente     | 2026-08-13 14:09:00.798482+00
+ d6cc2e7a-1787-4ccc-a988-51679fea1159 | Reporte - Jessica Marquez                                         | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ be382ca2-b830-46d5-9548-e4ca577c69d9 | Reporte - Paola Andrea Muñoz                                      | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ ffc328d4-7ea1-4e75-a5ef-45bbed8f757b | Reporte - Esperanza Vidal                                         | PENDIENTE     | 2026-08-13 14:09:00.798482+00
+ 7e29e960-7788-419c-95ac-baa72dbb8e63 | Reporte - Jose Ignacio Paez Navia                                 | Pendiente     | 2026-08-13 14:09:00.798482+00
+ d784db6c-60e1-4c84-bada-f77aac4c03dc | Reporte - Mireya Caicedo                                          | Pendiente     | 2026-08-13 14:09:00.798482+00
+ 5d96193d-fa8d-4e8b-961e-42bd8af80bd9 | Reporte - Nuri Edith Sanchez Caballero                            | Pendiente     | 2026-08-13 14:09:00.798482+00
+ 3acb2d6e-2586-45e3-bf74-27e0ec149277 | Reporte - Ruben Dario Satizabal                                   | Pendiente     | 2026-08-13 14:09:00.798482+00
+ d860c09b-e226-48c7-90ad-7f029b71403c | Reporte - Edwin Ramos Gallego                                     | PENDIENTE     | 2026-08-13 14:07:06.912765+00
+ 595cebc9-48f1-40c1-836c-6ae86e2f9e7b | Reporte - Consuelo Lugo Arias                                     | PENDIENTE     | 2026-08-13 14:07:06.912765+00
+ 55031a2f-7422-418f-970a-1c52f852de5b | Reporte - Emperatriz Mayorga                                      | PENDIENTE     | 2026-08-13 14:07:06.912765+00
+ 86f814ae-46bc-4f80-b2f6-f020f7a43d60 | Reporte - Arlex Ortega                                            | Pendiente     | 2026-08-13 14:07:06.912765+00
+ ab9d19e2-2c08-417d-a6a3-a457bb56c29d | Reporte - Laura Albear Ruiz (Admin)                               | Pendiente     | 2026-08-13 14:07:06.912765+00
+ 51c6c74c-7acb-48cf-9795-de3bb9e0a3fb | Reporte - Leidy Alejandra Cardozo                                 | Pendiente     | 2026-08-13 14:07:06.912765+00
+ 48acd5b8-0043-4f56-a8da-49334a74404f | Reporte - Alba Noguera Martinez                                   | Pendiente     | 2026-08-13 14:07:06.912765+00
+ 77f68b9b-cbac-4613-996c-e62de1ebc82d | Reporte - Ana Lucia Rengifo                                       | PENDIENTE     | 2026-08-13 14:07:06.912765+00
+ 7df8611e-3983-4907-8ffd-e0d9c444ca7a | Reporte - Dilan Ordoñez                                           | PENDIENTE     | 2026-08-13 14:07:06.912765+00
+ 4d365c8c-384b-4580-88ac-95fa02c2b470 | Daño Estructural                                                  | PENDIENTE     | 2026-08-12 16:22:13.603122+00
+ bbfe8d8a-781b-4311-bb7e-78e5622f6fd7 | Prioridad                                                         | Pendiente     | 2026-08-12 16:12:59.743849+00
+ a4f0fafc-5dfd-42a9-908a-cfa194705b9a | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ ce839000-8507-4238-b9c9-7f818803e5cd | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 30c43064-9e81-49f4-a7df-de36f130b2fc | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ d8a9b9e6-7682-40a5-8ea4-64968523a9cd | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 78617825-b5bd-4299-aca7-a8a510d9d714 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 16:05:02.21985+00
+ 6388f007-1b5e-4e6c-b334-57ff90858e5c | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 16:05:02.21985+00
+ c2fe4fab-e485-4433-9d9c-12da8767cb78 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 16:05:02.21985+00
+ 8c99755e-57bd-4bd5-9671-c523b8c81249 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 16:05:02.21985+00
+ 4d0da003-e8ba-4def-8f0a-f31c44d090a4 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ b1bbeac3-43f1-460f-bcc4-0249676f75fc | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 16:05:02.21985+00
+ 5b8c8ed9-fde0-42f7-b1ce-a09aca0c0e95 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ ad90a523-f276-4dd8-877a-3dd64bc9128f | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 9897735e-6d10-4bae-9dc7-98eedd3f90a5 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ c4c40812-9edc-4cd2-a000-ac1e66341ea7 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ e55a511e-9e30-428e-a9ca-91245ef5c0fa | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 3941c8ed-fae7-44ff-878c-ac793591e0f8 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ fd06cdc1-9f5b-44c1-a4a8-692c738764e0 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ f97884b4-c7bc-4763-adbe-8378a64b0b43 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 2b0e3f0c-1af7-4ace-aa75-26f097225ba0 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 6b1fcea6-40f2-4b3b-b5a4-5d3f96b75e52 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ bfb7f1eb-897b-448f-9c04-e8a133177613 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ f92a76aa-9f21-4414-8357-0512ee414dfb | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ aa7a607c-06e1-4ea4-8a0d-27a0d5212be7 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 224b1d6c-0ba3-4403-b68f-f9becc0b7334 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ e841f2ff-7649-42d8-83a0-b4feb65f7359 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 0ab69ef3-9509-4851-9744-d90a16c39dd1 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ ed981360-7853-426e-9fec-cabb81355b6e | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 251f8bb1-7346-47c5-9a54-70e05fa42d00 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ fe514ef4-2cba-4059-8567-21862e7efa16 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 597d7b7f-8afc-4dc9-af04-b6ff9bcd62ae | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 820df3c6-9a31-4df2-9b8d-6e1c6a2f002d | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ d3013060-8623-461c-9b96-97e88b426cb6 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 530bdad1-6540-4f0c-a44b-64a7b7c30654 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 0a4b2575-fcfb-4ad7-88f9-bdc512c4cf21 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 16:05:02.21985+00
+ 7beb61ab-443e-49dd-9f3e-5850f68ed4bb | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ 2781fc41-80d0-4fd7-add6-9ce9060a123d | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:43:21.618244+00
+ 2a06ab0a-985d-4bb0-945c-86c3d710a047 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ 7a2ddc76-5fc5-44dc-9a9b-62785707b154 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ c82f96ca-1549-4c13-967f-9b83b372c684 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ c7e5862c-fefa-4f56-9051-18522abefbc3 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ 293abc73-0a2e-4ec8-8d83-f11b773e5e72 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ d25cf35f-a45b-4de8-8832-0e4728e8f17b | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ adf136bc-fc5a-4400-b9ce-d34ef4862f92 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ 9a94c53e-1347-44cb-a103-c6f21384c570 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:43:21.618244+00
+ 013faaeb-21e0-41bd-86c3-eaa8de6dfab6 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:43:21.618244+00
+ 72db5014-c444-41cb-9fea-ba56484cb1ca | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:43:21.618244+00
+ ebb0f079-9cc0-47a0-b475-68c055998d19 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:43:21.618244+00
+ 08321e5d-7c1f-4a36-85f5-7d47c7449e46 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 2c24441e-f880-4fa6-b7fb-df6780176daa | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ 1728d200-fba8-460d-944f-b14acfca034d | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ f07531a8-5778-46fb-bc1d-5ffaa3322a70 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ b45a6689-8a10-4494-9db5-8481c52a889b | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 3a619aae-c029-4e2c-8d39-6d0348970d8f | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 0ca322e6-ff00-488b-9d3b-71abc21ceb4f | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 04090d90-16ca-4578-b7c5-ae2f74bed9e4 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ c2918590-fc83-43cd-b6fd-54a91c150ef1 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 7e6fed11-1cb8-42d1-9e85-02bba16dca3a | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ cc190c33-49d7-470b-881f-7b27af1693d2 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 82eb48f9-6dba-4287-a88b-1fc717cdbfec | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ fc222654-164e-4834-8483-31f45a607e64 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ db63de3f-fff9-49f7-9852-0c4e0eda00ef | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ b780cf8c-9338-4265-8898-0163759c35bc | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ 6d4e75d9-9557-4cba-9e9d-8dd46a44d0d8 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ 6b692291-1f96-4f39-8432-990b61cf17ae | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ db1362e7-a521-4f29-a7ab-8c7fc27a66a3 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ 9d39426d-5156-4849-9d45-2efad79ee59f | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ 29792bf9-2058-4898-a5ec-cdf16efaf6bc | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ 925c5ce3-bb13-45af-a0ee-f404b9881112 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 706c91e2-6f4d-4a74-86fa-357cac3e3805 | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ f40a7267-0112-4c6c-ac35-6c49c4cb00ce | Reporte de Emergencia (Físico)                                    | PENDIENTE     | 2026-08-12 15:26:34.324881+00
+ a8cd0856-6b92-4e61-96ab-d60ad7e5c1de | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 50889ada-ffc3-4e09-9585-d96b163e3050 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 92783f2a-36e3-48e3-8337-8bd4c0e5ec66 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ c33ad983-5272-487c-ab61-52240be04978 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 633c6faa-42aa-496b-8378-c19671286933 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ ba888bf4-f9a0-4064-a709-63465300bb55 | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 82d77908-5caf-45a6-861d-1abd6361187b | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ b4d575e8-af08-4801-a279-e37354ae2086 | Entrega AHE - Folio 1 - Leydi Andrea Burgos                       | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 6669a9e3-4492-4048-9cbf-b7d55042748a | Reporte de Emergencia (Físico)                                    | Pendiente     | 2026-08-12 15:26:34.324881+00
+ 53209786-1cb0-47dc-96b8-3365698c82d3 | Daño Estructural                                                  | PENDIENTE     | 2026-08-12 13:43:56.548263+00
+ 0446ddb5-24ff-43a4-8b78-449778d6eb35 | Visita Pendiente - Maria Alejandra Sanchez                        | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ 0dc9f6d4-4f6c-4a09-b77f-313dc3967677 | Daño Estructural - Calino Central                                 | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ 03b979d5-0f70-4149-a842-07b5bccf03e4 | Daño Estructural - Sonia Rojas Moreno                             | Pendiente     | 2026-08-11 16:24:04.340911+00
+ 469355f9-6f24-4f38-b2a0-5fceec78b6a5 | Daño Estructural - Alfredo Arboleda Mena                          | Pendiente     | 2026-08-11 16:24:04.340911+00
+ d81c5507-a5d5-400a-90e4-1094fb9908d0 | Daño Estructural - Sector Mirador                                 | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ 0a3d9125-a5e5-4727-986e-c97abb8a40a3 | Visita Pendiente - Jhuncu Pinzon                                  | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ 33219855-a471-4a89-8184-538127aeee27 | Visita Pendiente - Yinet Lovere Hoyos                             | Pendiente     | 2026-08-11 16:24:04.340911+00
+ 85dec68e-7880-468d-8f21-d57fef81390e | Daño Estructural - Oskar Duran                                    | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ dc373677-2a0f-489d-ad5f-ab778e31ec4c | Daño Estructural - Juliana Pechme                                 | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ fe3d2c94-8a94-473f-a40d-512dc7fb1bbb | Daño Estructural - Dobel Gucín                                    | PENDIENTE     | 2026-08-11 16:24:04.340911+00
+ 57147d40-4eaf-4614-bb64-841c6764e9a2 | Visita Pendiente - Laro Lenis                                     | Pendiente     | 2026-08-11 16:24:04.340911+00
+ 487b5457-4ade-48a3-b5cb-4d5da264ea5f | Daño Estructural - Max Martinez                                   | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ a49aa1d3-a153-48ae-9830-409c0f3a312f | Daño Estructural - Maikol Calderon                                | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ a36c8eb4-73c5-4e3a-9d70-5cd8bb00cdbd | Daño Estructural - Leidy Johana Oviedo                            | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 3fbcbd26-fd31-4b40-b56f-8aedd24705e2 | Daño Estructural - Isidro Lopez                                   | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 0ed14883-15b3-431c-8e0f-22f862d2c210 | Daño Estructural - Juliana Mosquera                               | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 42fc74c1-d11b-4f3d-952c-da2583305075 | Problema Estructural - Jhon Hincapie                              | Pendiente     | 2026-08-11 14:32:01.307699+00
+ 29a25f12-250a-463c-9836-09e016bcea3c | Visita Pendiente - Natalia Dancis                                 | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 0ee475b6-46f1-4565-bd07-33e5c1af0949 | Daño Estructural - Jessica Valencia                               | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 14dacb65-dbf2-4cd0-a0c7-59b9e70d70f7 | Daño Estructural - Rosa Carolina Bermudes                         | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ ae54dd55-b973-4e8d-a259-55ae3edf13aa | Visita Pendiente - Adriana Pavon                                  | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 2a507d57-ec51-4d4c-acec-6449db40d6d3 | Daño Estructural - Angel Rodrigues                                | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 7ef31c38-a34d-4501-8bc0-7f389427a2db | Daño Estructural - Sandra Patricia Piloza                         | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 76243413-5ca6-46dd-98a5-7ceb8edaa51d | Daño Estructural - Simion Garses                                  | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 25443bfa-cf32-4f0e-a21d-cf8fa130dc3b | Daño Estructural - Alejandra Bermudes                             | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 7817852a-3afc-4f35-a2c9-9dbe3cdada47 | Visita Pendiente - Jose Rodrigo Caizedo                           | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ ad82f464-bad1-4331-80e2-c17bc6898cfb | Daño Estructural - Alba Mensabel                                  | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 811ea8a3-3760-498f-99d1-d80c80aafe77 | Visita Pendiente - Neuer Sarria                                   | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ b8e10b0c-fbac-475b-b1cf-39ccbad49f8f | Visita Pendiente - James Zalazar                                  | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 8e0bb63d-dd5b-4308-8a90-e08c74fe21d1 | Visita Pendiente - Ramiro Astudillo                               | PENDIENTE     | 2026-08-11 14:32:01.307699+00
+ 8ba938de-dc9f-4e70-abc9-46ada5fdeac2 | Daño Estructural - Jose Luiz                                      | PENDIENTE     | 2026-08-11 14:01:02.023084+00
+ 8dcd628d-13d4-4dcd-bb7c-64876ded12ce | Daño Estructural - Erika Liseth Bermudes                          | PENDIENTE     | 2026-08-11 14:01:02.023084+00
+ 9d7400f1-0a0f-45a1-b6bd-d6905937f22e | Daño Estructural - Natali Garcia                                  | Pendiente     | 2026-08-11 14:01:02.023084+00
+ 8c92aafd-b768-42bc-bc5b-d511ebe7684f | Daño Estructural - Jhon Stiven / Deiby Millan                     | Pendiente     | 2026-08-11 14:01:02.023084+00
+ 34a7c0d3-0b57-40ae-93f0-37ee5241e757 | Daño Estructural - Jhonatan Arrubla                               | PENDIENTE     | 2026-08-11 14:01:02.023084+00
+(1044 rows)
+

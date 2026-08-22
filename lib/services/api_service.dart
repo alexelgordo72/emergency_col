@@ -36,27 +36,39 @@ class ApiService {
       print('📡 GET reportes - Status: ${response.statusCode}');
 
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        final List<dynamic> dataList = data['data'] ?? [];
+        final decoded = json.decode(response.body);
+        final data = decoded is Map<String, dynamic> ? decoded : {};
         
-        // Convertir cada elemento a ReporteComunitario
-        final reportes = dataList.map((e) {
-          return ReporteComunitario.fromJson(e);
-        }).toList();
+        final rawList = data['data'];
+        final List<ReporteComunitario> reportes = [];
+        
+        if (rawList is List) {
+          for (var item in rawList) {
+            try {
+              if (item is Map<String, dynamic>) {
+                reportes.add(ReporteComunitario.fromJson(item));
+              } else if (item is Map) {
+                reportes.add(ReporteComunitario.fromJson(Map<String, dynamic>.from(item)));
+              }
+            } catch (innerErr) {
+              print('⚠️ Error parseando item individual: $innerErr');
+            }
+          }
+        }
         
         return {
-          'total': data['total'] ?? 0,
-          'limit': data['limit'] ?? limit,
-          'offset': data['offset'] ?? offset,
+          'total': data['total'] is int ? data['total'] : reportes.length,
+          'limit': data['limit'] is int ? data['limit'] : limit,
+          'offset': data['offset'] is int ? data['offset'] : offset,
           'data': reportes,
         };
       } else {
         print('❌ Error: ${response.statusCode} - ${response.body}');
-        return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+        return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
       }
     } catch (e) {
       print('❌ Error en obtenerReportes: $e');
-      return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+      return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
     }
   }
 
@@ -206,21 +218,40 @@ class ApiService {
       print('📡 Búsqueda - Status: ${response.statusCode}');
       
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
+        final decoded = json.decode(response.body);
+        final data = decoded is Map<String, dynamic> ? decoded : {};
+        
+        final rawList = data['data'];
+        final List<ReporteComunitario> reportes = [];
+        
+        if (rawList is List) {
+          for (var item in rawList) {
+            try {
+              if (item is Map<String, dynamic>) {
+                reportes.add(ReporteComunitario.fromJson(item));
+              } else if (item is Map) {
+                reportes.add(ReporteComunitario.fromJson(Map<String, dynamic>.from(item)));
+              }
+            } catch (innerErr) {
+              print('⚠️ Error parseando busqueda item: $innerErr');
+            }
+          }
+        }
+
         return {
-          'total': data['total'] ?? 0,
-          'limit': data['limit'] ?? limit,
-          'offset': data['offset'] ?? offset,
-          'data': (data['data'] as List?)?.map((e) => ReporteComunitario.fromJson(e)).toList() ?? [],
+          'total': data['total'] is int ? data['total'] : reportes.length,
+          'limit': data['limit'] is int ? data['limit'] : limit,
+          'offset': data['offset'] is int ? data['offset'] : offset,
+          'data': reportes,
           'search_term': data['search_term'] ?? query,
         };
       } else {
         print('❌ Error: ${response.statusCode} - ${response.body}');
-        return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+        return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
       }
     } catch (e) {
       print('❌ Error en búsqueda general: $e');
-      return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+      return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
     }
   }
 }
