@@ -1,257 +1,221 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 import '../config.dart';
-import '../models/reporte_comunitario.dart';
-import '../models/trazabilidad_model.dart';
 
 class ApiService {
-  static String get baseUrl => AppConfig.apiUrl;
+  static const String baseUrl = AppConfig.apiUrl;
 
-  static Future<Map<String, dynamic>> obtenerReportes({
-    String? barrio,
-    String? nombre,
-    String? telefono,
-    int limit = 50,
-    int offset = 0,
-  }) async {
+  // ============================================================
+  // REPORTES
+  // ============================================================
+
+  static Future<bool> crearReporte(Map<String, dynamic> data) async {
     try {
-      final Map<String, String> queryParams = {};
+      final id = const Uuid().v4();
+      final url = '$baseUrl/api/reportes?reporte_id=$id';
       
-      if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
-        queryParams['barrio'] = barrio;
-      }
-      if (nombre != null && nombre.isNotEmpty) {
-        queryParams['nombre'] = nombre;
-      }
-      if (telefono != null && telefono.isNotEmpty) {
-        queryParams['telefono'] = telefono;
-      }
-      queryParams['limit'] = limit.toString();
-      queryParams['offset'] = offset.toString();
-
-      final uri = Uri.parse('$baseUrl/reportes').replace(queryParameters: queryParams);
-      print('📡 GET reportes - URL: $uri');
-
-      final response = await http.get(uri);
-      print('📡 GET reportes - Status: ${response.statusCode}');
-
-      if (response.statusCode == 200) {
-        final decoded = json.decode(response.body);
-        final data = decoded is Map<String, dynamic> ? decoded : {};
-        
-        final rawList = data['data'];
-        final List<ReporteComunitario> reportes = [];
-        
-        if (rawList is List) {
-          for (var item in rawList) {
-            try {
-              if (item is Map<String, dynamic>) {
-                reportes.add(ReporteComunitario.fromJson(item));
-              } else if (item is Map) {
-                reportes.add(ReporteComunitario.fromJson(Map<String, dynamic>.from(item)));
-              }
-            } catch (innerErr) {
-              print('⚠️ Error parseando item individual: $innerErr');
-            }
-          }
-        }
-        
-        return {
-          'total': data['total'] is int ? data['total'] : reportes.length,
-          'limit': data['limit'] is int ? data['limit'] : limit,
-          'offset': data['offset'] is int ? data['offset'] : offset,
-          'data': reportes,
-        };
-      } else {
-        print('❌ Error: ${response.statusCode} - ${response.body}');
-        return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
-      }
-    } catch (e) {
-      print('❌ Error en obtenerReportes: $e');
-      return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
-    }
-  }
-
-  static Future<List<String>> obtenerBarrios() async {
-    try {
-      final response = await http.get(Uri.parse('$baseUrl/barrios'));
-      if (response.statusCode == 200) {
-        List data = json.decode(response.body);
-        return data.map((e) => e.toString()).toList();
-      }
-    } catch (_) {}
-    return [];
-  }
-
-  static Future<bool> actualizarReporte(String id, Map<String, dynamic> datos) async {
-    try {
-      print('📤 PUT reporte ID: $id');
-      print('📤 PUT datos: $datos');
-      final response = await http.put(
-        Uri.parse('$baseUrl/reportes/$id'),
+      print('📤 Creando reporte en: $url');
+      print('📤 Payload: $data');
+      
+      final response = await http.post(
+        Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode(datos),
+        body: json.encode(data),
       );
-      print('📡 PUT response: ${response.statusCode}');
-      print('📡 PUT body: ${response.body}');
-      return response.statusCode == 200;
+      
+      print('📥 Status: ${response.statusCode}');
+      print('📥 Response: ${response.body}');
+      
+      return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
-      print('❌ Error al actualizar: $e');
+      print('❌ Error en crearReporte: $e');
       return false;
     }
   }
 
-  static Future<bool> crearReporte(Map<String, dynamic> datos) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl/reportes'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode(datos),
-    );
-    return response.statusCode == 200;
+  static Future<Map<String, dynamic>> obtenerReportes({
+    int limit = 50,
+    int offset = 0,
+    String? barrio,
+    String? nombre,
+    String? telefono,
+  }) async {
+    try {
+      final queryParams = <String, String>{
+        'limit': limit.toString(),
+        'offset': offset.toString(),
+      };
+      if (barrio != null && barrio.isNotEmpty) queryParams['barrio'] = barrio;
+      if (nombre != null && nombre.isNotEmpty) queryParams['nombre'] = nombre;
+      if (telefono != null && telefono.isNotEmpty) queryParams['telefono'] = telefono;
+
+      final uri = Uri.parse('$baseUrl/api/reportes').replace(queryParameters: queryParams);
+      final response = await http.get(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return {'data': [], 'total': 0};
+    } catch (e) {
+      print('❌ Error en obtenerReportes: $e');
+      return {'data': [], 'total': 0};
+    }
   }
 
-  static Future<List<TrazabilidadItem>> obtenerHistorial(String reporteId) async {
+  static Future<Map<String, dynamic>> obtenerReporte(String id) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/trazabilidad/$reporteId'));
-      print('📡 GET trazabilidad - Status: ${response.statusCode}');
-      print('📡 GET trazabilidad - Body: ${response.body}');
-      
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      }
+      return {};
+    } catch (e) {
+      print('❌ Error en obtenerReporte: $e');
+      return {};
+    }
+  }
+
+  static Future<bool> actualizarReporte(String id, Map<String, dynamic> data) async {
+    try {
+      final response = await http.put(
+        Uri.parse('$baseUrl/api/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(data),
+      );
+      return response.statusCode == 200 || response.statusCode == 201;
+    } catch (e) {
+      print('❌ Error en actualizarReporte: $e');
+      return false;
+    }
+  }
+
+  static Future<bool> eliminarReporte(String id) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$baseUrl/api/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      return response.statusCode == 200 || response.statusCode == 204;
+    } catch (e) {
+      print('❌ Error en eliminarReporte: $e');
+      return false;
+    }
+  }
+
+  // ============================================================
+  // RUFE
+  // ============================================================
+
+  static Future<List<dynamic>> obtenerRufes() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/rufe'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        List list = data is List ? data : [];
-        return list.map((item) => TrazabilidadItem.fromJson(item)).toList();
-      } else {
-        print('❌ Error: ${response.statusCode} - ${response.body}');
-        return [];
+        return data['data'] ?? [];
       }
+      return [];
     } catch (e) {
-      print('❌ Error al cargar historial: $e');
+      print('❌ Error en obtenerRufes: $e');
       return [];
     }
   }
 
-  static Future<Map<String, dynamic>?> obtenerDetalleRufe(String reporteId) async {
+  static Future<Map<String, dynamic>> obtenerRufe(String id) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/reportes/$reporteId/rufe'));
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/rufe/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
       if (response.statusCode == 200) {
         return json.decode(response.body);
       }
+      return {};
     } catch (e) {
-      print('Error obteniendo RUFE: $e');
+      print('❌ Error en obtenerRufe: $e');
+      return {};
     }
-    return null;
   }
 
-  static Future<bool> actualizarEstadoTrazabilidad(
-    String reporteId,
-    String nuevoEstado,
-    String observacion
-  ) async {
+  // ============================================================
+  // BARRIOS
+  // ============================================================
+
+  static Future<List<dynamic>> obtenerBarrios() async {
     try {
-      print('📤 POST trazabilidad: reporte=$reporteId, estado=$nuevoEstado');
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/barrios'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return data['data'] ?? [];
+      }
+      return [];
+    } catch (e) {
+      print('❌ Error en obtenerBarrios: $e');
+      return [];
+    }
+  }
+
+  // ============================================================
+  // TRAZABILIDAD (NUEVO)
+  // ============================================================
+
+  static Future<List<dynamic>> obtenerHistorial(String reporteId) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/trazabilidad?reporte_id=$reporteId'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return data['data'] ?? [];
+      }
+      return [];
+    } catch (e) {
+      print('❌ Error en obtenerHistorial: $e');
+      return [];
+    }
+  }
+
+  static Future<bool> actualizarEstadoTrazabilidad({
+    required String reporteId,
+    required String estadoAnterior,
+    required String estadoNuevo,
+    required String observacion,
+    String usuario = 'Operador SGRD',
+  }) async {
+    try {
       final response = await http.post(
-        Uri.parse('$baseUrl/trazabilidad'),
+        Uri.parse('$baseUrl/api/trazabilidad'),
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'reporte_id': reporteId,
-          'estado_anterior': 'Actual',
-          'estado_nuevo': nuevoEstado,
+          'estado_anterior': estadoAnterior,
+          'estado_nuevo': estadoNuevo,
           'observacion': observacion,
-          'usuario': 'Operador SGRD'
+          'usuario': usuario,
         }),
       );
-      print('📡 POST trazabilidad - Status: ${response.statusCode}');
-      print('📡 POST trazabilidad - Body: ${response.body}');
       return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
       print('❌ Error en actualizarEstadoTrazabilidad: $e');
       return false;
-    }
-  }
-
-  static Future<Map<String, dynamic>> buscarPorTelefono(String telefono) async {
-    try {
-      final response = await http.get(
-        Uri.parse('$baseUrl/grupos-por-telefono/$telefono'),
-      );
-      if (response.statusCode == 200) {
-        return json.decode(response.body);
-      }
-      return {};
-    } catch (e) {
-      print('❌ Error al buscar por teléfono: $e');
-      return {};
-    }
-  }
-
-  static Future<List<dynamic>> obtenerGrupoFamiliar(String telefono) async {
-    try {
-      final response = await http.get(
-        Uri.parse('$baseUrl/grupos-familiares/$telefono'),
-      );
-      if (response.statusCode == 200) {
-        return json.decode(response.body);
-      }
-      return [];
-    } catch (e) {
-      print('❌ Error al obtener grupo familiar: $e');
-      return [];
-    }
-  }
-
-  static Future<Map<String, dynamic>> buscarGeneral(String query, {
-    int limit = 50,
-    int offset = 0
-  }) async {
-    try {
-      final uri = Uri.parse('$baseUrl/reportes/buscar')
-          .replace(queryParameters: {
-            'q': query,
-            'limit': limit.toString(),
-            'offset': offset.toString()
-          });
-      
-      print('🔍 Buscando: $query');
-      print('📡 URL: $uri');
-      
-      final response = await http.get(uri);
-      print('📡 Búsqueda - Status: ${response.statusCode}');
-      
-      if (response.statusCode == 200) {
-        final decoded = json.decode(response.body);
-        final data = decoded is Map<String, dynamic> ? decoded : {};
-        
-        final rawList = data['data'];
-        final List<ReporteComunitario> reportes = [];
-        
-        if (rawList is List) {
-          for (var item in rawList) {
-            try {
-              if (item is Map<String, dynamic>) {
-                reportes.add(ReporteComunitario.fromJson(item));
-              } else if (item is Map) {
-                reportes.add(ReporteComunitario.fromJson(Map<String, dynamic>.from(item)));
-              }
-            } catch (innerErr) {
-              print('⚠️ Error parseando busqueda item: $innerErr');
-            }
-          }
-        }
-
-        return {
-          'total': data['total'] is int ? data['total'] : reportes.length,
-          'limit': data['limit'] is int ? data['limit'] : limit,
-          'offset': data['offset'] is int ? data['offset'] : offset,
-          'data': reportes,
-          'search_term': data['search_term'] ?? query,
-        };
-      } else {
-        print('❌ Error: ${response.statusCode} - ${response.body}');
-        return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
-      }
-    } catch (e) {
-      print('❌ Error en búsqueda general: $e');
-      return {'total': 0, 'limit': limit, 'offset': offset, 'data': <ReporteComunitario>[]};
     }
   }
 }
