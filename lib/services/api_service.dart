@@ -1,152 +1,145 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/reporte_comunitario.dart';
-import '../models/trazabilidad_model.dart';
+import 'package:uuid/uuid.dart';
+import '../config.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://10.147.17.2:8001/api';
+  static const String baseUrl = AppConfig.apiUrl;
 
+  // ============================================================
+  // REPORTES - CRUD COMPLETO
+  // ============================================================
+
+  // CREATE
+  static Future<bool> crearReporte(Map<String, dynamic> data) async {
+    try {
+      final id = const Uuid().v4();
+      final url = '$baseUrl/reportes?reporte_id=$id';
+      
+      print('📤 Creando reporte en: $url');
+      print('📤 Payload: $data');
+      
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(data),
+      );
+      
+      print('📥 Status: ${response.statusCode}');
+      print('📥 Response: ${response.body}');
+      
+      return response.statusCode == 200 || response.statusCode == 201;
+    } catch (e) {
+      print('❌ Error en crearReporte: $e');
+      return false;
+    }
+  }
+
+  // READ (Listar)
   static Future<Map<String, dynamic>> obtenerReportes({
+    int limit = 50,
+    int offset = 0,
     String? barrio,
     String? nombre,
     String? telefono,
-    int limit = 50,
-    int offset = 0,
   }) async {
     try {
-      final Map<String, String> queryParams = {};
-      
-      // Enviar los filtros al backend
-      if (barrio != null && barrio.isNotEmpty && barrio != 'Barrio') {
-        queryParams['barrio'] = barrio;
-      }
-      if (nombre != null && nombre.isNotEmpty) {
-        queryParams['nombre'] = nombre;
-      }
-      if (telefono != null && telefono.isNotEmpty) {
-        queryParams['telefono'] = telefono;
-      }
-      queryParams['limit'] = limit.toString();
-      queryParams['offset'] = offset.toString();
+      final queryParams = <String, String>{
+        'limit': limit.toString(),
+        'offset': offset.toString(),
+      };
+      if (barrio != null && barrio.isNotEmpty) queryParams['barrio'] = barrio;
+      if (nombre != null && nombre.isNotEmpty) queryParams['nombre'] = nombre;
+      if (telefono != null && telefono.isNotEmpty) queryParams['telefono'] = telefono;
 
       final uri = Uri.parse('$baseUrl/reportes').replace(queryParameters: queryParams);
-      print('📡 GET reportes - URL: $uri');
-
-      final response = await http.get(uri);
-      print('📡 GET reportes - Status: ${response.statusCode}');
+      final response = await http.get(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+      );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         return {
+          'data': data['data'] ?? [],
           'total': data['total'] ?? 0,
-          'limit': data['limit'] ?? limit,
-          'offset': data['offset'] ?? offset,
-          'data': (data['data'] as List?)?.map((e) => ReporteComunitario.fromJson(e)).toList() ?? [],
         };
-      } else {
-        print('❌ Error: ${response.statusCode} - ${response.body}');
-        return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
       }
+      return {'data': [], 'total': 0};
     } catch (e) {
       print('❌ Error en obtenerReportes: $e');
-      return {'total': 0, 'limit': limit, 'offset': offset, 'data': []};
+      return {'data': [], 'total': 0};
     }
   }
 
-  static Future<List<String>> obtenerBarrios() async {
+  // READ (Uno)
+  static Future<Map<String, dynamic>> obtenerReporte(String id) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/barrios'));
-      if (response.statusCode == 200) {
-        List data = json.decode(response.body);
-        return data.map((e) => e.toString()).toList();
-      }
-    } catch (_) {}
-    return [];
-  }
-
-  static Future<bool> actualizarReporte(String id, Map<String, dynamic> datos) async {
-    try {
-      print('📤 PUT reporte ID: $id');
-      print('📤 PUT datos: $datos');
-      final response = await http.put(
+      final response = await http.get(
         Uri.parse('$baseUrl/reportes/$id'),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode(datos),
       );
-      print('📡 PUT response: ${response.statusCode}');
-      print('📡 PUT body: ${response.body}');
-      return response.statusCode == 200;
-    } catch (e) {
-      print('❌ Error al actualizar: $e');
-      return false;
-    }
-  }
 
-  static Future<bool> crearReporte(Map<String, dynamic> datos) async {
-    final response = await http.post(
-      Uri.parse('$baseUrl/reportes'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode(datos),
-    );
-    return response.statusCode == 200;
-  }
-
-  static Future<List<TrazabilidadItem>> obtenerHistorial(String reporteId) async {
-    try {
-      final response = await http.get(Uri.parse('$baseUrl/trazabilidad/$reporteId'));
-      print('📡 GET trazabilidad - Status: ${response.statusCode}');
-      print('📡 GET trazabilidad - Body: ${response.body}');
-      
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        List list = data is List ? data : [];
-        return list.map((item) => TrazabilidadItem.fromJson(item)).toList();
-      } else {
-        print('❌ Error: ${response.statusCode} - ${response.body}');
-        return [];
-      }
-    } catch (e) {
-      print('❌ Error al cargar historial: $e');
-      return [];
-    }
-  }
-
-  static Future<Map<String, dynamic>?> obtenerDetalleRufe(String reporteId) async {
-    try {
-      final response = await http.get(Uri.parse('$baseUrl/reportes/$reporteId/rufe'));
       if (response.statusCode == 200) {
         return json.decode(response.body);
       }
+      return {};
     } catch (e) {
-      print('Error obteniendo RUFE: $e');
+      print('❌ Error en obtenerReporte: $e');
+      return {};
     }
-    return null;
   }
 
-  static Future<bool> actualizarEstadoTrazabilidad(
-    String reporteId,
-    String nuevoEstado,
-    String observacion
-  ) async {
+  // UPDATE
+  static Future<bool> actualizarReporte(String id, Map<String, dynamic> data) async {
     try {
-      print('📤 POST trazabilidad: reporte=$reporteId, estado=$nuevoEstado');
-      final response = await http.post(
-        Uri.parse('$baseUrl/trazabilidad'),
+      final response = await http.put(
+        Uri.parse('$baseUrl/reportes/$id'),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'reporte_id': reporteId,
-          'estado_anterior': 'Actual',
-          'estado_nuevo': nuevoEstado,
-          'observacion': observacion,
-          'usuario': 'Operador SGRD'
-        }),
+        body: json.encode(data),
       );
-      print('📡 POST trazabilidad - Status: ${response.statusCode}');
-      print('📡 POST trazabilidad - Body: ${response.body}');
       return response.statusCode == 200 || response.statusCode == 201;
     } catch (e) {
-      print('❌ Error en actualizarEstadoTrazabilidad: $e');
+      print('❌ Error en actualizarReporte: $e');
       return false;
+    }
+  }
+
+  // DELETE
+  static Future<bool> eliminarReporte(String id) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$baseUrl/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      print('📥 DELETE Status: ${response.statusCode}');
+      print('📥 DELETE Response: ${response.body}');
+      return response.statusCode == 200 || response.statusCode == 204;
+    } catch (e) {
+      print('❌ Error en eliminarReporte: $e');
+      return false;
+    }
+  }
+
+  // ============================================================
+  // BARRIOS
+  // ============================================================
+
+  static Future<List<dynamic>> obtenerBarrios() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/barrios'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return data['data'] ?? [];
+      }
+      return [];
+    } catch (e) {
+      print('❌ Error en obtenerBarrios: $e');
+      return [];
     }
   }
 }
