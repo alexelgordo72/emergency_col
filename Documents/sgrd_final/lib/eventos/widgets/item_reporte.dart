@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sgrd_final/eventos/models/evento_model.dart';
 import 'package:sgrd_final/eventos/screens/crear_evento_screen.dart';
 import 'package:sgrd_final/eventos/services/evento_service.dart';
+import 'package:sgrd_final/eventos/widgets/trazabilidad_dialog.dart';
 
 class ItemReporte extends StatefulWidget {
   final dynamic reporte;
@@ -91,6 +92,16 @@ class _ItemReporteState extends State<ItemReporte> {
     }
   }
 
+  void _mostrarTrazabilidad() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => TrazabilidadDialog(
+        reporteId: widget.reporte['id'],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final estado = widget.reporte['estado'] ?? 'PENDIENTE';
@@ -147,6 +158,14 @@ class _ItemReporteState extends State<ItemReporte> {
                   fontSize: 8,
                 ),
               ),
+            ),
+            // Botón Trazabilidad
+            IconButton(
+              icon: const Icon(Icons.timeline, size: 16, color: Colors.purple),
+              onPressed: _mostrarTrazabilidad,
+              tooltip: 'Ver Trazabilidad',
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(),
             ),
             // Botón Editar
             IconButton(

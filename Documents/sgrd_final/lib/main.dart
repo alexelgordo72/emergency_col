@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sgrd_final/screens/principal.dart';
+import 'package:sgrd_final/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         useMaterial3: true,
       ),
-      home: const Principal(),
+      home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

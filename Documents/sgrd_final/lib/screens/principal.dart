@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sgrd_final/services/api_service.dart';
+import 'package:sgrd_final/services/auth_service.dart';
+import 'package:sgrd_final/screens/login_screen.dart';
 import 'package:sgrd_final/eventos/widgets/boton_nuevo_evento.dart';
 import 'package:sgrd_final/eventos/widgets/item_reporte.dart';
 
@@ -124,6 +126,35 @@ class _PrincipalState extends State<Principal> {
             onPressed: cargarDatos,
             tooltip: 'Recargar',
           ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Cerrar Sesión'),
+                  content: const Text('¿Estás seguro de que deseas salir?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Cancelar'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        AuthService.logout();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginScreen()),
+                        );
+                      },
+                      child: const Text('Salir', style: TextStyle(color: Colors.red)),
+                    ),
+                  ],
+                ),
+              );
+            },
+            tooltip: 'Cerrar Sesión',
+          ),
         ],
       ),
       body: isLoading
@@ -236,35 +267,46 @@ class _PrincipalState extends State<Principal> {
 
   Widget _buildFiltros() {
     return Container(
-      padding: const EdgeInsets.all(6),
+      padding: const EdgeInsets.all(8),
       color: Colors.grey[100],
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          DropdownButtonFormField<String>(
-            decoration: const InputDecoration(
-              labelText: 'Barrio',
-              border: OutlineInputBorder(),
-              prefixIcon: Icon(Icons.location_city, size: 16),
-              contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              isDense: true,
-            ),
-            value: barrioSeleccionado ?? 'Todos',
-            items: barrios.map((barrio) {
-              return DropdownMenuItem(
-                value: barrio,
-                child: Text(barrio, overflow: TextOverflow.ellipsis),
-              );
-            }).toList(),
-            onChanged: (value) {
-              barrioSeleccionado = value;
-              filtrarResultados();
-            },
+          // Barrio - con Expanded para evitar overflow
+          Row(
+            children: [
+              Expanded(
+                child: DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: 'Barrio',
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.location_city, size: 16),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    isDense: true,
+                  ),
+                  value: barrioSeleccionado ?? 'Todos',
+                  items: barrios.map((barrio) {
+                    return DropdownMenuItem(
+                      value: barrio,
+                      child: Text(
+                        barrio,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    barrioSeleccionado = value;
+                    filtrarResultados();
+                  },
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 4),
           Row(
             children: [
-              Flexible(
+              Expanded(
                 child: TextField(
                   decoration: const InputDecoration(
                     labelText: 'Nombre',
@@ -280,7 +322,7 @@ class _PrincipalState extends State<Principal> {
                 ),
               ),
               const SizedBox(width: 4),
-              Flexible(
+              Expanded(
                 child: TextField(
                   decoration: const InputDecoration(
                     labelText: 'Teléfono',
