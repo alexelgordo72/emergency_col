@@ -21,13 +21,11 @@ class ApiService {
         'limit': limit.toString(),
         'offset': offset.toString(),
       };
-
       if (barrio != null && barrio.isNotEmpty) queryParams['barrio'] = barrio;
       if (nombre != null && nombre.isNotEmpty) queryParams['nombre'] = nombre;
       if (telefono != null && telefono.isNotEmpty) queryParams['telefono'] = telefono;
 
       final uri = Uri.parse('$baseUrl/reportes').replace(queryParameters: queryParams);
-
       final response = await http.get(
         uri,
         headers: {'Content-Type': 'application/json'},
@@ -53,7 +51,6 @@ class ApiService {
         Uri.parse('$baseUrl/barrios'),
         headers: {'Content-Type': 'application/json'},
       );
-
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         return data['data'] ?? [];
@@ -74,7 +71,6 @@ class ApiService {
         Uri.parse('$baseUrl/estados'),
         headers: {'Content-Type': 'application/json'},
       );
-
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data is List) {
@@ -98,7 +94,6 @@ class ApiService {
         Uri.parse('$baseUrl/trazabilidad/$reporteId'),
         headers: {'Content-Type': 'application/json'},
       );
-
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
@@ -124,7 +119,6 @@ class ApiService {
           'usuario': AuthService.currentUser?.nombre ?? 'Sistema',
         }),
       );
-
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
@@ -144,7 +138,6 @@ class ApiService {
         Uri.parse('$baseUrl/visitas/$reporteId'),
         headers: {'Content-Type': 'application/json'},
       );
-
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data is List) {
@@ -157,6 +150,25 @@ class ApiService {
     } catch (e) {
       print('❌ Error al obtener visitas: $e');
       return [];
+    }
+  }
+
+  // ============================================================
+  // DASHBOARD COMPLETO
+  // ============================================================
+  static Future<Map<String, dynamic>> obtenerDashboardCompleto() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/dashboard/completo'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      } else {
+        throw Exception('Error al obtener dashboard: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Error: $e');
     }
   }
 }

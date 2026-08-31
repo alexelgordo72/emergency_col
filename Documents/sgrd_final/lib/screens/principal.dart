@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:sgrd_final/services/api_service.dart';
 import 'package:sgrd_final/services/auth_service.dart';
 import 'package:sgrd_final/screens/login_screen.dart';
+import 'package:sgrd_final/screens/dashboard_screen.dart';
 import 'package:sgrd_final/eventos/widgets/boton_nuevo_evento.dart';
 import 'package:sgrd_final/eventos/widgets/item_reporte.dart';
 
@@ -121,6 +122,16 @@ class _PrincipalState extends State<Principal> {
         backgroundColor: Colors.red[700],
         foregroundColor: Colors.white,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.dashboard),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const DashboardScreen()),
+              );
+            },
+            tooltip: 'Dashboard',
+          ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: cargarDatos,
@@ -272,7 +283,6 @@ class _PrincipalState extends State<Principal> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Barrio - con Expanded para evitar overflow
           Row(
             children: [
               Expanded(

@@ -112,4 +112,25 @@ class EventoService {
       return null;
     }
   }
+
+  // ============================================================
+  // OBTENER REPORTE POR ID
+  // ============================================================
+  static Future<Map<String, dynamic>?> obtenerReportePorId(String id) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        return json.decode(response.body);
+      } else {
+        print('❌ Error al obtener reporte: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('❌ Error al obtener reporte: $e');
+      return null;
+    }
+  }
 }
