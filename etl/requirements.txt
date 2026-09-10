@@ -1,0 +1,21 @@
+# ============================================================
+# Dependencias del ETL SGRD
+# ============================================================
+
+# Google Gemini (Vision + LLM)
+google-genai>=1.0.0
+
+# Procesamiento de PDFs e imágenes
+pdf2image>=1.17.0
+Pillow>=10.0.0
+
+# Base de datos PostgreSQL
+psycopg2-binary>=2.9.9
+
+# Utilidades
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+tenacity>=8.2.0
+
+# Testing (opcional)
+pytest>=7.4.0

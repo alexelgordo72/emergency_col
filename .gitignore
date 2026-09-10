@@ -1,8 +1,16 @@
-# Flutter/Dart
+# ============================================================
+# SGRD - Git Ignore
+# ============================================================
+
+# ---------- Flutter/Dart ----------
 .dart_tool/
 .build/
 build/
 .pub/
+.pub-cache/
+.flutter
+.flutter-plugins
+.flutter-plugins-dependencies
 pubspec.lock
 *.pem
 *.key
@@ -12,50 +20,157 @@ pubspec.lock
 *.p12
 *.jks
 
-# Android
+# ---------- Android ----------
 android/app/build/
 android/.gradle/
 android/local.properties
 android/*.iml
+android/.idea/
 
-# iOS
+# ---------- iOS ----------
 ios/Pods/
 ios/.symlinks/
 ios/Flutter/Generated.xcconfig
 ios/Flutter/flutter_export_environment.sh
 ios/Runner/GeneratedPluginRegistrant.*
+ios/.idea/
 
-# Web
+# ---------- Web ----------
 web/index.html.bak
 
-# MacOS
+# ---------- MacOS ----------
 macos/Pods/
 macos/.symlinks/
 
-# IDE
+# ---------- Linux/Windows ----------
+linux/flutter/ephemeral/
+windows/flutter/ephemeral/
+
+# ---------- IDE ----------
 .vscode/
 .idea/
 *.swp
 *.swo
+*.iml
 
-# System
+# ---------- System ----------
 .DS_Store
 Thumbs.db
+.CFUserTextEncoding
+.profile
+.bash_history
+.zsh_history
+.zsh_sessions/
+.zshrc
+.zshrc.backup
+.zcompdump
+.Rhistory
+.Rapp.history
+.default.profraw
+*.profraw
 
-# Logs
+# ---------- Logs ----------
 *.log
+logs/
 
-# Environment
+# ---------- Environment ----------
 .env
 *.env
+.env.*
 
-# Firebase
+# ---------- Firebase ----------
 google-services.json
 GoogleService-Info.plist
 firebase_options.dart
+
+# ---------- Backups ----------
 *.tar.gz
 *.zip
-backup/*.sql
 *.backup
+backup/
 backup_*/
-*.tar.gz
+backup_*.sql
+*.sql.gz
+sgrd_yumbo_db_*.sql
+backup_desarrollo_*.sql
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---------- Home folders (NO SUBIR A GIT) ----------
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+Applications/
+Virtual Machines.localized/
+VirtualBox VMs/
+Parallels/
+
+# ---------- Cloud Storage ----------
+Google Drive
+OneDrive
+Dropbox
+
+# ---------- Herramientas locales ----------
+.ssh/
+.pgadmin/
+.config/
+.cache/
+.local/
+.homebrew/
+.gsutil/
+.ollama/
+.copilot/
+.swt/
+.dart-tool/
+.dartServer/
+.vscode-shared/
+.anydesk/
+.cups/
+.podman/
+.wget-hsts
+.npmrc
+.yarnrc
+.gitconfig
+
+# ---------- Proyectos externos ----------
+ia-local/
+llama.cpp/
+
+# ---------- Base de datos local ----------
+*.sql
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- ETL SGRD (datos sensibles) ----------
+etl/data/input/*
+etl/data/output/*
+etl/logs/*
+!etl/data/input/.gitkeep
+!etl/data/output/.gitkeep
+!etl/logs/.gitkeep
+etl/.env
+etl/venv/
+etl/__pycache__/
+etl/tests/__pycache__/
+
+# ---------- Archivos de configuración local ----------
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
