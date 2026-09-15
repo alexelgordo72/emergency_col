@@ -1,0 +1,33 @@
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Archivos de Flutter/Dart
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Archivos de sistema
+.DS_Store
+*.log
+
+# Archivos de backup (no subir a Git, van a GCS/Drive)
+*.backup
+*.sql.gz
+backups/
+
+# Archivos temporales
+*.tmp
+*.swp
+
+# Archivos de datos grandes
+etl/data/*.json
+etl/pdfs_*.txt

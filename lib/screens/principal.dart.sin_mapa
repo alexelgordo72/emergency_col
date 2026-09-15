@@ -1,0 +1,144 @@
+import 'package:flutter/material.dart';
+import 'package:sgrd_final/services/api_service.dart';
+import 'package:sgrd_final/services/auth_service.dart';
+import 'package:sgrd_final/screens/login_screen.dart';
+import 'package:sgrd_final/widgets/jarvis_chat.dart';
+
+class Principal extends StatefulWidget {
+  const Principal({Key? key}) : super(key: key);
+
+  @override
+  State<Principal> createState() => _PrincipalState();
+}
+
+class _PrincipalState extends State<Principal> {
+  List<dynamic> items = [];
+  bool isLoading = true;
+  String? errorMessage;
+
+  @override
+  void initState() {
+    super.initState();
+    cargarDatos();
+  }
+
+  Future<void> cargarDatos() async {
+    setState(() {
+      isLoading = true;
+      errorMessage = null;
+    });
+
+    try {
+      final response = await ApiService.obtenerReportes(limit: 100);
+      
+      List<dynamic> tempList = [];
+
+      if (response is Map<String, dynamic>) {
+        final data = response['data'];
+        if (data is List) {
+          tempList = data;
+        }
+      }
+
+      setState(() {
+        items = tempList;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        errorMessage = 'Error: $e';
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('SGRD Yumbo'),
+        backgroundColor: Colors.red[700],
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.chat),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const JarvisChat()),
+              );
+            },
+            tooltip: 'JARVIS - Asistente de voz',
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Cerrar Sesión'),
+                  content: const Text('¿Estás seguro de que deseas salir?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Cancelar'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        AuthService.logout();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const LoginScreen()),
+                        );
+                      },
+                      child: const Text('Salir', style: TextStyle(color: Colors.red)),
+                    ),
+                  ],
+                ),
+              );
+            },
+            tooltip: 'Cerrar Sesión',
+          ),
+        ],
+      ),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : errorMessage != null
+              ? Center(child: Text('Error: $errorMessage'))
+              : items.isEmpty
+                  ? const Center(child: Text('No hay reportes'))
+                  : ListView.builder(
+                      itemCount: items.length,
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return Card(
+                          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          child: ListTile(
+                            title: Text(item['titulo'] ?? 'Sin título'),
+                            subtitle: Text(
+                              '${item['ciudadano'] ?? 'Anónimo'} | 📞 ${item['telefono'] ?? 'N/A'}',
+                            ),
+                            trailing: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: item['estado']?.toUpperCase().contains('PENDIENTE') == true
+                                    ? Colors.orange
+                                    : Colors.green,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text(
+                                item['estado'] ?? 'PENDIENTE',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+    );
+  }
+}
