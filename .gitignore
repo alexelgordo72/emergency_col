@@ -31,3 +31,9 @@ backups/
 # Archivos de datos grandes
 etl/data/*.json
 etl/pdfs_*.txt
+
+# Archivos temporales
+*.zip
+*.png
+*.zip
+*.png
