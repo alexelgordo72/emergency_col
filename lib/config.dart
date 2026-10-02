@@ -1,3 +1,5 @@
 class AppConfig {
-  static const String apiUrl = 'http://10.147.17.2:8001/api';
+  // Usar URL relativa para que funcione desde cualquier origen
+  // (red interna 10.147.17.24, túnel Cloudflare, etc.)
+  static const String apiUrl = '/api';
 }
