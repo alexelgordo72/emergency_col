@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgrd_final/services/api_service.dart';
+import 'package:sgrd_final/eventos/widgets/editar_reporte_dialog.dart';
 
 class ItemReporte extends StatefulWidget {
   final dynamic reporte;
@@ -23,7 +24,8 @@ class _ItemReporteState extends State<ItemReporte> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Eliminar Reporte'),
-        content: const Text('¿Estás seguro de que deseas eliminar este reporte?'),
+        content: const Text(
+            '¿Estás seguro de que deseas eliminar este reporte? Esta acción no se puede deshacer.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -41,19 +43,75 @@ class _ItemReporteState extends State<ItemReporte> {
       setState(() => _eliminando = true);
       try {
         final id = widget.reporte['id'];
-        // TODO: Implementar eliminar
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('🗑️ Reporte eliminado')),
-        );
-        widget.onActualizar();
+        await ApiService.eliminarReporte(id);
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Reporte eliminado correctamente'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          widget.onActualizar();
+        }
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error al eliminar: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       } finally {
         if (mounted) setState(() => _eliminando = false);
       }
     }
+  }
+
+  void _abrirModalEditar() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => EditarReporteDialog(
+        reporte: widget.reporte,
+        onActualizado: widget.onActualizar,
+      ),
+    );
+  }
+
+  void _abrirModalTrazabilidad() {
+    final reporte = widget.reporte;
+    final id = reporte['id'] ?? '';
+    final titulo = reporte['titulo'] ?? 'Sin título';
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Trazabilidad'),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('ID: $id', style: const TextStyle(fontSize: 12)),
+              const SizedBox(height: 8),
+              Text('Título: $titulo', style: const TextStyle(fontSize: 12)),
+              const SizedBox(height: 8),
+              const Text('Estado actual:',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(reporte['estado'] ?? 'PENDIENTE'),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cerrar'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -64,7 +122,6 @@ class _ItemReporteState extends State<ItemReporte> {
     final telefono = reporte['telefono'] ?? 'N/A';
     final estado = reporte['estado'] ?? 'PENDIENTE';
     final barrio = reporte['sector_barrio'] ?? reporte['barrio'] ?? 'Sin barrio';
-    final id = reporte['id'] ?? '';
 
     Color estadoColor = Colors.orange;
     if (estado.toUpperCase().contains('VISITADO')) {
@@ -97,27 +154,16 @@ class _ItemReporteState extends State<ItemReporte> {
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Botón Trazabilidad
                 IconButton(
                   icon: const Icon(Icons.timeline, color: Colors.purple, size: 20),
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('📊 Trazabilidad de: $titulo')),
-                    );
-                  },
+                  onPressed: _abrirModalTrazabilidad,
                   tooltip: 'Trazabilidad',
                 ),
-                // Botón Editar
                 IconButton(
                   icon: const Icon(Icons.edit, color: Colors.blue, size: 20),
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('✏️ Editar: $titulo')),
-                    );
-                  },
+                  onPressed: _abrirModalEditar,
                   tooltip: 'Editar',
                 ),
-                // Botón Eliminar
                 IconButton(
                   icon: _eliminando
                       ? const SizedBox(
@@ -129,7 +175,6 @@ class _ItemReporteState extends State<ItemReporte> {
                   onPressed: _eliminando ? null : _eliminarReporte,
                   tooltip: 'Eliminar',
                 ),
-                // Estado
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(

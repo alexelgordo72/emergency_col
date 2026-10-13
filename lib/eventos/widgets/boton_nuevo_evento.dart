@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sgrd_final/eventos/widgets/crear_reporte_dialog.dart';
 
 class BotonNuevoEvento extends StatelessWidget {
   final VoidCallback onEventoCreado;
@@ -12,9 +13,12 @@ class BotonNuevoEvento extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        // TODO: Implementar creación de evento
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('📝 Crear nuevo evento')),
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => CrearReporteDialog(
+            onCreado: onEventoCreado,
+          ),
         );
       },
       backgroundColor: Colors.red[700],

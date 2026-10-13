@@ -23,7 +23,7 @@ class ApiService {
       }
       return {'data': [], 'total': 0};
     } catch (e) {
-      print('❌ Error en obtenerReportes: $e');
+      print('Error en obtenerReportes: $e');
       return {'data': [], 'total': 0};
     }
   }
@@ -60,7 +60,8 @@ class ApiService {
     }
   }
 
-  static Future<Map<String, dynamic>> actualizarReporte(String id, Map<String, dynamic> data) async {
+  static Future<Map<String, dynamic>> actualizarReporte(
+      String id, Map<String, dynamic> data) async {
     try {
       final response = await http.put(
         Uri.parse('$baseUrl/reportes/$id'),
@@ -74,6 +75,65 @@ class ApiService {
       }
     } catch (e) {
       throw Exception('Error: $e');
+    }
+  }
+
+  static Future<Map<String, dynamic>> crearReporte(
+      Map<String, dynamic> data) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/reportes'),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(data),
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return json.decode(response.body);
+      } else {
+        throw Exception(
+            'Error al crear reporte: ${response.statusCode} - ${response.body}');
+      }
+    } catch (e) {
+      throw Exception('Error: $e');
+    }
+  }
+
+  static Future<Map<String, dynamic>> eliminarReporte(String id) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$baseUrl/reportes/$id'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      // Aceptar 200 (OK), 204 (No Content) y también 404 (ya no existe)
+      if (response.statusCode == 200 ||
+          response.statusCode == 204 ||
+          response.statusCode == 404) {
+        return {'success': true, 'message': 'Reporte eliminado'};
+      } else {
+        throw Exception(
+            'Error al eliminar reporte: ${response.statusCode} - ${response.body}');
+      }
+    } catch (e) {
+      throw Exception('Error: $e');
+    }
+  }
+
+  static Future<List<String>> obtenerBarrios() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/barrios'),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        return data
+            .map((b) => (b['nombre'] ?? b['barrio'] ?? '').toString())
+            .where((s) => s.isNotEmpty)
+            .toList();
+      }
+      return [];
+    } catch (e) {
+      print('Error en obtenerBarrios: $e');
+      return [];
     }
   }
 }
